@@ -1,8 +1,4 @@
 
-/* ======================
-   👑 CONFIG
-====================== */
-
 const config = {
   hero: {
     title: "Princess Aiofee",
@@ -28,54 +24,50 @@ const config = {
     },
     {
       title: "🎂 RSVP",
-      text: "Click below to confirm your attendance 👑",
+      text: "Tap below to confirm attendance",
       image: "assets/princess-level.png",
       rsvp: true
     }
   ]
 };
 
-
-/* ======================
-   🎬 HERO
-====================== */
-
 function renderHero() {
-  document.getElementById("heroTitle").innerText = config.hero.title;
-  document.getElementById("heroSubtitle").innerText = config.hero.subtitle;
+  const title = document.getElementById("heroTitle");
+  const subtitle = document.getElementById("heroSubtitle");
+
+  if (title) title.textContent = config.hero.title;
+  if (subtitle) subtitle.textContent = config.hero.subtitle;
 }
-
-
-/* ======================
-   🧱 SECTIONS
-====================== */
 
 function renderSections() {
   const container = document.getElementById("sections");
 
+  if (!container) {
+    console.error("Missing #sections in HTML");
+    return;
+  }
+
   container.innerHTML = "";
 
   config.sections.forEach(sec => {
-    container.innerHTML += `
-      <section class="section">
-        <h2>${sec.title}</h2>
-        <p>${sec.text}</p>
-        <img src="${sec.image}" />
+    const section = document.createElement("section");
+    section.className = "section";
 
-        ${sec.rsvp ? `
-          <a class="rsvp-btn" href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
-            🎂 RSVP Now
-          </a>
-        ` : ""}
-      </section>
+    section.innerHTML = `
+      <h2>${sec.title}</h2>
+      <p>${sec.text}</p>
+      <img src="${sec.image}" />
+
+      ${sec.rsvp ? `
+        <a class="rsvp-btn" href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
+          🎂 RSVP Now
+        </a>
+      ` : ""}
     `;
+
+    container.appendChild(section);
   });
 }
-
-
-/* ======================
-   🚀 INIT
-====================== */
 
 function init() {
   renderHero();
