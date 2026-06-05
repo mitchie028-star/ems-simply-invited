@@ -61,7 +61,16 @@ body {
   text-align: center;
   padding: 20px;
 
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+
   background: rgba(255, 240, 246, 0.85);
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section h2 {
@@ -79,4 +88,45 @@ body {
   margin-top: 15px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* 📩 RSVP BUTTON */
+.rsvp-btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 12px 20px;
+  background: gold;
+  color: black;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* ✨ CONFETTI */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  animation: fall linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section img {
+    width: 180px;
+  }
 }
