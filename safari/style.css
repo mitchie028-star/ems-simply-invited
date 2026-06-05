@@ -1,20 +1,25 @@
+/* =========================
+RESET
+========================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-overflow:hidden;
-font-family:'Trebuchet MS', sans-serif;
-background:#000;
+  overflow:hidden;
+  font-family:'Trebuchet MS', sans-serif;
+  background:#000;
 }
 
 .scene{
-position:relative;
-width:100vw;
-height:100vh;
-overflow:hidden;
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  transform: translateZ(0); /* Safari fix */
 }
 
 /* =========================
@@ -22,70 +27,65 @@ BACKGROUND
 ========================= */
 
 .bg{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 /* =========================
-JUNGLE LEAVES
+JUNGLE LEAVES (FIXED)
 ========================= */
 
 .leaf{
-position:absolute;
-top:0;
-width:50%;
-height:100%;
-z-index:50;
+  position:absolute;
+  top:0;
+  width:50%;
+  height:100%;
+  z-index:50;
 
-```
-background:
-radial-gradient(circle at center,
-#4caf50 0%,
-#2e7d32 70%,
-#1b5e20 100%);
-```
+  will-change: transform;
+  transform: translateZ(0);
 
+  background: radial-gradient(
+    circle at center,
+    #4caf50 0%,
+    #2e7d32 70%,
+    #1b5e20 100%
+  );
 }
 
 .left-leaf{
-left:0;
-border-right:4px solid rgba(255,255,255,.15);
+  left:0;
+  border-right:4px solid rgba(255,255,255,.15);
 
-```
-animation:
-openLeft 2.5s ease forwards;
-
-animation-delay:1s;
-```
-
+  animation: openLeft 2.5s ease 1s forwards;
 }
 
 .right-leaf{
-right:0;
-border-left:4px solid rgba(255,255,255,.15);
+  right:0;
+  border-left:4px solid rgba(255,255,255,.15);
 
-```
-animation:
-openRight 2.5s ease forwards;
-
-animation-delay:1s;
-```
-
+  animation: openRight 2.5s ease 1s forwards;
 }
 
 @keyframes openLeft{
-to{
-transform:translateX(-100%);
-}
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
 }
 
 @keyframes openRight{
-to{
-transform:translateX(100%);
-}
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(100%);
+  }
 }
 
 /* =========================
@@ -93,44 +93,26 @@ BABY
 ========================= */
 
 .baby{
-position:absolute;
-left:50%;
-bottom:3%;
+  position:absolute;
+  left:50%;
+  bottom:3%;
+  transform:translateX(-50%);
+  width:min(34vw,340px);
+  opacity:0;
+  z-index:20;
 
-```
-transform:translateX(-50%);
-
-width:min(34vw,340px);
-
-opacity:0;
-
-z-index:20;
-
-animation:
-revealBaby 1s ease forwards;
-
-animation-delay:3s;
-```
-
+  animation: revealBaby 1s ease 3s forwards;
 }
 
 @keyframes revealBaby{
-from{
-opacity:0;
-transform:
-translateX(-50%)
-translateY(30px);
-}
-
-```
-to{
+  from{
+    opacity:0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to{
     opacity:1;
-    transform:
-    translateX(-50%)
-    translateY(0);
-}
-```
-
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* =========================
@@ -138,41 +120,28 @@ MONKEY
 ========================= */
 
 .monkey{
-position:absolute;
-width:180px;
+  position:absolute;
+  width:180px;
 
-```
-top:-200px;
-left:5%;
+  top:-250px;
+  left:5%;
+  z-index:25;
 
-z-index:25;
-
-animation:
-monkeySwing 2.5s ease forwards;
-
-animation-delay:4s;
-```
-
+  animation: monkeySwing 2.5s ease 4s forwards;
 }
 
 @keyframes monkeySwing{
-
-```
-0%{
+  0%{
     top:-250px;
-    transform:rotate(-25deg);
-}
-
-50%{
-    transform:rotate(20deg);
-}
-
-100%{
+    transform: rotate(-25deg);
+  }
+  50%{
+    transform: rotate(20deg);
+  }
+  100%{
     top:120px;
-    transform:rotate(0deg);
-}
-```
-
+    transform: rotate(0deg);
+  }
 }
 
 /* =========================
@@ -180,41 +149,28 @@ PARROT
 ========================= */
 
 .parrot{
-position:absolute;
-width:120px;
+  position:absolute;
+  width:120px;
 
-```
-left:-250px;
-top:80px;
+  left:-250px;
+  top:80px;
+  z-index:26;
 
-z-index:26;
-
-animation:
-birdFly 2.5s linear forwards;
-
-animation-delay:5s;
-```
-
+  animation: birdFly 2.5s linear 5s forwards;
 }
 
 @keyframes birdFly{
-
-```
-0%{
+  0%{
     left:-250px;
     top:80px;
-}
-
-50%{
+  }
+  50%{
     top:50px;
-}
-
-100%{
+  }
+  100%{
     left:72%;
     top:100px;
-}
-```
-
+  }
 }
 
 /* =========================
@@ -222,36 +178,23 @@ LION
 ========================= */
 
 .lion{
-position:absolute;
+  position:absolute;
+  width:260px;
 
-```
-width:260px;
+  right:-400px;
+  bottom:30px;
+  z-index:18;
 
-right:-400px;
-bottom:30px;
-
-z-index:18;
-
-animation:
-lionWalk 2.5s ease forwards;
-
-animation-delay:6s;
-```
-
+  animation: lionWalk 2.5s ease 6s forwards;
 }
 
 @keyframes lionWalk{
-
-```
-from{
+  from{
     right:-400px;
-}
-
-to{
+  }
+  to{
     right:5%;
-}
-```
-
+  }
 }
 
 /* =========================
@@ -259,68 +202,39 @@ TITLE
 ========================= */
 
 .title{
-position:absolute;
+  position:absolute;
+  width:100%;
+  top:8%;
+  text-align:center;
+  opacity:0;
+  z-index:30;
 
-```
-width:100%;
-top:8%;
-
-text-align:center;
-
-opacity:0;
-
-z-index:30;
-
-animation:
-showTitle 1s ease forwards;
-
-animation-delay:8.5s;
-```
-
+  animation: showTitle 1s ease 8.5s forwards;
 }
 
 .title h1{
-color:white;
-
-```
-font-size:clamp(3rem,7vw,6rem);
-
-line-height:.9;
-
-text-shadow:
-0 4px 12px rgba(0,0,0,.5);
-```
-
+  color:white;
+  font-size:clamp(3rem,7vw,6rem);
+  line-height:.9;
+  text-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 
 .title p{
-margin-top:15px;
-
-```
-color:white;
-
-font-size:clamp(1rem,2vw,1.4rem);
-
-text-shadow:
-0 2px 8px rgba(0,0,0,.5);
-```
-
+  margin-top:15px;
+  color:white;
+  font-size:clamp(1rem,2vw,1.4rem);
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
 @keyframes showTitle{
-
-```
-from{
+  from{
     opacity:0;
     transform:translateY(40px);
-}
-
-to{
+  }
+  to{
     opacity:1;
     transform:translateY(0);
-}
-```
-
+  }
 }
 
 /* =========================
@@ -329,31 +243,28 @@ MOBILE
 
 @media(max-width:768px){
 
-```
-.baby{
+  .baby{
     width:220px;
-}
+  }
 
-.monkey{
+  .monkey{
     width:120px;
     top:-150px;
-}
+  }
 
-.parrot{
+  .parrot{
     width:80px;
-}
+  }
 
-.lion{
+  .lion{
     width:170px;
-}
+  }
 
-.title h1{
+  .title h1{
     font-size:3rem;
-}
+  }
 
-.title p{
+  .title p{
     padding:0 20px;
-}
-```
-
+  }
 }
