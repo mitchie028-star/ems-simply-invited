@@ -3,38 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simple Landing Page Builder</title>
+  <title>Theme Landing Page Builder</title>
 
   <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-  <!-- 🎬 HERO VIDEO BACKGROUND -->
+  <!-- 🎮 THEME SWITCHER -->
+  <div class="theme-switcher">
+    <button onclick="setTheme('princess')">👑 Princess</button>
+    <button onclick="setTheme('business')">💼 Business</button>
+  </div>
+
+  <!-- 🎬 BACKGROUND VIDEO -->
   <video autoplay muted loop playsinline id="bgVideo">
     <source src="assets/intro.mp4" type="video/mp4" />
   </video>
 
-  <!-- 🌟 HERO CONTENT (filled by JS) -->
+  <!-- 🌟 HERO -->
   <header class="hero">
     <h1 id="heroTitle"></h1>
     <p id="heroSubtitle"></p>
   </header>
 
-  <!-- 🎮 SCROLL INDICATOR -->
+  <!-- 🎮 SCROLL HINT -->
   <div class="scroll-hint">
     ↓ Scroll to explore
   </div>
 
-  <!-- 🧱 DYNAMIC SECTIONS (JS BUILDS THIS) -->
+  <!-- 🧱 DYNAMIC SECTIONS -->
   <main id="sections"></main>
 
-  <!-- 👑 FOOTER -->
-  <footer class="footer">
-    <p>Built with Simple Landing Page Builder</p>
-  </footer>
-
-  <!-- ⚙️ ENGINE -->
   <script src="script.js"></script>
 
 </body>
