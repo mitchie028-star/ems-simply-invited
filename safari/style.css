@@ -1,249 +1,191 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background: url("./assets/safari-bg.png") center/cover no-repeat;
-  color: white;
+body{
+  overflow:hidden;
+  font-family:Arial,sans-serif;
 }
 
-/* =========================
-SCENES BASE (IMPORTANT FIX)
-========================= */
-
-.scene {
-  position: absolute;
-  inset: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  z-index: 2;
+.scene{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
 }
 
-.scene.active {
-  display: flex;
-  animation: fadeIn 0.8s ease;
+/* BACKGROUND */
+
+.bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+/* LEAVES */
+
+.leaf{
+  position:absolute;
+  top:0;
+  width:50%;
+  height:100%;
+  background:#2d6a2d;
+  z-index:50;
 }
 
-/* =========================
-SCENE 2
-========================= */
-
-.baby {
-  width: min(70vw, 420px);
-  animation: bounce 3s ease-in-out infinite;
+.left-leaf{
+  left:0;
+  animation:openLeft 2s forwards;
+  animation-delay:1s;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+.right-leaf{
+  right:0;
+  animation:openRight 2s forwards;
+  animation-delay:1s;
 }
 
-/* =========================
-SCENE 3 — CINEMATIC FIX CORE
-========================= */
-
-/* IMPORTANT: break flex centering for Scene 3 */
-.jungle-scene {
-  display: block !important;
-  position: relative;
-  overflow: hidden;
+@keyframes openLeft{
+  to{
+    transform:translateX(-100%);
+  }
 }
 
-/* BACKGROUND LAYER */
-.bg-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
+@keyframes openRight{
+  to{
+    transform:translateX(100%);
+  }
 }
 
-/* LIGHT RAYS */
-.light-rays {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at top,
-    rgba(255, 240, 180, 0.25),
-    transparent 60%
-  );
-  animation: raysMove 6s ease-in-out infinite;
+/* BABY */
+
+.baby{
+  position:absolute;
+  left:50%;
+  bottom:5%;
+  transform:translateX(-50%);
+  width:320px;
+  z-index:10;
+  opacity:0;
+  animation:showBaby 1s forwards;
+  animation-delay:3s;
 }
 
-@keyframes raysMove {
-  0%, 100% { transform: translateX(-2%) scale(1); }
-  50% { transform: translateX(2%) scale(1.05); }
+@keyframes showBaby{
+  to{
+    opacity:1;
+  }
 }
 
-/* FOG */
-.fog-layer {
-  position: absolute;
-  inset: -25%;
-  background: url("./assets/fog.png") center/cover no-repeat;
-  filter: blur(3px);
+/* MONKEY */
+
+.monkey{
+  position:absolute;
+  width:180px;
+  left:-300px;
+  top:80px;
+  z-index:15;
+
+  animation:monkeyIn 2s forwards;
+  animation-delay:4s;
 }
 
-.fog-1 {
-  animation: fogMove1 18s linear infinite;
-  opacity: 0.25;
+@keyframes monkeyIn{
+  to{
+    left:10%;
+    top:120px;
+  }
 }
 
-.fog-2 {
-  animation: fogMove2 26s linear infinite reverse;
-  opacity: 0.15;
+/* PARROT */
+
+.parrot{
+  position:absolute;
+  width:120px;
+  left:-200px;
+  top:50px;
+  z-index:16;
+
+  animation:birdIn 2s forwards;
+  animation-delay:5s;
 }
 
-@keyframes fogMove1 {
-  0% { transform: translateX(-6%); }
-  50% { transform: translateX(6%); }
-  100% { transform: translateX(-6%); }
+@keyframes birdIn{
+  to{
+    left:70%;
+    top:80px;
+  }
 }
 
-@keyframes fogMove2 {
-  0% { transform: translateX(7%); }
-  50% { transform: translateX(-7%); }
-  100% { transform: translateX(7%); }
+/* LION */
+
+.lion{
+  position:absolute;
+  width:250px;
+  right:-400px;
+  bottom:40px;
+  z-index:9;
+
+  animation:lionIn 2s forwards;
+  animation-delay:6s;
 }
 
-/* =========================
-MIDGROUND (ANIMALS)
-========================= */
-
-.mid-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+@keyframes lionIn{
+  to{
+    right:5%;
+  }
 }
 
-/* base animal style */
-.animal {
-  position: absolute;
-  will-change: transform;
+/* TITLE */
+
+.title{
+  position:absolute;
+  top:10%;
+  width:100%;
+  text-align:center;
+  z-index:20;
+  opacity:0;
+
+  animation:showTitle 1s forwards;
+  animation-delay:8s;
 }
 
-/* cinematic scaling depth */
-.parrot { width: 120px; top: 5%; left: 50%; transform: translateX(-50%); }
-.monkey { width: 160px; top: 18%; left: 5%; }
-.giraffe { width: 240px; top: 6%; right: 6%; }
-.lion { width: 220px; bottom: 12%; left: 10%; }
-.elephant { width: 260px; bottom: 5%; right: 10%; }
-
-/* subtle life motion */
-.animal {
-  animation: floatIdle 6s ease-in-out infinite;
+.title h1{
+  color:white;
+  font-size:5rem;
+  text-shadow:0 4px 10px rgba(0,0,0,.4);
 }
 
-@keyframes floatIdle {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-6px) scale(1.02); }
+@keyframes showTitle{
+  to{
+    opacity:1;
+  }
 }
 
-/* =========================
-FOREGROUND (HERO)
-========================= */
+/* MOBILE */
 
-.front-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-}
+@media(max-width:768px){
 
-/* TITLE (LEFT COMPOSITION FIX) */
-.jungle-text {
-  position: absolute;
-  top: 10%;
-  left: 6%;
-  max-width: 45%;
-  text-align: left;
-}
+  .baby{
+    width:220px;
+  }
 
-.jungle-text h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  text-shadow: 0 12px 30px rgba(0,0,0,0.6);
-}
+  .lion{
+    width:180px;
+  }
 
-.jungle-text p {
-  margin-top: 8px;
-  opacity: 0.8;
-}
+  .monkey{
+    width:120px;
+  }
 
-/* BABY HERO CENTER */
-.baby-wrapper {
-  position: absolute;
-  bottom: 6%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
+  .parrot{
+    width:80px;
+  }
 
-.baby-center {
-  width: 170px;
-  filter: drop-shadow(0 20px 25px rgba(0,0,0,0.5));
-}
-
-/* glow = emotional focus */
-.baby-glow {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,230,150,0.4), transparent 70%);
-  animation: glowPulse 3s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes glowPulse {
-  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
-  50% { transform: translateX(-50%) scale(1.25); opacity: 0.9; }
-}
-
-/* =========================
-RSVP
-========================= */
-
-input, textarea {
-  width: min(90vw, 320px);
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  margin: 5px 0;
-}
-
-button {
-  width: min(90vw, 320px);
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: #f4c542;
-  cursor: pointer;
-}
-
-/* =========================
-MOBILE
-========================= */
-
-@media (max-width: 768px) {
-  .parrot { width: 90px; }
-  .monkey { width: 120px; }
-  .giraffe { width: 150px; }
-  .lion { width: 140px; }
-  .elephant { width: 160px; }
-  .baby-center { width: 120px; }
+  .title h1{
+    font-size:2.8rem;
+  }
 }
