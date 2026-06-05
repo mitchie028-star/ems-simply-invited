@@ -1,77 +1,34 @@
-console.log("Safari script loaded");
+13console.log("Safari loaded");
 
 let current = 1;
-const TOTAL_SCENES = 6;
+const TOTAL = 6;
 
-// Switch scenes safely
 function showScene(next) {
-  const currentScene = document.getElementById("scene" + current);
-  const nextScene = document.getElementById("scene" + next);
-
-  console.log("Switching:", current, "→", next);
-
-  if (!currentScene) {
-    console.error("Missing current scene:", current);
-    return;
-  }
-
-  if (!nextScene) {
-    console.error("Missing next scene:", next);
-    return;
-  }
-
-  currentScene.classList.remove("active");
-  nextScene.classList.add("active");
-
-  current = next;
+document.getElementById("scene" + current).classList.remove("active");
+document.getElementById("scene" + next).classList.add("active");
+current = next;
 }
 
-// Wait for full page load
 window.addEventListener("load", () => {
-  console.log("Page loaded, listeners attached");
 
-  // GLOBAL CLICK TO ADVANCE SCENE
-  document.addEventListener("click", (e) => {
-    console.log("Click detected on:", e.target.tagName);
+document.addEventListener("click", (e) => {
 
-    // Prevent form elements from triggering scene change
-    if (
-      e.target.tagName === "INPUT" ||
-      e.target.tagName === "TEXTAREA" ||
-      e.target.tagName === "BUTTON"
-    ) {
-      return;
-    }
+```
+if (["INPUT","TEXTAREA","BUTTON"].includes(e.target.tagName)) return;
 
-    if (current < TOTAL_SCENES) {
-      showScene(current + 1);
-    }
-  });
+if (current < TOTAL) {
+  showScene(current + 1);
+}
+```
 
-  // RSVP BUTTON
-  const btn = document.getElementById("submitBtn");
+});
 
-  if (!btn) {
-    console.warn("submitBtn not found");
-    return;
-  }
+document.getElementById("submitBtn")
+.addEventListener("click", () => {
 
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
+```
+  alert("RSVP Sent!");
 
-    const nameEl = document.getElementById("name");
-    const guestsEl = document.getElementById("guests");
-    const messageEl = document.getElementById("message");
+}); 26K
 
-    const name = nameEl ? nameEl.value : "";
-    const guests = guestsEl ? guestsEl.value : "";
-    const message = messageEl ? messageEl.value : "";
-
-    alert(
-      "RSVP Sent!\n\n" +
-      "Name: " + name +
-      "\nGuests: " + guests +
-      "\nMessage: " + message
-    );
-  });
 });
