@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.disabled = true;
   });
 
-  // PARALLAX (SCENE 3 ONLY)
+  // PARALLAX (SAFE)
   const jungle = document.querySelector(".jungle-scene");
 
   if (jungle) {
