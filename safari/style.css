@@ -35,7 +35,7 @@ BACKGROUND
 }
 
 /* =========================
-JUNGLE LEAVES (FIXED)
+JUNGLE LEAVES (SAFARI SAFE)
 ========================= */
 
 .leaf{
@@ -45,15 +45,17 @@ JUNGLE LEAVES (FIXED)
   height:100%;
   z-index:50;
 
-  will-change: transform;
-  transform: translateZ(0);
-
   background: radial-gradient(
     circle at center,
     #4caf50 0%,
     #2e7d32 70%,
     #1b5e20 100%
   );
+
+  /* CRITICAL SAFARI FIX */
+  transform: translateX(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .left-leaf{
@@ -69,6 +71,8 @@ JUNGLE LEAVES (FIXED)
 
   animation: openRight 2.5s ease 1s forwards;
 }
+
+/* CRITICAL: explicit from + to (Safari requires this) */
 
 @keyframes openLeft{
   from{
