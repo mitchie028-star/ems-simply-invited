@@ -132,3 +132,50 @@ opacity:1;
 transform:translateY(0);
 }
 }
+.monkey{
+  animation:
+    monkeyIn 3s forwards,
+    monkeyWave 2s ease-in-out 3s infinite;
+}
+
+.parrot{
+  animation:
+    birdIn 4s forwards,
+    birdFlap 1.5s ease-in-out 4s infinite;
+}
+
+.lion{
+  animation:
+    lionIn 4s forwards,
+    lionNod 2s ease-in-out 4s infinite;
+}
+
+@keyframes monkeyWave{
+  0%,100%{
+    transform:rotate(0deg);
+  }
+
+  50%{
+    transform:rotate(8deg);
+  }
+}
+
+@keyframes birdFlap{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-15px);
+  }
+}
+
+@keyframes lionNod{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(8px);
+  }
+}
