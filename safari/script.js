@@ -1,71 +1,92 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // =========================
+  // GET ALL SCENES
+  // =========================
   const scenes = document.querySelectorAll(".scene");
-  let current = 0;
+  const animals = document.querySelectorAll(".animal-area img");
+  const btn = document.getElementById("submitBtn");
 
-  function showScene(i) {
-    scenes.forEach((s, index) => {
-      s.classList.toggle("active", index === i);
+  let currentScene = 0;
+
+  // =========================
+  // SHOW SCENE FUNCTION
+  // =========================
+  function showScene(index) {
+    scenes.forEach((scene, i) => {
+      scene.classList.toggle("active", i === index);
     });
   }
 
-  function next() {
-    current++;
-    if (current < scenes.length) {
-      showScene(current);
-      run(current);
+  // =========================
+  // NEXT SCENE
+  // =========================
+  function nextScene() {
+    currentScene++;
+
+    if (currentScene < scenes.length) {
+      showScene(currentScene);
+      runSceneLogic(currentScene);
     }
   }
 
-  function run(i) {
+  // =========================
+  // SCENE LOGIC CONTROLLER
+  // =========================
+  function runSceneLogic(i) {
 
-    // Scene 1 (intro)
+    // Scene 1 → auto proceed (no tap dependency)
     if (i === 0) {
-      setTimeout(next, 2500);
+      setTimeout(nextScene, 2000);
     }
 
-    // Scene 2 (explorer)
+    // Scene 2 → explorer reveal
     if (i === 1) {
-      setTimeout(next, 2500);
+      setTimeout(nextScene, 2500);
     }
 
-    // Scene 3 (animals reveal)
+    // Scene 3 → animals animation
     if (i === 2) {
-      const animals = document.querySelectorAll(".animal-area img");
 
-      animals.forEach((el, idx) => {
+      animals.forEach((animal, idx) => {
         setTimeout(() => {
-          el.style.transform = "scale(1)";
-          el.style.opacity = "1";
+          animal.classList.add("show");
         }, idx * 300);
       });
 
-      setTimeout(next, 3500);
+      setTimeout(nextScene, 3500);
     }
 
-    // Scene 4 (invite)
+    // Scene 4 → invite reveal
     if (i === 3) {
-      setTimeout(next, 3000);
+      setTimeout(nextScene, 2500);
     }
 
-    // Scene 5 (map)
+    // Scene 5 → map reveal
     if (i === 4) {
-      setTimeout(next, 3000);
+      setTimeout(nextScene, 2500);
     }
 
-    // Scene 6 (form stop)
+    // Scene 6 → RSVP (STOP HERE)
     if (i === 5) {
-      const btn = document.getElementById("submitBtn");
 
-      btn?.addEventListener("click", () => {
-        btn.innerText = "Sent! 🦁";
-        btn.disabled = true;
-      });
+      if (btn) {
+        btn.addEventListener("click", () => {
+          btn.innerText = "Sent! 🦁";
+          btn.disabled = true;
+        });
+      }
     }
   }
 
-  // START
-  showScene(0);
-  run(0);
+  // =========================
+  // START EVERYTHING
+  // =========================
+  function start() {
+    showScene(0);
+    runSceneLogic(0);
+  }
+
+  start();
 
 });
