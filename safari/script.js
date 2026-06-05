@@ -1,4 +1,4 @@
-13console.log("Safari loaded");
+console.log("Safari loaded");
 
 let current = 1;
 const TOTAL = 6;
@@ -13,22 +13,20 @@ window.addEventListener("load", () => {
 
 document.addEventListener("click", (e) => {
 
-```
 if (["INPUT","TEXTAREA","BUTTON"].includes(e.target.tagName)) return;
 
 if (current < TOTAL) {
   showScene(current + 1);
-}
-```
+} don't
 
 });
 
 document.getElementById("submitBtn")
 .addEventListener("click", () => {
 
-```
   alert("RSVP Sent!");
 
-}); 26K
+});
+
 
 });
