@@ -6,77 +6,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const animals = document.querySelectorAll(".animal");
   const rsvpBtn = document.querySelector(".rsvp-btn");
 
-  let zoom = 1.02;
+  let zoom = 1.05;
 
-  // -------------------------------
-  // AUTO START SEQUENCE (NO CLICK NEEDED)
-  // -------------------------------
-  startCinematic();
+  // ===============================
+  // AUTO START (NO TAP, NO BLOCKS)
+  // ===============================
+  start();
 
-  function startCinematic() {
+  function start() {
 
-    // 1. Fade in scene immediately
-    overlay?.classList.add("fade-in");
-
-    // 2. Title appears
-    setTimeout(() => {
+    // safety: ensure everything starts even if CSS is slow
+    requestAnimationFrame(() => {
+      overlay?.classList.add("fade-in");
       title?.classList.add("show");
-    }, 800);
-
-    // 3. Slow camera zoom starts immediately
-    const zoomInterval = setInterval(() => {
-      zoom += 0.0008;
-      if (bg) bg.style.transform = `scale(${zoom})`;
-      if (zoom > 1.08) clearInterval(zoomInterval);
-    }, 50);
-
-    // 4. Animals enter in sequence (this fixes your "stuck" issue)
-    const delays = [1500, 2500, 3500, 4500];
-
-    animals.forEach((animal, i) => {
-      setTimeout(() => {
-        animal?.classList.add("enter");
-      }, delays[i] || (1500 + i * 900));
     });
 
-    // 5. Enable RSVP after everything
+    // camera zoom
+    const zoomInterval = setInterval(() => {
+      zoom += 0.0006;
+      if (bg) bg.style.transform = `scale(${zoom})`;
+      if (zoom > 1.1) clearInterval(zoomInterval);
+    }, 50);
+
+    // animals sequence (guaranteed execution)
+    animals.forEach((a, i) => {
+      setTimeout(() => {
+        a?.classList.add("enter");
+      }, 1200 + i * 700);
+    });
+
+    // show button last (fixes “stuck feeling”)
     setTimeout(() => {
       rsvpBtn?.classList.add("show");
-    }, 5000);
+    }, 4500);
   }
 
-  // -------------------------------
-  // PARALLAX (safe version)
-  // -------------------------------
+  // ===============================
+  // PARALLAX
+  // ===============================
   document.addEventListener("mousemove", (e) => {
     const x = (window.innerWidth / 2 - e.pageX) * 0.01;
     const y = (window.innerHeight / 2 - e.pageY) * 0.01;
 
-    if (bg) {
-      bg.style.transform = `scale(${zoom}) translate(${x}px, ${y}px)`;
-    }
+    bg.style.transform = `scale(${zoom}) translate(${x}px, ${y}px)`;
   });
 
-  // -------------------------------
-  // RSVP ACTION
-  // -------------------------------
+  // ===============================
+  // RSVP + CONFETTI
+  // ===============================
   rsvpBtn?.addEventListener("click", () => {
-    createConfettiBurst();
+    burst();
     rsvpBtn.innerText = "Welcome to the Safari 🦁";
     rsvpBtn.disabled = true;
   });
 
-  // -------------------------------
-  // CONFETTI
-  // -------------------------------
-  function createConfettiBurst() {
+  function burst() {
     for (let i = 0; i < 70; i++) {
       const c = document.createElement("div");
       c.className = "confetti";
 
       c.style.left = Math.random() * 100 + "vw";
-      c.style.backgroundColor = randomColor();
-      c.style.animationDuration = 2 + Math.random() * 2 + "s";
+      c.style.background = randomColor();
+      c.style.animationDuration = (2 + Math.random() * 2) + "s";
 
       document.body.appendChild(c);
 
@@ -85,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function randomColor() {
-    const colors = ["#ffd166", "#06d6a0", "#ef476f", "#118ab2", "#ffffff"];
+    const colors = ["#ffd166", "#06d6a0", "#ef476f", "#118ab2", "#fff"];
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
