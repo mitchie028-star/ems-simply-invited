@@ -57,15 +57,13 @@ p {
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
-  
-  /* --- RESPONSIVE CONTROL LAYER --- */
-  width: 25vw;          /* Fluid size based on screen width */
-  min-width: 140px;     /* Prevents shrinking too small on mobile */
-  max-width: 220px;     /* Prevents expanding too large on desktop */
-  height: auto;         /* Maintains original image proportions */
-  aspect-ratio: 3 / 4;  /* Lock this to your asset's exact proportions to stop layout shifts */
-}
 
+  width: 25vw;
+  min-width: 140px;
+  max-width: 220px;
+
+  height: auto; /* KEEP THIS ONLY */
+}
 /* -----------------------
    ANIMALS (SMALL + CONSISTENT)
 ------------------------*/
