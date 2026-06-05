@@ -1,47 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const scenes = document.querySelectorAll(".scene");
-  let i = 0;
+  let currentScene = 0;
 
-  function show(n) {
-    scenes.forEach((s, idx) => {
-      s.classList.toggle("active", idx === n);
+  // -------------------------
+  // SCENE SWITCHER
+  // -------------------------
+  function showScene(index) {
+    scenes.forEach((scene, i) => {
+      scene.classList.toggle("active", i === index);
     });
   }
 
-  function next() {
-    i++;
-    if (i < scenes.length) {
-      show(i);
-      setTimeout(next, 2500);
+  function nextScene() {
+    currentScene++;
+    if (currentScene < scenes.length) {
+      showScene(currentScene);
+      setTimeout(nextScene, 2500);
     }
   }
 
-  show(0);
-  setTimeout(next, 2500);
+  showScene(0);
+  setTimeout(nextScene, 2500);
 
-  // RSVP
+  // -------------------------
+  // RSVP BUTTON
+  // -------------------------
   const btn = document.getElementById("btn");
 
-  btn?.addEventListener("click", () => {
-    btn.innerText = "Sent!";
-    btn.disabled = true;
-  });
+  if (btn) {
+    btn.addEventListener("click", () => {
+      btn.innerText = "Sent!";
+      btn.disabled = true;
+    });
+  }
 
-  // PARALLAX (SAFE)
+  // -------------------------
+  // CINEMATIC PARALLAX (FIXED)
+  // -------------------------
   const jungle = document.querySelector(".jungle-scene");
 
   if (jungle) {
+    const layers = jungle.querySelectorAll(".layer");
+
     jungle.addEventListener("mousemove", (e) => {
-      const layers = jungle.querySelectorAll(".layer");
+
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
       layers.forEach(layer => {
-        const speed = layer.dataset.speed || 1;
 
-        const x = (e.clientX - window.innerWidth / 2) * (speed / 80);
-        const y = (e.clientY - window.innerHeight / 2) * (speed / 80);
+        const speed = parseFloat(layer.dataset.speed || 1);
 
-        layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        const x = (e.clientX - centerX) * (speed / 90);
+        const y = (e.clientY - centerY) * (speed / 90);
+
+        // IMPORTANT: use CSS variables (no transform conflict)
+        layer.style.setProperty("--x", `${x}px`);
+        layer.style.setProperty("--y", `${y}px`);
+
+        layer.style.transform = `translate3d(var(--x), var(--y), 0)`;
       });
     });
   }
