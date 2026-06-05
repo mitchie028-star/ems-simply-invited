@@ -1,6 +1,6 @@
 
 /* ======================
-   BASE STYLES
+   BASE
 ====================== */
 
 body {
@@ -18,7 +18,7 @@ body {
   z-index: -2;
 }
 
-/* 🌟 HERO */
+/* 👑 HERO */
 .hero {
   position: absolute;
   top: 25%;
@@ -27,6 +27,17 @@ body {
   color: white;
 }
 
+.hero h1 {
+  font-size: 3rem;
+  color: #ff4da6;
+  text-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* 🎮 SCROLL HINT */
 .scroll-hint {
   position: absolute;
   bottom: 20px;
@@ -49,69 +60,23 @@ body {
   align-items: center;
   text-align: center;
   padding: 20px;
-}
 
-.section img {
-  width: 250px;
-  border-radius: 20px;
-  margin-top: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-}
-
-/* ======================
-   THEME SWITCHER
-====================== */
-
-.theme-switcher {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 9999;
-  display: flex;
-  gap: 10px;
-}
-
-.theme-switcher button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-/* ======================
-   👑 PRINCESS THEME
-====================== */
-
-body.princess {
-  background: linear-gradient(#ffe4f0, #fff0f6);
-}
-
-body.princess .section {
   background: rgba(255, 240, 246, 0.85);
 }
 
-body.princess .hero h1 {
+.section h2 {
+  font-size: 2rem;
   color: #ff4da6;
 }
 
-/* ======================
-   💼 BUSINESS THEME
-====================== */
-
-body.business {
-  background: #f9fafb;
+.section p {
+  font-size: 1.2rem;
+  max-width: 500px;
 }
 
-body.business #bgVideo {
-  filter: grayscale(1) brightness(0.6);
-}
-
-body.business .section {
-  background: white;
-}
-
-body.business .hero h1 {
-  color: #111827;
+.section img {
+  width: 260px;
+  margin-top: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
