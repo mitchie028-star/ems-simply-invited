@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Safari Invitation</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -13,20 +13,53 @@
 
   <div class="bg"></div>
 
-  <div class="scene">
+  <!-- Scene 1 -->
+  <section class="scene active">
+    <h1>A Wild Adventure Awaits...</h1>
+  </section>
 
-    <h1 class="title">A Wild Adventure Awaits</h1>
+  <!-- Scene 2 -->
+  <section class="scene">
+    <img src="./assets/boy.png" class="baby" />
+    <h2>Meet the Explorer</h2>
+  </section>
 
-    <div class="animals">
-      <div class="animal"><img src="images/lion.png" alt="lion"></div>
-      <div class="animal"><img src="images/elephant.png" alt="elephant"></div>
-      <div class="animal"><img src="images/giraffe.png" alt="giraffe"></div>
-      <div class="animal"><img src="images/bird.png" alt="bird"></div>
+  <!-- Scene 3 -->
+  <section class="scene">
+    <div class="animal-area">
+      <img src="./assets/parrot.png">
+      <img src="./assets/monkey.png">
+      <img src="./assets/giraffe.png">
+      <img src="./assets/lion.png">
+      <img src="./assets/elephant.png">
+      <img src="./assets/boy.png" class="baby-center">
     </div>
+    <h2>LET'S GET WILD!</h2>
+  </section>
 
-    <button class="rsvp-btn">RSVP</button>
+  <!-- Scene 4 -->
+  <section class="scene">
+    <h2>You're Invited!</h2>
+    <h3>June 25, 2026</h3>
+    <h3>2:00 PM</h3>
+  </section>
 
-  </div>
+  <!-- Scene 5 -->
+  <section class="scene">
+    <h2>Adventure Map</h2>
+    <p>🏠 → 🦁 → 📍 Venue</p>
+  </section>
+
+  <!-- Scene 6 -->
+  <section class="scene">
+    <h2>RSVP</h2>
+
+    <input placeholder="Name">
+    <input placeholder="Number of Guests">
+    <textarea placeholder="Message"></textarea>
+
+    <button id="btn">Send RSVP</button>
+  </section>
 
   <script src="script.js"></script>
 </body>
