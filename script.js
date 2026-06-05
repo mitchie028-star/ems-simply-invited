@@ -1,74 +1,57 @@
+document.addEventListener("DOMContentLoaded", function () {
 
-console.log("SCRIPT LOADED");
-
-const config = {
-  hero: {
-    title: "Princess Aiofee",
-    subtitle: "You're invited to a royal celebration 👑"
-  },
-
-  sections: [
-    {
-      title: "Section 1",
-      text: "Test content 1",
-      image: "assets/baby-level.png"
+  const config = {
+    hero: {
+      title: "Princess Aiofee",
+      subtitle: "You are invited to a royal celebration"
     },
-    {
-      title: "Section 2",
-      text: "Test content 2",
-      image: "assets/child-level.png"
-    }
-  ]
-};
 
-function renderHero() {
-  console.log("renderHero running");
+    sections: [
+      {
+        title: "Royal Celebration",
+        text: "Princess Aiofee is turning 7 years old.",
+        image: "assets/baby-level.png"
+      },
+      {
+        title: "Venue",
+        text: "Jollibee Puregold Luzon Commonwealth",
+        image: "assets/child-level.png"
+      },
+      {
+        title: "Details",
+        text: "Saturday, June 14, 2026 - 11:00 AM",
+        image: "assets/princess-level.png"
+      },
+      {
+        title: "RSVP",
+        text: "Confirm your attendance below",
+        image: "assets/princess-level.png",
+        rsvp: true
+      }
+    ]
+  };
 
-  const title = document.getElementById("heroTitle");
-  const subtitle = document.getElementById("heroSubtitle");
+  const heroTitle = document.getElementById("heroTitle");
+  const heroSubtitle = document.getElementById("heroSubtitle");
+  const sectionsContainer = document.getElementById("sections");
 
-  console.log("hero elements:", title, subtitle);
+  heroTitle.textContent = config.hero.title;
+  heroSubtitle.textContent = config.hero.subtitle;
 
-  if (title) title.textContent = config.hero.title;
-  if (subtitle) subtitle.textContent = config.hero.subtitle;
-}
+  sectionsContainer.innerHTML = "";
 
-function renderSections() {
-  console.log("renderSections running");
+  config.sections.forEach(section => {
+    const el = document.createElement("section");
+    el.className = "section";
 
-  const container = document.getElementById("sections");
-
-  console.log("sections container:", container);
-
-  if (!container) {
-    console.error("❌ #sections NOT FOUND in HTML");
-    return;
-  }
-
-  container.innerHTML = "";
-
-  config.sections.forEach(sec => {
-    const div = document.createElement("section");
-    div.className = "section";
-
-    div.innerHTML = `
-      <h2>${sec.title}</h2>
-      <p>${sec.text}</p>
+    el.innerHTML = `
+      <h2>${section.title}</h2>
+      <p>${section.text}</p>
+      <img src="${section.image}" />
+      ${section.rsvp ? `<a class="rsvp-btn" href="#" target="_blank">RSVP</a>` : ""}
     `;
 
-    container.appendChild(div);
+    sectionsContainer.appendChild(el);
   });
 
-  console.log("sections rendered:", container.children.length);
-}
-
-function init() {
-  console.log("INIT START");
-
-  renderHero();
-  renderSections();
-
-  console.log("INIT DONE");
-}
-
-document.addEventListener("DOMContentLoaded", init);
+});
