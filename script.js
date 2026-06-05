@@ -27,7 +27,7 @@ const config = {
       image: "assets/princess-level.png"
     },
     {
-      title: "🎂 RSVP Now",
+      title: "🎂 RSVP",
       text: "Click below to confirm your attendance 👑",
       image: "assets/princess-level.png",
       rsvp: true
@@ -52,6 +52,7 @@ function renderHero() {
 
 function renderSections() {
   const container = document.getElementById("sections");
+
   container.innerHTML = "";
 
   config.sections.forEach(sec => {
@@ -73,57 +74,12 @@ function renderSections() {
 
 
 /* ======================
-   🎮 LEVEL UNLOCK
-====================== */
-
-function observeSections() {
-  const sections = document.querySelectorAll(".section");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-
-        // 🎉 CONFETTI ON LAST SECTION
-        if (entry.target === sections[sections.length - 1]) {
-          launchConfetti();
-        }
-      }
-    });
-  }, { threshold: 0.2 });
-
-  sections.forEach(sec => observer.observe(sec));
-}
-
-
-/* ======================
-   ✨ CONFETTI
-====================== */
-
-function launchConfetti() {
-  for (let i = 0; i < 80; i++) {
-    const confetti = document.createElement("div");
-    confetti.className = "confetti";
-
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.background = ["#ff4da6", "#ffd700", "#fff"][Math.floor(Math.random() * 3)];
-    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 4000);
-  }
-}
-
-
-/* ======================
    🚀 INIT
 ====================== */
 
 function init() {
   renderHero();
   renderSections();
-  observeSections();
 }
 
 document.addEventListener("DOMContentLoaded", init);
