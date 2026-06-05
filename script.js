@@ -1,25 +1,26 @@
-/* =========================
-   🌟 CONFIG (EDIT THIS ONLY)
-========================= */
+
+/* ======================
+   🌟 CONFIG (EDIT ONLY THIS)
+====================== */
 
 const config = {
-  theme: "princess", // "princess" | "business"
+  theme: "princess",
 
   hero: {
-    title: "My Landing Page",
-    subtitle: "Built with a simple theme system",
+    title: "My Landing Page Builder",
+    subtitle: "Switch themes instantly",
     video: "assets/intro.mp4"
   },
 
   sections: [
     {
       title: "About",
-      text: "Describe your business or story here",
+      text: "Describe your service or story here",
       image: "assets/img1.png"
     },
     {
       title: "Services",
-      text: "What you offer",
+      text: "What you offer your clients",
       image: "assets/img2.png"
     },
     {
@@ -30,65 +31,56 @@ const config = {
   ]
 };
 
-
-/* =========================
-   🎮 RENDER ENGINE
-========================= */
+/* ======================
+   🚀 RENDER SYSTEM
+====================== */
 
 function renderHero() {
-  const title = document.getElementById("heroTitle");
-  const subtitle = document.getElementById("heroSubtitle");
-  const video = document.getElementById("bgVideo");
-
-  if (title) title.innerText = config.hero.title;
-  if (subtitle) subtitle.innerText = config.hero.subtitle;
-  if (video) video.src = config.hero.video;
+  document.getElementById("heroTitle").innerText = config.hero.title;
+  document.getElementById("heroSubtitle").innerText = config.hero.subtitle;
 }
 
 function renderSections() {
   const container = document.getElementById("sections");
-
-  if (!container) return;
-
   container.innerHTML = "";
 
-  config.sections.forEach((sec) => {
-    const section = document.createElement("section");
-    section.className = "section";
-
-    section.innerHTML = `
-      <h2>${sec.title}</h2>
-      <p>${sec.text}</p>
-      <img src="${sec.image}" />
+  config.sections.forEach(sec => {
+    container.innerHTML += `
+      <section class="section">
+        <h2>${sec.title}</h2>
+        <p>${sec.text}</p>
+        <img src="${sec.image}" />
+      </section>
     `;
-
-    container.appendChild(section);
   });
 }
 
-
-/* =========================
-   👑 THEME SYSTEM
-========================= */
+/* ======================
+   🎨 THEME SYSTEM
+====================== */
 
 function applyTheme() {
-  const body = document.body;
-
-  body.classList.remove("princess", "business");
+  document.body.classList.remove("princess", "business");
 
   if (config.theme === "princess") {
-    body.classList.add("princess");
-  }
-
-  if (config.theme === "business") {
-    body.classList.add("business");
+    document.body.classList.add("princess");
+  } else {
+    document.body.classList.add("business");
   }
 }
 
+/* ======================
+   🎮 THEME SWITCHER
+====================== */
 
-/* =========================
+function setTheme(theme) {
+  config.theme = theme;
+  applyTheme();
+}
+
+/* ======================
    🚀 INIT APP
-========================= */
+====================== */
 
 function init() {
   renderHero();
