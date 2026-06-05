@@ -1,44 +1,48 @@
 
 /* ======================
-   🌟 CONFIG (EDIT ONLY THIS)
+   👑 INVITATION CONFIG
 ====================== */
 
 const config = {
-  theme: "princess",
-
   hero: {
-    title: "My Landing Page Builder",
-    subtitle: "Switch themes instantly",
+    title: "Princess Aiofee",
+    subtitle: "You're invited to a royal celebration 👑",
     video: "assets/intro.mp4"
   },
 
   sections: [
     {
-      title: "About",
-      text: "Describe your service or story here",
-      image: "assets/img1.png"
+      title: "👑 Royal Celebration",
+      text: "Princess Aiofee is turning 7 years old!",
+      image: "assets/baby-level.png"
     },
     {
-      title: "Services",
-      text: "What you offer your clients",
-      image: "assets/img2.png"
+      title: "📍 Venue",
+      text: "Jollibee Puregold Luzon Commonwealth",
+      image: "assets/child-level.png"
     },
     {
-      title: "Contact",
-      text: "Get in touch with us",
-      image: "assets/img3.png"
+      title: "📅 Details",
+      text: "Saturday, June 14, 2026 • 11:00 AM",
+      image: "assets/princess-level.png"
     }
   ]
 };
 
+
 /* ======================
-   🚀 RENDER SYSTEM
+   🚀 RENDER HERO
 ====================== */
 
 function renderHero() {
   document.getElementById("heroTitle").innerText = config.hero.title;
   document.getElementById("heroSubtitle").innerText = config.hero.subtitle;
 }
+
+
+/* ======================
+   🧱 RENDER SECTIONS
+====================== */
 
 function renderSections() {
   const container = document.getElementById("sections");
@@ -55,37 +59,14 @@ function renderSections() {
   });
 }
 
-/* ======================
-   🎨 THEME SYSTEM
-====================== */
-
-function applyTheme() {
-  document.body.classList.remove("princess", "business");
-
-  if (config.theme === "princess") {
-    document.body.classList.add("princess");
-  } else {
-    document.body.classList.add("business");
-  }
-}
 
 /* ======================
-   🎮 THEME SWITCHER
-====================== */
-
-function setTheme(theme) {
-  config.theme = theme;
-  applyTheme();
-}
-
-/* ======================
-   🚀 INIT APP
+   🚀 INIT
 ====================== */
 
 function init() {
   renderHero();
   renderSections();
-  applyTheme();
 }
 
 document.addEventListener("DOMContentLoaded", init);
