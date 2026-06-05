@@ -55,12 +55,15 @@ p {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-
-  width: 180px;   /* FIXED = no more chaos */
-  height: auto;
-
   z-index: 5;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+  
+  /* --- RESPONSIVE CONTROL LAYER --- */
+  width: 25vw;          /* Fluid size based on screen width */
+  min-width: 140px;     /* Prevents shrinking too small on mobile */
+  max-width: 220px;     /* Prevents expanding too large on desktop */
+  height: auto;         /* Maintains original image proportions */
+  aspect-ratio: 3 / 4;  /* Lock this to your asset's exact proportions to stop layout shifts */
 }
 
 /* -----------------------
