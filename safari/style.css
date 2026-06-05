@@ -6,7 +6,7 @@ box-sizing:border-box;
 
 body{
 overflow:hidden;
-font-family:Arial, sans-serif;
+font-family:'Trebuchet MS', sans-serif;
 background:#f8f4e8;
 }
 
@@ -17,75 +17,166 @@ height:100vh;
 overflow:hidden;
 }
 
+/* =========================
+BACKGROUND
+========================= */
+
 .bg{
 position:absolute;
+inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
+/* =========================
+BABY
+========================= */
+
 .baby{
 position:absolute;
-bottom:5%;
 left:50%;
+bottom:4%;
 transform:translateX(-50%);
-width:320px;
-z-index:10;
+width:min(32vw,320px);
+z-index:20;
 }
+
+/* =========================
+MONKEY
+========================= */
 
 .monkey{
 position:absolute;
 width:180px;
 left:-300px;
-top:120px;
-z-index:12;
-animation: monkeyIn 3s forwards;
+top:80px;
+z-index:25;
+
+animation:
+monkeyIn 3s forwards,
+monkeyWave 2s ease-in-out 3s infinite;
 }
+
+/* =========================
+PARROT
+========================= */
 
 .parrot{
 position:absolute;
 width:120px;
 left:-200px;
-top:80px;
-z-index:13;
-animation: birdIn 4s forwards;
+top:70px;
+z-index:26;
+
+animation:
+birdIn 4s forwards,
+birdFlap 1.5s ease-in-out 4s infinite;
 }
+
+/* =========================
+LION
+========================= */
 
 .lion{
 position:absolute;
-width:250px;
+width:260px;
 right:-400px;
-bottom:80px;
-z-index:9;
-animation: lionIn 4s forwards;
+bottom:40px;
+z-index:18;
+
+animation:
+lionIn 4s forwards,
+lionNod 2s ease-in-out 4s infinite;
 }
+
+/* =========================
+GIRAFFE
+========================= */
+
+.giraffe{
+position:absolute;
+width:240px;
+right:-350px;
+top:120px;
+z-index:16;
+
+animation:
+giraffePeek 3s forwards,
+giraffeBob 3s ease-in-out 5s infinite;
+}
+
+/* =========================
+ELEPHANT
+========================= */
+
+.elephant{
+position:absolute;
+width:280px;
+left:-400px;
+bottom:20px;
+z-index:15;
+
+animation:
+elephantIn 4s forwards,
+elephantBounce 3s ease-in-out 5s infinite;
+}
+
+/* =========================
+TEXT
+========================= */
 
 .wild-text{
 position:absolute;
-top:8%;
-width:100%;
+top:6%;
+left:50%;
+transform:translateX(-50%);
 text-align:center;
-font-size:5rem;
+
+font-size:clamp(2.5rem,6vw,5rem);
+font-weight:900;
 color:white;
-text-shadow:0 4px 12px rgba(0,0,0,.4);
+line-height:0.9;
+
+text-shadow:
+0 4px 10px rgba(0,0,0,.35);
+
 opacity:0;
-animation:showText 1s ease forwards;
-animation-delay:4.5s;
+z-index:30;
+
+animation:
+showText 1s ease forwards;
+
+animation-delay:5s;
 }
 
 .sub{
 position:absolute;
-top:20%;
+top:28%;
 width:100%;
 text-align:center;
+
 color:white;
-font-size:1.5rem;
+font-size:clamp(1rem,2vw,1.5rem);
+
+text-shadow:
+0 2px 8px rgba(0,0,0,.35);
+
 opacity:0;
-animation:showText 1s ease forwards;
-animation-delay:5s;
+z-index:30;
+
+animation:
+showText 1s ease forwards;
+
+animation-delay:5.5s;
 }
 
+/* =========================
+ENTRANCE ANIMATIONS
+========================= */
+
 @keyframes monkeyIn{
+
 0%{
 left:-300px;
 top:-50px;
@@ -94,88 +185,169 @@ transform:rotate(-20deg);
 
 100%{
 left:12%;
-top:140px;
+top:120px;
 transform:rotate(0deg);
 }
 }
 
 @keyframes birdIn{
+
 0%{
-left:-200px;
-top:50px;
+left:-250px;
+top:40px;
 }
 
 100%{
-left:70%;
-top:100px;
+left:72%;
+top:90px;
 }
 }
 
 @keyframes lionIn{
+
 0%{
-right:-400px;
+right:-450px;
 }
 
 100%{
-right:8%;
+right:4%;
 }
 }
 
+@keyframes giraffePeek{
+
+0%{
+right:-350px;
+}
+
+100%{
+right:-20px;
+}
+}
+
+@keyframes elephantIn{
+
+0%{
+left:-400px;
+}
+
+100%{
+left:2%;
+}
+}
+
+/* =========================
+LOOPING ANIMATIONS
+========================= */
+
+@keyframes monkeyWave{
+
+0%,100%{
+transform:rotate(0deg);
+}
+
+50%{
+transform:rotate(8deg);
+}
+}
+
+@keyframes birdFlap{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes lionNod{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(8px);
+}
+}
+
+@keyframes giraffeBob{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+}
+
+@keyframes elephantBounce{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-6px);
+}
+}
+
+/* =========================
+TEXT REVEAL
+========================= */
+
 @keyframes showText{
+
 from{
 opacity:0;
-transform:translateY(40px);
+transform:
+translateX(-50%)
+translateY(30px);
 }
 
 to{
 opacity:1;
-transform:translateY(0);
+transform:
+translateX(-50%)
+translateY(0);
 }
-}
-.monkey{
-  animation:
-    monkeyIn 3s forwards,
-    monkeyWave 2s ease-in-out 3s infinite;
 }
 
-.parrot{
-  animation:
-    birdIn 4s forwards,
-    birdFlap 1.5s ease-in-out 4s infinite;
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.baby{
+width:220px;
 }
 
 .lion{
-  animation:
-    lionIn 4s forwards,
-    lionNod 2s ease-in-out 4s infinite;
+width:180px;
 }
 
-@keyframes monkeyWave{
-  0%,100%{
-    transform:rotate(0deg);
-  }
-
-  50%{
-    transform:rotate(8deg);
-  }
+.elephant{
+width:180px;
 }
 
-@keyframes birdFlap{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-15px);
-  }
+.giraffe{
+width:170px;
 }
 
-@keyframes lionNod{
-  0%,100%{
-    transform:translateY(0);
-  }
+.monkey{
+width:120px;
+}
 
-  50%{
-    transform:translateY(8px);
-  }
+.parrot{
+width:80px;
+}
+
+.sub{
+top:24%;
+padding:0 20px;
+}
 }
