@@ -13,7 +13,9 @@ body {
   color: white;
 }
 
-/* ---------------- LEAVES ---------------- */
+/* -------------------------
+LEAVES OVERLAY
+--------------------------*/
 
 body::before {
   content: "";
@@ -32,7 +34,9 @@ body::before {
   100% { transform: translateX(-8px); }
 }
 
-/* ---------------- SCENES ---------------- */
+/* -------------------------
+SCENES BASE
+--------------------------*/
 
 .scene {
   position: absolute;
@@ -42,8 +46,8 @@ body::before {
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 2;
   padding: 20px;
+  z-index: 2;
 }
 
 .scene.active {
@@ -56,7 +60,9 @@ body::before {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* ---------------- TYPOGRAPHY ---------------- */
+/* -------------------------
+TYPOGRAPHY
+--------------------------*/
 
 h1 {
   font-size: clamp(2rem, 6vw, 4rem);
@@ -68,29 +74,38 @@ h2 {
   text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* ---------------- SCENE 2 ---------------- */
+h3, p {
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* -------------------------
+SCENE 2
+--------------------------*/
 
 .baby {
   width: min(70vw, 420px);
-  animation: bounce 3s infinite ease-in-out;
+  animation: bounce 3s ease-in-out infinite;
 }
 
 @keyframes bounce {
-  0%,100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
 
-/* ---------------- SCENE 3 ---------------- */
+/* -------------------------
+SCENE 3 - CINEMATIC JUNGLE
+--------------------------*/
 
 .jungle-scene {
   overflow: hidden;
 }
 
-/* fog */
+/* fog system */
 .jungle-depth {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
 }
 
 .fog-layer {
@@ -116,7 +131,10 @@ h2 {
   100% { transform: translateX(6%); }
 }
 
-/* container */
+/* -------------------------
+ANIMAL AREA
+--------------------------*/
+
 .animal-area {
   position: relative;
   width: min(95vw, 1100px);
@@ -124,35 +142,69 @@ h2 {
   z-index: 2;
 }
 
-/* parallax base */
+/* IMPORTANT: JS ONLY MOVES THESE */
 .layer {
   position: absolute;
-  transition: transform 0.15s ease-out;
+  transition: transform 0.12s ease-out;
   will-change: transform;
 }
 
-/* animals */
-.parrot { top: 0; left: 50%; width: 90px; transform: translateX(-50%); }
-.monkey { top: 18%; left: 5%; width: 130px; }
-.giraffe { top: 5%; right: 5%; width: 170px; }
-.lion { bottom: 10%; left: 10%; width: 150px; }
-.elephant { bottom: 5%; right: 10%; width: 190px; }
+/* -------------------------
+ANIMALS (CINEMATIC SCALE FIXED)
+--------------------------*/
 
-/* FIXED BABY CENTER (NO transform conflict) */
-.baby-center {
+.parrot {
+  width: 140px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.monkey {
+  width: 200px;
+  top: 18%;
+  left: 5%;
+}
+
+.giraffe {
+  width: 280px;
+  top: 5%;
+  right: 5%;
+}
+
+.lion {
+  width: 250px;
+  bottom: 10%;
+  left: 10%;
+}
+
+.elephant {
+  width: 300px;
+  bottom: 5%;
+  right: 10%;
+}
+
+/* -------------------------
+BABY FIXED CENTER (NO DRIFT EVER)
+--------------------------*/
+
+.baby-wrapper {
   position: absolute;
   bottom: 5%;
   left: 50%;
-  width: 150px;
+  transform: translateX(-50%);
   z-index: 5;
 }
 
-.baby-center img {
-  width: 100%;
+.baby-wrapper img {
+  width: 170px;
   display: block;
 }
 
-/* title */
+/* -------------------------
+TITLE
+--------------------------*/
+
 .jungle-title {
   z-index: 3;
   margin-top: 10px;
@@ -164,7 +216,9 @@ h2 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------------- RSVP ---------------- */
+/* -------------------------
+RSVP
+--------------------------*/
 
 input, textarea {
   width: min(90vw, 320px);
@@ -183,13 +237,19 @@ button {
   cursor: pointer;
 }
 
-/* ---------------- MOBILE ---------------- */
+/* -------------------------
+MOBILE
+--------------------------*/
 
 @media (max-width: 768px) {
-  .parrot { width: 70px; }
-  .monkey { width: 100px; }
-  .giraffe { width: 120px; }
-  .lion { width: 110px; }
-  .elephant { width: 130px; }
-  .baby-center { width: 120px; }
+
+  .parrot { width: 100px; }
+  .monkey { width: 140px; }
+  .giraffe { width: 170px; }
+  .lion { width: 160px; }
+  .elephant { width: 180px; }
+
+  .baby-wrapper img {
+    width: 120px;
+  }
 }
