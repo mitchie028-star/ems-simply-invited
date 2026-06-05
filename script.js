@@ -1,6 +1,6 @@
 
 /* ======================
-   👑 INVITATION CONFIG
+   👑 CONFIG
 ====================== */
 
 const config = {
@@ -25,13 +25,19 @@ const config = {
       title: "📅 Details",
       text: "Saturday, June 14, 2026 • 11:00 AM",
       image: "assets/princess-level.png"
+    },
+    {
+      title: "🎂 RSVP Now",
+      text: "Click below to confirm your attendance 👑",
+      image: "assets/princess-level.png",
+      rsvp: true
     }
   ]
 };
 
 
 /* ======================
-   🚀 RENDER HERO
+   🎬 HERO
 ====================== */
 
 function renderHero() {
@@ -41,7 +47,7 @@ function renderHero() {
 
 
 /* ======================
-   🧱 RENDER SECTIONS
+   🧱 SECTIONS
 ====================== */
 
 function renderSections() {
@@ -54,9 +60,59 @@ function renderSections() {
         <h2>${sec.title}</h2>
         <p>${sec.text}</p>
         <img src="${sec.image}" />
+
+        ${sec.rsvp ? `
+          <a class="rsvp-btn" href="https://forms.gle/YOUR_FORM_LINK" target="_blank">
+            🎂 RSVP Now
+          </a>
+        ` : ""}
       </section>
     `;
   });
+}
+
+
+/* ======================
+   🎮 LEVEL UNLOCK
+====================== */
+
+function observeSections() {
+  const sections = document.querySelectorAll(".section");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+
+        // 🎉 CONFETTI ON LAST SECTION
+        if (entry.target === sections[sections.length - 1]) {
+          launchConfetti();
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(sec => observer.observe(sec));
+}
+
+
+/* ======================
+   ✨ CONFETTI
+====================== */
+
+function launchConfetti() {
+  for (let i = 0; i < 80; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.background = ["#ff4da6", "#ffd700", "#fff"][Math.floor(Math.random() * 3)];
+    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 4000);
+  }
 }
 
 
@@ -67,6 +123,7 @@ function renderSections() {
 function init() {
   renderHero();
   renderSections();
+  observeSections();
 }
 
 document.addEventListener("DOMContentLoaded", init);
