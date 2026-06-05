@@ -1,13 +1,22 @@
-console.log("Safari loaded");
+console.log("Safari script loaded");
 
 let current = 1;
+const TOTAL_SCENES = 6;
 
+// Switch scenes safely
 function showScene(next) {
   const currentScene = document.getElementById("scene" + current);
   const nextScene = document.getElementById("scene" + next);
 
-  if (!currentScene || !nextScene) {
-    console.log("Scene missing:", current, next);
+  console.log("Switching:", current, "→", next);
+
+  if (!currentScene) {
+    console.error("Missing current scene:", current);
+    return;
+  }
+
+  if (!nextScene) {
+    console.error("Missing next scene:", next);
     return;
   }
 
@@ -17,9 +26,15 @@ function showScene(next) {
   current = next;
 }
 
+// Wait for full page load
 window.addEventListener("load", () => {
-  document.body.addEventListener("click", (e) => {
-    // prevent form elements from triggering scene change
+  console.log("Page loaded, listeners attached");
+
+  // GLOBAL CLICK TO ADVANCE SCENE
+  document.addEventListener("click", (e) => {
+    console.log("Click detected on:", e.target.tagName);
+
+    // Prevent form elements from triggering scene change
     if (
       e.target.tagName === "INPUT" ||
       e.target.tagName === "TEXTAREA" ||
@@ -28,25 +43,35 @@ window.addEventListener("load", () => {
       return;
     }
 
-    if (current < 6) {
+    if (current < TOTAL_SCENES) {
       showScene(current + 1);
     }
   });
 
+  // RSVP BUTTON
   const btn = document.getElementById("submitBtn");
 
-  if (btn) {
-    btn.addEventListener("click", () => {
-      const name = document.getElementById("name")?.value || "";
-      const guests = document.getElementById("guests")?.value || "";
-      const message = document.getElementById("message")?.value || "";
-
-      alert(
-        "RSVP Sent!\n\n" +
-        "Name: " + name +
-        "\nGuests: " + guests +
-        "\nMessage: " + message
-      );
-    });
+  if (!btn) {
+    console.warn("submitBtn not found");
+    return;
   }
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const nameEl = document.getElementById("name");
+    const guestsEl = document.getElementById("guests");
+    const messageEl = document.getElementById("message");
+
+    const name = nameEl ? nameEl.value : "";
+    const guests = guestsEl ? guestsEl.value : "";
+    const message = messageEl ? messageEl.value : "";
+
+    alert(
+      "RSVP Sent!\n\n" +
+      "Name: " + name +
+      "\nGuests: " + guests +
+      "\nMessage: " + message
+    );
+  });
 });
