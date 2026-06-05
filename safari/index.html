@@ -9,71 +9,27 @@
 
 <body>
 
-  <div class="overlay"></div>
-  <div class="bg"></div>
+  <body>
 
-  <!-- Scene 1 -->
-  <section class="scene active">
-    <h1>A Wild Adventure Awaits...</h1>
-  </section>
+<div class="jungle-scene">
 
-  <!-- Scene 2 -->
-  <section class="scene">
-    <img src="./assets/boy.png" class="baby" />
-    <h2>Meet the Explorer</h2>
-  </section>
+  <img src="./assets/safari-bg.png" class="bg">
 
- <!-- Scene 3 -->
-<section class="scene jungle-scene">
+  <img src="./assets/boy.png" class="baby">
 
-  <div class="jungle-depth">
-    <div class="fog-layer fog-1"></div>
-    <div class="fog-layer fog-2"></div>
-  </div>
+  <img src="./assets/monkey.png" class="monkey">
+  <img src="./assets/parrot.png" class="parrot">
+  <img src="./assets/lion.png" class="lion">
 
-  <div class="animal-area">
+  <h1 class="wild-text">LET'S GET WILD!</h1>
 
-    <img src="./assets/parrot.png" class="parrot layer" data-speed="3">
-    <img src="./assets/monkey.png" class="monkey layer" data-speed="2">
-    <img src="./assets/giraffe.png" class="giraffe layer" data-speed="1.5">
-    <img src="./assets/lion.png" class="lion layer" data-speed="1.2">
-    <img src="./assets/elephant.png" class="elephant layer" data-speed="1">
+  <p class="sub">
+    Ethan's Wild One Safari Adventure
+  </p>
 
-    <!-- FIXED BABY WRAPPER -->
-    <div class="baby-wrapper layer" data-speed="0.6">
-      <img src="./assets/boy.png" class="baby-center">
-    </div>
+</div>
 
-  </div>
+<script src="script.js"></script>
 
-  <h2 class="jungle-title">LET'S GET WILD!</h2>
-
-</section>
-
-  <!-- Scene 4 -->
-  <section class="scene">
-    <h2>You're Invited!</h2>
-    <h3>June 25, 2026</h3>
-    <h3>2:00 PM</h3>
-  </section>
-
-  <!-- Scene 5 -->
-  <section class="scene">
-    <h2>Adventure Map</h2>
-    <p>🏠 → 🦁 → 📍 Venue</p>
-  </section>
-
-  <!-- Scene 6 -->
-  <section class="scene">
-    <h2>RSVP</h2>
-
-    <input placeholder="Name">
-    <input placeholder="Number of Guests">
-    <textarea placeholder="Message"></textarea>
-
-    <button id="btn">Send RSVP</button>
-  </section>
-
-  <script src="script.js"></script>
 </body>
 </html>
