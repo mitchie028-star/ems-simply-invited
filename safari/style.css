@@ -22,7 +22,6 @@ body {
   height: 100%;
 
   display: none;
-
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -37,19 +36,19 @@ body {
    TEXT
 ------------------------*/
 h1 {
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
   color: white;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
 p {
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: white;
   text-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
 /* -----------------------
-   BOY (HERO)
+   BOY (HERO - CONTROLLED SIZE)
 ------------------------*/
 #boy {
   position: absolute;
@@ -57,52 +56,63 @@ p {
   left: 50%;
   transform: translateX(-50%);
 
-  width: clamp(160px, 20vw, 260px);
+  width: 180px;   /* FIXED = no more chaos */
   height: auto;
 
   z-index: 5;
-  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
 }
 
 /* -----------------------
-   ANIMALS (NORMAL SIZE)
+   ANIMALS (SMALL + CONSISTENT)
 ------------------------*/
 .animal {
   position: absolute;
 
-  width: clamp(70px, 8vw, 120px);
+  width: 90px;   /* FIXED consistent size */
   height: auto;
 
   z-index: 3;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
 }
 
 /* -----------------------
-   ANIMAL POSITIONS
+   CLEAN POSITIONING GRID
+   (relative to corners, not random %)
 ------------------------*/
+
+/* Bottom left */
 #lion {
-  bottom: 10%;
-  left: 8%;
-}
-
-#elephant {
-  bottom: 5%;
-  right: 8%;
-}
-
-#giraffe {
-  top: 8%;
-  right: 6%;
-}
-
-#monkey {
-  top: 12%;
+  bottom: 8%;
   left: 6%;
 }
 
-#parrot {
+/* Bottom right */
+#elephant {
+  bottom: 6%;
+  right: 6%;
+  width: 120px; /* slightly bigger but controlled */
+}
+
+/* Top right */
+#giraffe {
   top: 6%;
-  left: 45%;
+  right: 6%;
+  width: 110px;
+}
+
+/* Top left */
+#monkey {
+  top: 8%;
+  left: 6%;
+}
+
+/* Top center */
+#parrot {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
 }
 
 /* -----------------------
@@ -114,23 +124,23 @@ form {
   gap: 10px;
 
   background: rgba(0,0,0,0.4);
-  padding: 15px;
+  padding: 12px;
   border-radius: 10px;
 
   backdrop-filter: blur(5px);
 }
 
 input, textarea {
-  padding: 10px;
-  font-size: 1rem;
+  padding: 8px;
+  font-size: 0.9rem;
   border: none;
   border-radius: 6px;
-  width: 220px;
+  width: 200px;
 }
 
 button {
   padding: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   background: #ffcc00;
   border: none;
   border-radius: 6px;
@@ -143,11 +153,11 @@ button {
 ------------------------*/
 @media (max-width: 768px) {
   #boy {
-    width: 65vw;
+    width: 140px;
   }
 
   .animal {
-    width: 20vw;
+    width: 60px;
   }
 
   input, textarea {
