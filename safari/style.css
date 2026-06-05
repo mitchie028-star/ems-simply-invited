@@ -1,208 +1,55 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-font-family:Arial, sans-serif;
-overflow:hidden;
-height:100vh;
-background:url("./assets/safari-bg.png") center center/cover no-repeat;
-color:white;
+body {
+  font-family: Arial;
+  overflow: hidden;
+  height: 100vh;
+  background: url("./assets/safari-bg.png") center/cover no-repeat;
+  color: white;
 }
 
-/* Background Overlay */
-
-.overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.25);
-z-index:1;
+/* overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
 }
 
-/* Animated Leaves */
+/* scenes */
+.scene {
+  position: absolute;
+  inset: 0;
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:url("./assets/leaves.png");
-background-size:cover;
-opacity:.15;
-animation:sway 8s ease-in-out infinite;
-z-index:2;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+  padding: 20px;
 }
 
-@keyframes sway{
-0%{transform:translateX(-10px);}
-50%{transform:translateX(10px);}
-100%{transform:translateX(-10px);}
+.scene.active {
+  display: flex;
 }
 
-/* Scenes */
-
-.scene{
-position:absolute;
-inset:0;
-display:none;
-z-index:3;
-
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-
-padding:20px;
+/* explorer */
+.baby {
+  width: 200px;
 }
 
-.scene.active{
-display:flex;
-animation:fadeIn .8s ease;
+/* animals */
+.animal-area img {
+  width: 90px;
+  margin: 5px;
 }
 
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:scale(.95);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-
-/* Typography */
-
-h1{
-font-size:clamp(2rem,6vw,4rem);
-margin-bottom:15px;
-}
-
-h2{
-font-size:clamp(1.8rem,5vw,3rem);
-margin-bottom:15px;
-}
-
-h3{
-font-size:clamp(1.2rem,4vw,2rem);
-margin-bottom:10px;
-}
-
-p{
-font-size:1.1rem;
-}
-
-/* Explorer */
-
-.baby{
-width:min(40vw,220px);
-margin-bottom:20px;
-
-animation:bounce 3s ease-in-out infinite;
-}
-
-@keyframes bounce{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-12px);
-}
-}
-
-/* Animal Scene */
-
-.animal-area{
-position:relative;
-width:min(90vw,900px);
-height:60vh;
-}
-
-.baby-center{
-position:absolute;
-width:180px;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-}
-
-.parrot{
-position:absolute;
-top:0;
-left:50%;
-transform:translateX(-50%);
-width:80px;
-}
-
-.monkey{
-position:absolute;
-top:20%;
-left:5%;
-width:100px;
-}
-
-.giraffe{
-position:absolute;
-top:5%;
-right:5%;
-width:120px;
-}
-
-.lion{
-position:absolute;
-bottom:10%;
-left:10%;
-width:120px;
-}
-
-.elephant{
-position:absolute;
-bottom:5%;
-right:10%;
-width:150px;
-}
-
-/* RSVP */
-
-input,
-textarea{
-width:min(90vw,320px);
-padding:12px;
-border:none;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-button{
-padding:12px 24px;
-border:none;
-border-radius:10px;
-background:#f4c542;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* Mobile */
-
-@media(max-width:768px){
-
-.baby-center{
-width:120px;
-}
-
-.lion,
-.elephant,
-.giraffe,
-.monkey{
-width:80px;
-}
-
-.parrot{
-width:60px;
-}
-
-.animal-area{
-height:50vh;
-}
+/* inputs */
+input, textarea {
+  margin: 5px;
+  padding: 10px;
 }
