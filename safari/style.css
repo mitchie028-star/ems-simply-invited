@@ -1,151 +1,172 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family:Arial,sans-serif;
-  overflow:hidden;
-  color:white;
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: url("./assets/safari-bg.png") no-repeat center center;
+  background-size: cover;
 }
 
-.bg{
-  position:fixed;
-  inset:0;
-  background:url("./assets/safari-bg.png") center/cover no-repeat;
-  z-index:-2;
+/* -----------------------
+   SCENES
+------------------------*/
+.scene {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  z-index:-1;
+.scene.active {
+  display: flex;
 }
 
-.scene{
-  position:fixed;
-  inset:0;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  gap:20px;
-
-  text-align:center;
-
-  opacity:0;
-  pointer-events:none;
-
-  transform:scale(1.05);
-
-  transition:
-    opacity .7s ease,
-    transform .7s ease;
+/* -----------------------
+   TITLE / TEXT
+------------------------*/
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: white;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
-.scene.active{
-  opacity:1;
-  pointer-events:auto;
-  transform:scale(1);
+p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: white;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
-h1{
-  font-size:3rem;
+/* -----------------------
+   MAIN CHARACTER (BOY)
+------------------------*/
+#boy {
+  width: clamp(250px, 45vw, 650px);
+  height: auto;
+  z-index: 5;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+  animation: popIn 0.8s ease;
 }
 
-h2{
-  font-size:2rem;
+/* -----------------------
+   ANIMALS (GLOBAL)
+------------------------*/
+.animal {
+  position: absolute;
+  width: clamp(120px, 18vw, 260px);
+  height: auto;
+  z-index: 3;
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.4));
+  animation: floatIn 1s ease;
 }
 
-.baby{
-  width:220px;
+/* Individual positioning (adjust if needed) */
+#lion {
+  bottom: 10%;
+  left: 10%;
 }
 
-.animal-area{
-  position:relative;
-  width:320px;
-  height:320px;
+#elephant {
+  bottom: 5%;
+  right: 10%;
+  width: clamp(180px, 28vw, 380px);
 }
 
-.animal-area img{
-  position:absolute;
+#giraffe {
+  top: 10%;
+  right: 5%;
+  width: clamp(160px, 25vw, 340px);
 }
 
-.baby-center{
-  width:170px;
-  left:75px;
-  top:90px;
+#monkey {
+  top: 15%;
+  left: 5%;
 }
 
-.parrot{
-  width:70px;
-  left:125px;
-  top:0;
+#parrot {
+  top: 5%;
+  left: 45%;
+  width: clamp(100px, 15vw, 180px);
 }
 
-.monkey{
-  width:90px;
-  left:0;
-  top:80px;
+/* -----------------------
+   RSVP FORM
+------------------------*/
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
 }
 
-.giraffe{
-  width:90px;
-  right:0;
-  top:70px;
+input, textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  width: 250px;
 }
 
-.lion{
-  width:90px;
-  left:20px;
-  bottom:20px;
+button {
+  padding: 12px;
+  font-size: 1rem;
+  background: #ffcc00;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.elephant{
-  width:100px;
-  right:20px;
-  bottom:20px;
+/* -----------------------
+   ANIMATIONS
+------------------------*/
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-input,
-textarea{
-  width:260px;
-  padding:12px;
-  border:none;
-  border-radius:12px;
+@keyframes floatIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-button{
-  padding:14px 25px;
-  border:none;
-  border-radius:15px;
-  cursor:pointer;
-}
-
-@media(max-width:768px){
-
-  h1{
-    font-size:2rem;
+/* -----------------------
+   MOBILE FIX
+------------------------*/
+@media (max-width: 768px) {
+  #boy {
+    width: 90vw;
   }
 
-  h2{
-    font-size:1.5rem;
+  .animal {
+    width: 40vw;
   }
 
-  .animal-area{
-    width:260px;
-    height:260px;
+  input, textarea {
+    width: 90%;
   }
-
-  .baby-center{
-    width:130px;
-    left:65px;
-    top:80px;
-  }
-
 }
-
