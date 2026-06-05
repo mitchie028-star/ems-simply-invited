@@ -1,7 +1,3 @@
-/* =========================
-RESET
-========================= */
-
 *{
   margin:0;
   padding:0;
@@ -14,10 +10,6 @@ body{
   background:#000;
 }
 
-/* =========================
-SCENE BASE
-========================= */
-
 .scene{
   position:relative;
   width:100vw;
@@ -26,9 +18,7 @@ SCENE BASE
   isolation:isolate;
 }
 
-/* =========================
-BACKGROUND (deep layer)
-========================= */
+/* ================= BACKGROUND ================= */
 
 .bg{
   position:absolute;
@@ -37,19 +27,76 @@ BACKGROUND (deep layer)
   height:100%;
   object-fit:cover;
   z-index:1;
-
-  transform: scale(1.05);
-  animation: bgZoom 10s ease-out forwards;
 }
 
-@keyframes bgZoom{
-  from{ transform: scale(1.1); }
-  to{ transform: scale(1.05); }
+/* ================= SUN RAYS ================= */
+
+.sunrays{
+  position:absolute;
+  inset:-20%;
+  z-index:10;
+  pointer-events:none;
+
+  background: repeating-conic-gradient(
+    from 220deg,
+    rgba(255,255,200,0.12) 0deg,
+    rgba(255,255,200,0) 12deg,
+    rgba(255,255,200,0.08) 24deg,
+    rgba(255,255,200,0) 40deg
+  );
+
+  filter: blur(2px);
+  opacity:0;
+
+  animation: raysIn 3s ease 1.2s forwards;
 }
 
-/* =========================
-LEAVES (CINEMATIC CURTAIN)
-========================= */
+@keyframes raysIn{
+  from{ opacity:0; transform:scale(1.2) rotate(0deg); }
+  to{ opacity:1; transform:scale(1) rotate(8deg); }
+}
+
+/* ================= FOG ================= */
+
+.fog{
+  position:absolute;
+  inset:0;
+  z-index:15;
+  pointer-events:none;
+
+  background: radial-gradient(
+    circle at 50% 70%,
+    rgba(255,255,255,0.10),
+    rgba(255,255,255,0.04),
+    transparent 70%
+  );
+
+  filter: blur(18px);
+  opacity:0;
+}
+
+.fog1{
+  animation: fogIn 4s ease 1.5s forwards, fogMove 12s ease-in-out infinite;
+}
+
+.fog2{
+  animation: fogIn 5s ease 2s forwards, fogMove2 18s ease-in-out infinite;
+  opacity:0.6;
+}
+
+@keyframes fogIn{ from{opacity:0;} to{opacity:1;} }
+
+@keyframes fogMove{
+  0%,100%{transform:translateX(-2%)}
+  50%{transform:translateX(3%)}
+}
+
+@keyframes fogMove2{
+  0%,100%{transform:translateX(2%)}
+  50%{transform:translateX(-3%)}
+}
+
+/* ================= LEAVES ================= */
 
 .leaf{
   position:absolute;
@@ -58,14 +105,9 @@ LEAVES (CINEMATIC CURTAIN)
   height:100%;
   z-index:50;
 
-  background: radial-gradient(
-    circle at center,
-    #4caf50 0%,
-    #2e7d32 70%,
-    #1b5e20 100%
-  );
+  background: radial-gradient(circle at center,#4caf50 0%,#2e7d32 70%,#1b5e20 100%);
 
-  will-change: transform;
+  will-change:transform;
   backface-visibility:hidden;
 }
 
@@ -82,18 +124,16 @@ LEAVES (CINEMATIC CURTAIN)
 }
 
 @keyframes openLeft{
-  from{ transform: translateX(0); }
-  to{ transform: translateX(-110%); }
+  from{transform:translateX(0);}
+  to{transform:translateX(-110%);}
 }
 
 @keyframes openRight{
-  from{ transform: translateX(0); }
-  to{ transform: translateX(110%); }
+  from{transform:translateX(0);}
+  to{transform:translateX(110%);}
 }
 
-/* =========================
-BABY (hero reveal)
-========================= */
+/* ================= BABY ================= */
 
 .baby{
   position:absolute;
@@ -105,23 +145,15 @@ BABY (hero reveal)
   opacity:0;
   z-index:30;
 
-  animation: babyReveal 1.2s ease 3.5s forwards;
+  animation: babyIn 1.2s ease 3.5s forwards;
 }
 
-@keyframes babyReveal{
-  from{
-    opacity:0;
-    transform:translateX(-50%) translateY(40px) scale(.95);
-  }
-  to{
-    opacity:1;
-    transform:translateX(-50%) translateY(0) scale(1);
-  }
+@keyframes babyIn{
+  from{opacity:0; transform:translate(-50%,40px) scale(.95);}
+  to{opacity:1; transform:translate(-50%,0) scale(1);}
 }
 
-/* =========================
-MONKEY (swing drop-in)
-========================= */
+/* ================= MONKEY ================= */
 
 .monkey{
   position:absolute;
@@ -130,18 +162,16 @@ MONKEY (swing drop-in)
   left:6%;
   z-index:25;
 
-  animation: monkeyDrop 2s ease 4.5s forwards;
+  animation: monkeyIn 2s ease 4.5s forwards;
 }
 
-@keyframes monkeyDrop{
-  0%{ top:-220px; transform:rotate(-20deg); }
-  60%{ transform:rotate(15deg); }
-  100%{ top:120px; transform:rotate(0deg); }
+@keyframes monkeyIn{
+  0%{top:-220px; transform:rotate(-20deg);}
+  60%{transform:rotate(15deg);}
+  100%{top:120px; transform:rotate(0);}
 }
 
-/* =========================
-PARROT (fly arc)
-========================= */
+/* ================= PARROT ================= */
 
 .parrot{
   position:absolute;
@@ -154,14 +184,12 @@ PARROT (fly arc)
 }
 
 @keyframes parrotFly{
-  0%{ left:-200px; top:90px; }
-  50%{ top:50px; }
-  100%{ left:75%; top:110px; }
+  0%{left:-200px; top:90px;}
+  50%{top:50px;}
+  100%{left:75%; top:110px;}
 }
 
-/* =========================
-LION (slow entrance)
-========================= */
+/* ================= LION ================= */
 
 .lion{
   position:absolute;
@@ -170,17 +198,15 @@ LION (slow entrance)
   bottom:25px;
   z-index:24;
 
-  animation: lionEnter 3s ease 6s forwards;
+  animation: lionIn 3s ease 6s forwards;
 }
 
-@keyframes lionEnter{
-  from{ right:-350px; }
-  to{ right:6%; }
+@keyframes lionIn{
+  from{right:-350px;}
+  to{right:6%;}
 }
 
-/* =========================
-TITLE (DISNEY MOMENT)
-========================= */
+/* ================= TITLE ================= */
 
 .title{
   position:absolute;
@@ -191,51 +217,24 @@ TITLE (DISNEY MOMENT)
   opacity:0;
   z-index:60;
 
-  animation: titleReveal 1.5s ease 8.2s forwards;
+  animation: titleIn 1.5s ease 8.2s forwards;
 }
 
 .title h1{
-  color:white;
+  color:#fff;
   font-size:clamp(3rem,7vw,6rem);
   line-height:.9;
-
-  text-shadow:
-    0 6px 20px rgba(0,0,0,.6),
-    0 0 30px rgba(255,255,255,.15);
+  text-shadow:0 6px 20px rgba(0,0,0,.6);
 }
 
 .title p{
   margin-top:15px;
-  color:white;
+  color:#fff;
   font-size:clamp(1rem,2vw,1.4rem);
   text-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 
-@keyframes titleReveal{
-  from{
-    opacity:0;
-    transform:translateY(40px) scale(.98);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-}
-
-/* =========================
-MOBILE
-========================= */
-
-@media(max-width:768px){
-
-  .baby{ width:220px; }
-  .monkey{ width:120px; top:-150px; }
-  .parrot{ width:80px; }
-  .lion{ width:170px; }
-
-  .title h1{ font-size:3rem; }
-
-  .title p{
-    padding:0 20px;
-  }
+@keyframes titleIn{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
 }
