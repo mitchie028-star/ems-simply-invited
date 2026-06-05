@@ -1,353 +1,210 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-overflow:hidden;
-font-family:'Trebuchet MS', sans-serif;
-background:#f8f4e8;
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: url("./assets/safari-bg.png") center/cover no-repeat;
+  color: white;
 }
 
-.jungle-scene{
-position:relative;
-width:100vw;
-height:100vh;
-overflow:hidden;
+/* ---------------- SCENES ---------------- */
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 2;
 }
 
-/* =========================
-BACKGROUND
-========================= */
-
-.bg{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
+.scene.active {
+  display: flex;
+  animation: fadeIn 0.8s ease;
 }
 
-/* =========================
-BABY
-========================= */
-
-.baby{
-position:absolute;
-left:50%;
-bottom:4%;
-transform:translateX(-50%);
-width:min(32vw,320px);
-z-index:20;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* =========================
-MONKEY
-========================= */
+/* ---------------- SCENE 2 ---------------- */
 
-.monkey{
-position:absolute;
-width:180px;
-left:-300px;
-top:80px;
-z-index:25;
-
-animation:
-monkeyIn 3s forwards,
-monkeyWave 2s ease-in-out 3s infinite;
+.baby {
+  width: min(70vw, 420px);
+  animation: bounce 3s ease-in-out infinite;
 }
 
-/* =========================
-PARROT
-========================= */
-
-.parrot{
-position:absolute;
-width:120px;
-left:-200px;
-top:70px;
-z-index:26;
-
-animation:
-birdIn 4s forwards,
-birdFlap 1.5s ease-in-out 4s infinite;
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-/* =========================
-LION
-========================= */
+/* ---------------- SCENE 3 DISNEY ---------------- */
 
-.lion{
-position:absolute;
-width:260px;
-right:-400px;
-bottom:40px;
-z-index:18;
-
-animation:
-lionIn 4s forwards,
-lionNod 2s ease-in-out 4s infinite;
+.jungle-scene {
+  overflow: hidden;
+  position: relative;
 }
 
-/* =========================
-GIRAFFE
-========================= */
-
-.giraffe{
-position:absolute;
-width:240px;
-right:-350px;
-top:120px;
-z-index:16;
-
-animation:
-giraffePeek 3s forwards,
-giraffeBob 3s ease-in-out 5s infinite;
+/* LIGHT RAYS */
+.light-rays {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,240,180,0.25), transparent 60%);
+  animation: raysMove 6s ease-in-out infinite;
+  z-index: 1;
 }
 
-/* =========================
-ELEPHANT
-========================= */
-
-.elephant{
-position:absolute;
-width:280px;
-left:-400px;
-bottom:20px;
-z-index:15;
-
-animation:
-elephantIn 4s forwards,
-elephantBounce 3s ease-in-out 5s infinite;
+@keyframes raysMove {
+  0%,100% { transform: translateX(-2%) scale(1); }
+  50% { transform: translateX(2%) scale(1.05); }
 }
 
-/* =========================
-TEXT
-========================= */
-
-.wild-text{
-position:absolute;
-top:6%;
-left:50%;
-transform:translateX(-50%);
-text-align:center;
-
-font-size:clamp(2.5rem,6vw,5rem);
-font-weight:900;
-color:white;
-line-height:0.9;
-
-text-shadow:
-0 4px 10px rgba(0,0,0,.35);
-
-opacity:0;
-z-index:30;
-
-animation:
-showText 1s ease forwards;
-
-animation-delay:5s;
+/* FOG */
+.jungle-depth {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
-.sub{
-position:absolute;
-top:28%;
-width:100%;
-text-align:center;
-
-color:white;
-font-size:clamp(1rem,2vw,1.5rem);
-
-text-shadow:
-0 2px 8px rgba(0,0,0,.35);
-
-opacity:0;
-z-index:30;
-
-animation:
-showText 1s ease forwards;
-
-animation-delay:5.5s;
+.fog-layer {
+  position: absolute;
+  inset: -25%;
+  background: url("./assets/fog.png") center/cover no-repeat;
+  filter: blur(3px);
 }
 
-/* =========================
-ENTRANCE ANIMATIONS
-========================= */
+.fog-1 { animation: fog1 18s linear infinite; opacity: 0.25; }
+.fog-2 { animation: fog2 26s linear infinite reverse; opacity: 0.15; }
 
-@keyframes monkeyIn{
-
-0%{
-left:-300px;
-top:-50px;
-transform:rotate(-20deg);
+@keyframes fog1 {
+  0% { transform: translateX(-6%); }
+  50% { transform: translateX(6%); }
+  100% { transform: translateX(-6%); }
 }
 
-100%{
-left:12%;
-top:120px;
-transform:rotate(0deg);
-}
-}
-
-@keyframes birdIn{
-
-0%{
-left:-250px;
-top:40px;
+@keyframes fog2 {
+  0% { transform: translateX(7%); }
+  50% { transform: translateX(-7%); }
+  100% { transform: translateX(7%); }
 }
 
-100%{
-left:72%;
-top:90px;
-}
-}
-
-@keyframes lionIn{
-
-0%{
-right:-450px;
-}
-
-100%{
-right:4%;
-}
+/* TITLE */
+.jungle-text {
+  position: absolute;
+  top: 10%;
+  left: 6%;
+  z-index: 5;
+  text-align: left;
+  max-width: 40%;
+  animation: titleIn 1.2s ease forwards;
 }
 
-@keyframes giraffePeek{
-
-0%{
-right:-350px;
+.jungle-title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  text-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
-100%{
-right:-20px;
-}
-}
-
-@keyframes elephantIn{
-
-0%{
-left:-400px;
+.jungle-subtitle {
+  opacity: 0.8;
+  margin-top: 8px;
 }
 
-100%{
-left:2%;
-}
-}
-
-/* =========================
-LOOPING ANIMATIONS
-========================= */
-
-@keyframes monkeyWave{
-
-0%,100%{
-transform:rotate(0deg);
+@keyframes titleIn {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-50%{
-transform:rotate(8deg);
-}
-}
-
-@keyframes birdFlap{
-
-0%,100%{
-transform:translateY(0);
+/* WORLD */
+.animal-area {
+  position: relative;
+  width: min(95vw, 1100px);
+  height: 70vh;
+  z-index: 2;
 }
 
-50%{
-transform:translateY(-15px);
-}
-}
-
-@keyframes lionNod{
-
-0%,100%{
-transform:translateY(0);
+/* PARALLAX BASE */
+.layer {
+  position: absolute;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
-50%{
-transform:translateY(8px);
-}
-}
+/* ANIMALS (CINEMATIC SCALE) */
+.parrot { width: 140px; top: 0; left: 50%; transform: translateX(-50%); }
+.monkey { width: 200px; top: 18%; left: 5%; }
+.giraffe { width: 280px; top: 5%; right: 5%; }
+.lion { width: 250px; bottom: 10%; left: 10%; }
+.elephant { width: 300px; bottom: 5%; right: 10%; }
 
-@keyframes giraffeBob{
-
-0%,100%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-10px);
-}
-}
-
-@keyframes elephantBounce{
-
-0%,100%{
-transform:translateY(0);
+/* HERO BABY */
+.baby-wrapper {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
-50%{
-transform:translateY(-6px);
-}
-}
-
-/* =========================
-TEXT REVEAL
-========================= */
-
-@keyframes showText{
-
-from{
-opacity:0;
-transform:
-translateX(-50%)
-translateY(30px);
+.baby-center {
+  width: 180px;
+  display: block;
+  filter: drop-shadow(0 20px 25px rgba(0,0,0,0.5));
 }
 
-to{
-opacity:1;
-transform:
-translateX(-50%)
-translateY(0);
-}
-}
-
-/* =========================
-MOBILE
-========================= */
-
-@media(max-width:768px){
-
-.baby{
-width:220px;
+.baby-glow {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle, rgba(255,230,150,0.4), transparent 70%);
+  border-radius: 50%;
+  animation: glow 3s ease-in-out infinite;
+  z-index: -1;
 }
 
-.lion{
-width:180px;
+@keyframes glow {
+  0%,100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+  50% { transform: translateX(-50%) scale(1.25); opacity: 0.9; }
 }
 
-.elephant{
-width:180px;
+/* ---------------- RSVP ---------------- */
+
+input, textarea {
+  width: min(90vw, 320px);
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  margin: 5px 0;
 }
 
-.giraffe{
-width:170px;
+button {
+  width: min(90vw, 320px);
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #f4c542;
+  cursor: pointer;
 }
 
-.monkey{
-width:120px;
-}
+/* ---------------- MOBILE ---------------- */
 
-.parrot{
-width:80px;
-}
-
-.sub{
-top:24%;
-padding:0 20px;
-}
+@media (max-width: 768px) {
+  .parrot { width: 100px; }
+  .monkey { width: 140px; }
+  .giraffe { width: 170px; }
+  .lion { width: 160px; }
+  .elephant { width: 180px; }
+  .baby-center { width: 120px; }
 }
