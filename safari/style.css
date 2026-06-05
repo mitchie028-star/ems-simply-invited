@@ -56,14 +56,14 @@ p {
   left: 50%;
   transform: translateX(-50%);
 
-  width: 100px;   /* smaller, more natural */
+  width: 50px;   /* smaller, more natural */
   height: auto;
 
   max-height: 35vh;
 
   z-index: 5;
 
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
 }
 /* -----------------------
    ANIMALS (SMALL + CONSISTENT)
