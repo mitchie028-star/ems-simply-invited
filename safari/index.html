@@ -9,31 +9,81 @@
 
 <body>
 
-<div class="jungle-scene">
+  <div class="overlay"></div>
+  <div class="bg"></div>
 
-  <img src="./assets/safari-bg.png" class="bg">
+  <!-- Scene 1 -->
+  <section class="scene active">
+    <h1>A Wild Adventure Awaits...</h1>
+  </section>
 
-  <img src="./assets/boy.png" class="baby">
+  <!-- Scene 2 -->
+  <section class="scene">
+    <img src="./assets/boy.png" class="baby" />
+    <h2>Meet the Explorer</h2>
+  </section>
 
-  <img src="./assets/monkey.png" class="monkey">
-  <img src="./assets/parrot.png" class="parrot">
-  <img src="./assets/lion.png" class="lion">
-  <img src="./assets/girraffe.png" class="giraffe">
-  <img src="./assets/elephant.png" class="elephant">
+  <!-- Scene 3 - DISNEY FINAL BOSS -->
+  <section class="scene jungle-scene">
 
-  <h1 class="wild-text">
-  LET'S<br>
-  GET<br>
-  WILD!
-</h1>
+    <!-- LIGHT -->
+    <div class="light-rays"></div>
 
-  <p class="sub">
-    Ethan's Wild One Safari Adventure
-  </p>
+    <!-- FOG -->
+    <div class="jungle-depth">
+      <div class="fog-layer fog-1"></div>
+      <div class="fog-layer fog-2"></div>
+    </div>
 
-</div>
+    <!-- TITLE -->
+    <div class="jungle-text">
+      <h2 class="jungle-title">LET'S GET WILD!</h2>
+      <p class="jungle-subtitle">Ethan’s Wild One Safari Adventure</p>
+    </div>
 
-<script src="script.js"></script>
+    <!-- WORLD -->
+    <div class="animal-area">
 
+      <img src="./assets/parrot.png" class="parrot layer" data-speed="3">
+      <img src="./assets/monkey.png" class="monkey layer" data-speed="2">
+      <img src="./assets/giraffe.png" class="giraffe layer" data-speed="1.5">
+      <img src="./assets/lion.png" class="lion layer" data-speed="1.2">
+      <img src="./assets/elephant.png" class="elephant layer" data-speed="1">
+
+      <!-- HERO -->
+      <div class="baby-wrapper layer" data-speed="0.5">
+        <img src="./assets/boy.png" class="baby-center">
+        <div class="baby-glow"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Scene 4 -->
+  <section class="scene">
+    <h2>You're Invited!</h2>
+    <h3>June 25, 2026</h3>
+    <h3>2:00 PM</h3>
+  </section>
+
+  <!-- Scene 5 -->
+  <section class="scene">
+    <h2>Adventure Map</h2>
+    <p>🏠 → 🦁 → 📍 Venue</p>
+  </section>
+
+  <!-- Scene 6 -->
+  <section class="scene">
+    <h2>RSVP</h2>
+
+    <input placeholder="Name">
+    <input placeholder="Number of Guests">
+    <textarea placeholder="Message"></textarea>
+
+    <button id="btn">Send RSVP</button>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
