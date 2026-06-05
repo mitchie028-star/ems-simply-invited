@@ -1,36 +1,71 @@
-console.log("SCRIPT LOADED");
-
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM READY");
 
-  const title = document.querySelector(".title");
-  const animals = document.querySelectorAll(".animal");
-  const btn = document.querySelector(".rsvp-btn");
-  const overlay = document.querySelector(".overlay");
+  const scenes = document.querySelectorAll(".scene");
+  let current = 0;
 
-  console.log("FOUND ELEMENTS:", {
-    title,
-    animals: animals.length,
-    btn,
-    overlay
-  });
+  function showScene(i) {
+    scenes.forEach((s, index) => {
+      s.classList.toggle("active", index === i);
+    });
+  }
 
-  overlay?.classList.add("fade-in");
+  function next() {
+    current++;
+    if (current < scenes.length) {
+      showScene(current);
+      run(current);
+    }
+  }
 
-  setTimeout(() => {
-    title?.classList.add("show");
-    console.log("TITLE TRIGGERED");
-  }, 600);
+  function run(i) {
 
-  animals.forEach((a, i) => {
-    setTimeout(() => {
-      a?.classList.add("enter");
-      console.log("ANIMAL", i, "TRIGGERED");
-    }, 1200 + i * 700);
-  });
+    // Scene 1 (intro)
+    if (i === 0) {
+      setTimeout(next, 2500);
+    }
 
-  setTimeout(() => {
-    btn?.classList.add("show");
-    console.log("BUTTON SHOWN");
-  }, 4000);
+    // Scene 2 (explorer)
+    if (i === 1) {
+      setTimeout(next, 2500);
+    }
+
+    // Scene 3 (animals reveal)
+    if (i === 2) {
+      const animals = document.querySelectorAll(".animal-area img");
+
+      animals.forEach((el, idx) => {
+        setTimeout(() => {
+          el.style.transform = "scale(1)";
+          el.style.opacity = "1";
+        }, idx * 300);
+      });
+
+      setTimeout(next, 3500);
+    }
+
+    // Scene 4 (invite)
+    if (i === 3) {
+      setTimeout(next, 3000);
+    }
+
+    // Scene 5 (map)
+    if (i === 4) {
+      setTimeout(next, 3000);
+    }
+
+    // Scene 6 (form stop)
+    if (i === 5) {
+      const btn = document.getElementById("submitBtn");
+
+      btn?.addEventListener("click", () => {
+        btn.innerText = "Sent! 🦁";
+        btn.disabled = true;
+      });
+    }
+  }
+
+  // START
+  showScene(0);
+  run(0);
+
 });
