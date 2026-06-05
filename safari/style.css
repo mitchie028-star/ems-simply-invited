@@ -5,51 +5,185 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   overflow: hidden;
   height: 100vh;
-  background: url("./assets/safari-bg.png") center/cover no-repeat;
+  background: url("./assets/safari-bg.png") center center/cover no-repeat;
   color: white;
 }
 
-/* overlay */
+/* =========================
+   BACKGROUND OVERLAY
+========================= */
+
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.3);
+  z-index: 1;
 }
 
-/* scenes */
+/* =========================
+   SCENES SYSTEM
+========================= */
+
 .scene {
   position: absolute;
   inset: 0;
 
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-
   text-align: center;
+
   padding: 20px;
+  z-index: 3;
 }
 
 .scene.active {
   display: flex;
 }
 
-/* explorer */
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* =========================
+   SCENE 2 - EXPLORER
+========================= */
+
 .baby {
-  width: 200px;
+  width: min(45vw, 220px);
+  display: block;
+  margin: 0 auto;
+  animation: float 3s ease-in-out infinite;
 }
 
-/* animals */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* =========================
+   SCENE 3 - ANIMALS
+========================= */
+
+.animal-area {
+  position: relative;
+  width: min(90vw, 900px);
+  height: 60vh;
+}
+
+/* ALL animals */
 .animal-area img {
-  width: 90px;
-  margin: 5px;
+  position: absolute;
+  width: 80px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* inputs */
-input, textarea {
-  margin: 5px;
+/* center baby */
+.baby-center {
+  position: absolute;
+  width: 140px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* animal positions (restored clean layout) */
+.parrot {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+}
+
+.monkey {
+  top: 20%;
+  left: 5%;
+  width: 80px;
+}
+
+.giraffe {
+  top: 5%;
+  right: 5%;
+  width: 100px;
+}
+
+.lion {
+  bottom: 10%;
+  left: 10%;
+  width: 90px;
+}
+
+.elephant {
+  bottom: 5%;
+  right: 10%;
+  width: 110px;
+}
+
+/* =========================
+   SCENE 6 - FORM
+========================= */
+
+input,
+textarea {
+  width: min(90vw, 320px);
   padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 8px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #f4c542;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+========================= */
+
+@media (max-width: 768px) {
+
+  .baby {
+    width: 160px;
+  }
+
+  .animal-area {
+    height: 50vh;
+  }
+
+  .animal-area img {
+    width: 60px;
+  }
+
+  .baby-center {
+    width: 110px;
+  }
 }
