@@ -96,10 +96,11 @@ font-size:1.1rem;
 /* Explorer */
 
 .baby{
-width:min(40vw,220px);
-margin-bottom:20px;
+  width:min(70vw,420px);
+  max-height:70vh;
+  object-fit:contain;
 
-animation:bounce 3s ease-in-out infinite;
+  animation:bounce 3s ease-in-out infinite;
 }
 
 @keyframes bounce{
@@ -187,9 +188,9 @@ cursor:pointer;
 
 @media(max-width:768px){
 
-.baby-center{
-width:120px;
-}
+  .baby{
+    width:min(85vw,320px);
+  }
 
 .lion,
 .elephant,
