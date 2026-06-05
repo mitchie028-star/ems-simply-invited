@@ -14,17 +14,23 @@ body {
 }
 
 /* -----------------------
-   SCENES
+   SCENES (CENTER FIX)
 ------------------------*/
 .scene {
   position: absolute;
   width: 100%;
   height: 100%;
+
   display: none;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .scene.active {
-  display: block;
+  display: flex;
 }
 
 /* -----------------------
@@ -43,7 +49,7 @@ p {
 }
 
 /* -----------------------
-   BOY (MAIN CHARACTER)
+   BOY (HERO)
 ------------------------*/
 #boy {
   position: absolute;
@@ -51,7 +57,7 @@ p {
   left: 50%;
   transform: translateX(-50%);
 
-  width: clamp(180px, 25vw, 320px);
+  width: clamp(160px, 20vw, 260px);
   height: auto;
 
   z-index: 5;
@@ -59,12 +65,12 @@ p {
 }
 
 /* -----------------------
-   ANIMALS (NORMAL SIZE BASE)
+   ANIMALS (NORMAL SIZE)
 ------------------------*/
 .animal {
   position: absolute;
 
-  width: clamp(80px, 10vw, 140px);
+  width: clamp(70px, 8vw, 120px);
   height: auto;
 
   z-index: 3;
@@ -72,10 +78,10 @@ p {
 }
 
 /* -----------------------
-   POSITIONS
+   ANIMAL POSITIONS
 ------------------------*/
 #lion {
-  bottom: 8%;
+  bottom: 10%;
   left: 8%;
 }
 
@@ -86,7 +92,7 @@ p {
 
 #giraffe {
   top: 8%;
-  right: 5%;
+  right: 6%;
 }
 
 #monkey {
@@ -133,40 +139,15 @@ button {
 }
 
 /* -----------------------
-   ANIMATIONS
-------------------------*/
-@keyframes popIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes floatIn {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* -----------------------
    MOBILE
 ------------------------*/
 @media (max-width: 768px) {
   #boy {
-    width: 70vw;
+    width: 65vw;
   }
 
   .animal {
-    width: 22vw;
+    width: 20vw;
   }
 
   input, textarea {
