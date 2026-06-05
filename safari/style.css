@@ -55,14 +55,15 @@ p {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+
+  width: 100px;   /* smaller, more natural */
+  height: auto;
+
+  max-height: 35vh;
+
   z-index: 5;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
 
-  width: 25vw;
-  min-width: 140px;
-  max-width: 220px;
-
-  height: auto; /* KEEP THIS ONLY */
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
 }
 /* -----------------------
    ANIMALS (SMALL + CONSISTENT)
