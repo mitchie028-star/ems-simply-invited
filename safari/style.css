@@ -1,206 +1,197 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  }
+}
 
 body {
-font-family: Arial, sans-serif;
-overflow: hidden;
-height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  height: 100vh;
 
-background: url("./assets/safari-bg.png") center/cover no-repeat;
-color: white;
+  background: url("./assets/safari-bg.png") center/cover no-repeat;
+  color: white;
 }
 
-/* OVERLAY */
 .overlay {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.25);
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
 }
 
-/* SCENES */
 .scene {
-position: absolute;
-inset: 0;
+  position: absolute;
+  inset: 0;
 
-display: none;
+  display: none;
 
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-text-align: center;
+  text-align: center;
 }
 
 .scene.active {
-display: flex;
-animation: fadeIn 0.8s ease;
+  display: flex;
+  animation: fadeIn 0.8s ease;
 }
 
 @keyframes fadeIn {
-from { opacity: 0; transform: scale(0.95); }
-to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* TEXT */
 h1 { font-size: 3rem; }
 h2 { font-size: 2rem; margin-top: 10px; }
 h3, p { font-size: 1.2rem; }
 
-/* SCENE 2 BOY */
+/* Explorer */
 .baby {
-width: min(80vw, 450px);
-animation: breathe 3s ease-in-out infinite;
+  width: min(80vw, 450px);
+  animation: breathe 3s ease-in-out infinite;
 }
 
 @keyframes breathe {
-0%,100% { transform: scale(1); }
-50% { transform: scale(1.03); }
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
-/* SCENE 3 AREA */
+/* Animal area */
 .animal-area {
-position: relative;
-width: 100%;
-height: 70vh;
+  position: relative;
+  width: 100%;
+  height: 70vh;
 }
 
-/* BOY CENTER FIXED */
+/* Center boy */
 .baby-center {
-position: absolute;
-left: 50%;
-bottom: 5%;
-transform: translateX(-50%);
-width: 280px;
-z-index: 10;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  width: 280px;
+  z-index: 10;
 
-animation: breathe 3s ease-in-out infinite;
+  animation: breathe 3s ease-in-out infinite;
 }
-
-/* ========== ANIMALS ========== */
 
 /* MONKEY */
 .monkey {
-position: absolute;
-left: 5%;
-top: 20%;
-width: 180px;
+  position: absolute;
+  left: 5%;
+  top: 20%;
+  width: 180px;
 
-animation:
-monkeyEnter 1s ease forwards,
-monkeySwing 2.5s ease-in-out infinite 1s;
+  animation: monkeyEnter 1s ease forwards,
+             monkeySwing 2.5s ease-in-out infinite 1s;
 }
 
 @keyframes monkeyEnter {
-from { opacity: 0; transform: translate(-120px,-40px) rotate(-20deg); }
-to { opacity: 1; transform: translate(0,0) rotate(0); }
+  from { opacity: 0; transform: translate(-120px,-40px) rotate(-20deg); }
+  to { opacity: 1; transform: translate(0,0) rotate(0); }
 }
 
 @keyframes monkeySwing {
-0%,100% { transform: rotate(-6deg); }
-50% { transform: rotate(6deg); }
+  0%,100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
 }
 
 /* PARROT */
 .parrot {
-position: absolute;
-left: 50%;
-top: 0;
-width: 120px;
-transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 120px;
+  transform: translateX(-50%);
 
-animation:
-parrotEnter 1s ease forwards,
-parrotFloat 3s ease-in-out infinite 1s;
+  animation: parrotEnter 1s ease forwards,
+             parrotFloat 3s ease-in-out infinite 1s;
 }
 
 @keyframes parrotEnter {
-from { opacity: 0; transform: translate(-50%,-120px); }
-to { opacity: 1; transform: translate(-50%,0); }
+  from { opacity: 0; transform: translate(-50%,-120px); }
+  to { opacity: 1; transform: translate(-50%,0); }
 }
 
 @keyframes parrotFloat {
-0%,100% { transform: translate(-50%,0); }
-50% { transform: translate(-50%,-18px); }
+  0%,100% { transform: translate(-50%,0); }
+  50% { transform: translate(-50%,-18px); }
 }
 
 /* LION */
 .lion {
-position: absolute;
-left: 10%;
-bottom: 10%;
-width: 200px;
+  position: absolute;
+  left: 10%;
+  bottom: 10%;
+  width: 200px;
 
-animation:
-lionEnter 1.2s ease forwards,
-breathe 4s ease-in-out infinite 1.2s;
+  animation: lionEnter 1.2s ease forwards,
+             breathe 4s ease-in-out infinite 1.2s;
 }
 
 @keyframes lionEnter {
-from { opacity: 0; transform: translateX(-120px); }
-to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(-120px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 /* ELEPHANT */
 .elephant {
-position: absolute;
-right: 10%;
-bottom: 8%;
-width: 240px;
+  position: absolute;
+  right: 10%;
+  bottom: 8%;
+  width: 240px;
 
-animation:
-elephantEnter 1.3s ease forwards,
-elephantSway 4s ease-in-out infinite 1.3s;
+  animation: elephantEnter 1.3s ease forwards,
+             elephantSway 4s ease-in-out infinite 1.3s;
 }
 
 @keyframes elephantEnter {
-from { opacity: 0; transform: translateX(160px); }
-to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(160px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes elephantSway {
-0%,100% { transform: translateY(0); }
-50% { transform: translateY(-6px); }
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* GIRAFFE */
 .giraffe {
-position: absolute;
-right: 5%;
-top: 5%;
-width: 230px;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 230px;
 
-animation:
-giraffeEnter 1.3s ease forwards,
-giraffeMove 4s ease-in-out infinite 1.3s;
+  animation: giraffeEnter 1.3s ease forwards,
+             giraffeMove 4s ease-in-out infinite 1.3s;
 }
 
 @keyframes giraffeEnter {
-from { opacity: 0; transform: translateX(140px); }
-to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(140px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes giraffeMove {
-0%,100% { transform: translateY(0); }
-50% { transform: translateY(-8px); }
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 /* RSVP */
 input, textarea {
-width: min(90vw, 320px);
-padding: 12px;
-margin: 6px 0;
-border-radius: 10px;
-border: none;
+  width: min(90vw, 320px);
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: none;
 }
 
 button {
-width: min(90vw, 320px);
-padding: 14px;
-background: #f4c542;
-border: none;
-border-radius: 10px;
-font-weight: bold;
+  width: min(90vw, 320px);
+  padding: 14px;
+  background: #f4c542;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
 }
