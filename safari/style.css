@@ -1,1 +1,151 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  overflow:hidden;
+  color:white;
+}
+
+.bg{
+  position:fixed;
+  inset:0;
+  background:url("./assets/safari-bg.png") center/cover no-repeat;
+  z-index:-2;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:-1;
+}
+
+.scene{
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:20px;
+
+  text-align:center;
+
+  opacity:0;
+  pointer-events:none;
+
+  transform:scale(1.05);
+
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.scene.active{
+  opacity:1;
+  pointer-events:auto;
+  transform:scale(1);
+}
+
+h1{
+  font-size:3rem;
+}
+
+h2{
+  font-size:2rem;
+}
+
+.baby{
+  width:220px;
+}
+
+.animal-area{
+  position:relative;
+  width:320px;
+  height:320px;
+}
+
+.animal-area img{
+  position:absolute;
+}
+
+.baby-center{
+  width:170px;
+  left:75px;
+  top:90px;
+}
+
+.parrot{
+  width:70px;
+  left:125px;
+  top:0;
+}
+
+.monkey{
+  width:90px;
+  left:0;
+  top:80px;
+}
+
+.giraffe{
+  width:90px;
+  right:0;
+  top:70px;
+}
+
+.lion{
+  width:90px;
+  left:20px;
+  bottom:20px;
+}
+
+.elephant{
+  width:100px;
+  right:20px;
+  bottom:20px;
+}
+
+input,
+textarea{
+  width:260px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+}
+
+button{
+  padding:14px 25px;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  h1{
+    font-size:2rem;
+  }
+
+  h2{
+    font-size:1.5rem;
+  }
+
+  .animal-area{
+    width:260px;
+    height:260px;
+  }
+
+  .baby-center{
+    width:130px;
+    left:65px;
+    top:80px;
+  }
+
+}
 
