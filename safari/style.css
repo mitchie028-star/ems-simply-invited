@@ -2,188 +2,382 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+  }
 
 body {
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-  height: 100vh;
-  background: url("./assets/safari-bg.png") center center/cover no-repeat;
-  color: white;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+font-family: Arial, sans-serif;
+
+background: url("./assets/safari-bg.png")
+center center / cover no-repeat;
+
+color: white;
 }
 
-/* =========================
-   BACKGROUND OVERLAY
-========================= */
+/* -------------------------
+ANIMATED LEAVES OVERLAY
+--------------------------*/
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: 1;
+body::before {
+content: "";
+
+position: fixed;
+inset: 0;
+
+background: url("./assets/leaves.png")
+center center / cover no-repeat;
+
+opacity: 0.15;
+
+animation: sway 10s ease-in-out infinite;
+
+pointer-events: none;
+z-index: 1;
 }
 
-/* =========================
-   SCENES SYSTEM
-========================= */
+@keyframes sway {
+0% {
+transform: translateX(-8px);
+}
+
+50% {
+transform: translateX(8px);
+}
+
+100% {
+transform: translateX(-8px);
+}
+}
+
+/* -------------------------
+SCENES
+--------------------------*/
 
 .scene {
-  position: absolute;
-  inset: 0;
+position: absolute;
+inset: 0;
 
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+display: none;
 
-  padding: 20px;
-  z-index: 3;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+text-align: center;
+padding: 20px;
+
+z-index: 2;
 }
 
 .scene.active {
-  display: flex;
+display: flex;
+
+animation: fadeIn 0.8s ease;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: scale(0.95);
+}
+
+to {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+/* -------------------------
+TYPOGRAPHY
+--------------------------*/
 
 h1 {
-  font-size: clamp(2rem, 6vw, 4rem);
-  margin-bottom: 15px;
+font-size: clamp(2rem, 6vw, 4rem);
+margin-bottom: 15px;
+
+text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 h2 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  margin-bottom: 15px;
+font-size: clamp(1.8rem, 5vw, 3rem);
+margin-top: 15px;
+
+text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 h3 {
-  font-size: clamp(1.2rem, 4vw, 2rem);
-  margin-bottom: 10px;
+font-size: clamp(1.2rem, 4vw, 2rem);
+margin-top: 10px;
+
+text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 p {
-  font-size: 1rem;
+font-size: 1.1rem;
+
+text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* =========================
-   SCENE 2 - EXPLORER
-========================= */
+/* -------------------------
+SCENE 2 EXPLORER
+--------------------------*/
 
 .baby {
-  width: min(45vw, 220px);
-  display: block;
-  margin: 0 auto;
-  animation: float 3s ease-in-out infinite;
+width: min(70vw, 420px);
+
+max-height: 70vh;
+
+object-fit: contain;
+
+animation: bounce 3s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes bounce {
+0%,
+100% {
+transform: translateY(0);
 }
 
-/* =========================
-   SCENE 3 - ANIMALS
-========================= */
+50% {
+transform: translateY(-12px);
+}
+}
+
+/* -------------------------
+SCENE 3
+--------------------------*/
 
 .animal-area {
-  position: relative;
-  width: min(90vw, 900px);
-  height: 60vh;
+position: relative;
+
+width: min(95vw, 1100px);
+height: 70vh;
 }
 
-/* ALL animals */
-.animal-area img {
-  position: absolute;
-  width: 80px;
-  height: auto;
-  object-fit: contain;
-}
+/* Explorer */
 
-/* center baby */
 .baby-center {
-  position: absolute;
-  width: 140px;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+position: absolute;
+
+bottom: 5%;
+left: 50%;
+
+transform: translateX(-50%);
+
+width: 260px;
+
+z-index: 5;
+
+animation: bounce 3s ease-in-out infinite;
 }
 
-/* animal positions (restored clean layout) */
+/* Parrot */
+
 .parrot {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
+position: absolute;
+
+top: 0;
+left: 50%;
+
+transform: translateX(-50%);
+
+width: 120px;
+
+animation: floatBird 4s ease-in-out infinite;
 }
+
+/* Monkey */
 
 .monkey {
-  top: 20%;
-  left: 5%;
-  width: 80px;
+position: absolute;
+
+top: 18%;
+left: 5%;
+
+width: 180px;
+
+animation: swing 4s ease-in-out infinite;
 }
+
+/* Giraffe */
 
 .giraffe {
-  top: 5%;
-  right: 5%;
-  width: 100px;
+position: absolute;
+
+top: 5%;
+right: 5%;
+
+width: 220px;
 }
+
+/* Lion */
 
 .lion {
-  bottom: 10%;
-  left: 10%;
-  width: 90px;
+position: absolute;
+
+bottom: 10%;
+left: 10%;
+
+width: 190px;
 }
+
+/* Elephant */
 
 .elephant {
-  bottom: 5%;
-  right: 10%;
-  width: 110px;
+position: absolute;
+
+bottom: 5%;
+right: 10%;
+
+width: 230px;
 }
 
-/* =========================
-   SCENE 6 - FORM
-========================= */
+/* -------------------------
+ANIMATIONS
+--------------------------*/
+
+@keyframes floatBird {
+0%,
+100% {
+transform:
+translateX(-50%)
+translateY(0);
+}
+
+50% {
+transform:
+translateX(-50%)
+translateY(-15px);
+}
+}
+
+@keyframes swing {
+0%,
+100% {
+transform: rotate(-4deg);
+}
+
+50% {
+transform: rotate(4deg);
+}
+}
+
+/* -------------------------
+INVITATION CARD
+--------------------------*/
+
+#scene4 h2,
+#scene4 h3,
+#scene4 p {
+background: rgba(0,0,0,0.35);
+
+padding: 10px 18px;
+
+border-radius: 12px;
+
+margin: 6px 0;
+}
+
+/* -------------------------
+RSVP
+--------------------------*/
+
+#scene6 {
+gap: 10px;
+}
 
 input,
 textarea {
-  width: min(90vw, 320px);
-  padding: 10px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 8px;
+width: min(90vw, 320px);
+
+padding: 12px;
+
+border: none;
+border-radius: 12px;
+
+font-size: 1rem;
+}
+
+textarea {
+min-height: 100px;
+
+resize: none;
 }
 
 button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  background: #f4c542;
-  font-weight: bold;
-  cursor: pointer;
+width: min(90vw, 320px);
+
+padding: 14px;
+
+border: none;
+border-radius: 12px;
+
+background: #f4c542;
+
+font-weight: bold;
+font-size: 1rem;
+
+cursor: pointer;
+
+transition: 0.3s;
 }
 
-/* =========================
-   MOBILE ADJUSTMENTS
-========================= */
+button:hover {
+transform: scale(1.05);
+}
+
+/* -------------------------
+MOBILE
+--------------------------*/
 
 @media (max-width: 768px) {
 
-  .baby {
-    width: 160px;
-  }
+.baby {
+width: 85vw;
+max-height: 60vh;
+}
 
-  .animal-area {
-    height: 50vh;
-  }
+.baby-center {
+width: 180px;
+}
 
-  .animal-area img {
-    width: 60px;
-  }
+.lion {
+width: 130px;
+left: 2%;
+}
 
-  .baby-center {
-    width: 110px;
-  }
+.elephant {
+width: 160px;
+right: 2%;
+}
+
+.giraffe {
+width: 150px;
+}
+
+.monkey {
+width: 130px;
+}
+
+.parrot {
+width: 90px;
+}
+
+.animal-area {
+height: 60vh;
+}
+
+h1 {
+font-size: 2rem;
+}
+
+h2 {
+font-size: 1.7rem;
+}
+
+h3 {
+font-size: 1.2rem;
+}
 }
