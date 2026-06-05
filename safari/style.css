@@ -14,41 +14,42 @@ body {
 }
 
 /* -----------------------
-   SCENES (CENTER FIX)
+   SCENES (NO FLEX — CLEAN LAYOUT)
 ------------------------*/
 .scene {
   position: absolute;
   width: 100%;
   height: 100%;
-
   display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
 }
 
 .scene.active {
-  display: flex;
+  display: block;
 }
 
 /* -----------------------
-   TEXT
+   TEXT (SAFE POSITIONING)
 ------------------------*/
-h1 {
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
+h1, p {
+  position: relative;
+  text-align: center;
   color: white;
   text-shadow: 0 3px 8px rgba(0,0,0,0.6);
 }
 
+/* Title placement */
+h1 {
+  margin-top: 40px;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+/* Subtitle */
 p {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: white;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 /* -----------------------
-   BOY (HERO - CONTROLLED SIZE)
+   BOY (CONTROLLED HERO SIZE)
 ------------------------*/
 #boy {
   position: absolute;
@@ -56,51 +57,48 @@ p {
   left: 50%;
   transform: translateX(-50%);
 
-  width: 50px;   /* smaller, more natural */
+  width: 90px;   /* FINAL SAFE SIZE */
   height: auto;
-
-  max-height: 35vh;
 
   z-index: 5;
 
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
 }
+
 /* -----------------------
-   ANIMALS (SMALL + CONSISTENT)
+   ANIMALS (SMALL + CLEAN)
 ------------------------*/
 .animal {
   position: absolute;
 
-  width: 90px;   /* FIXED consistent size */
+  width: 70px;   /* SAFE UNIFORM SIZE */
   height: auto;
 
   z-index: 3;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
 }
 
 /* -----------------------
-   CLEAN POSITIONING GRID
-   (relative to corners, not random %)
+   POSITIONING (SIMPLE GRID LOGIC)
 ------------------------*/
 
-/* Bottom left */
+/* Left bottom */
 #lion {
   bottom: 8%;
   left: 6%;
 }
 
-/* Bottom right */
+/* Right bottom */
 #elephant {
   bottom: 6%;
   right: 6%;
-  width: 120px; /* slightly bigger but controlled */
 }
 
 /* Top right */
 #giraffe {
   top: 6%;
   right: 6%;
-  width: 110px;
 }
 
 /* Top left */
@@ -114,22 +112,23 @@ p {
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
 }
 
 /* -----------------------
    RSVP FORM
 ------------------------*/
 form {
+  position: relative;
+  margin: 20px auto 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 
   background: rgba(0,0,0,0.4);
   padding: 12px;
   border-radius: 10px;
 
-  backdrop-filter: blur(5px);
+  width: fit-content;
 }
 
 input, textarea {
@@ -155,11 +154,11 @@ button {
 ------------------------*/
 @media (max-width: 768px) {
   #boy {
-    width: 140px;
+    width: 70px;
   }
 
   .animal {
-    width: 60px;
+    width: 55px;
   }
 
   input, textarea {
