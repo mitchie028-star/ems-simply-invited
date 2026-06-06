@@ -1,104 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ethan's Wild One Safari Adventure</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safari Invitation</title>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-<div class="start-screen" id="startScreen">
+<!-- INTRO -->
+<div id="startScreen" class="start-screen">
   <div class="intro-content">
-    <h1>LET'S GET WILD! 🌿</h1>
-    <p>Ethan is turning 4!</p>
-    <span>Tap to begin Ethan's adventure</span>
+    <h1>LET'S GET WILD</h1>
+    <p>Tap to begin the adventure</p>
+    <span>Safari Invitation</span>
   </div>
 </div>
 
-<audio id="jungle" preload="auto">
-  <source src="./assets/jungle.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="whoosh" preload="auto">
-  <source src="./assets/whoosh.mp3" type="audio/mpeg">
-</audio>
-
-<video id="bgVideo" class="bg-video" playsinline preload="auto">
-  <source src="./assets/safari-bg.mp4" type="video/mp4">
+<!-- BACKGROUND VIDEO -->
+<video id="bgVideo" class="bg-video" playsinline muted loop>
+  <source src="./assets/safari-bg.mp4" type="video/mp4" />
 </video>
 
-<img src="./assets/leaf-top-left.png" class="leaf leaf-left" alt="">
-<img src="./assets/leaf-top-left.png" class="leaf leaf-right" alt="">
+<!-- SOUND -->
+<audio id="whoosh" src="./assets/whoosh.mp3" preload="auto"></audio>
 
-<img src="./assets/boy.png" id="ethan" class="baby" alt="Ethan">
+<!-- SCENE -->
+<div class="scene">
 
-<div class="title" id="title">
-  LET'S GET WILD!
-</div>
+  <!-- ETHAN -->
+  <img id="ethan" class="baby" src="./assets/ethan.png" alt="Ethan" />
 
-<div class="rsvp-scene" id="rsvp">
-  <div class="card">
-
-    <h2>You're Invited 🌿</h2>
-
-    <p class="event-name">
-      Ethan's Wild One Safari Adventure
-    </p>
-
-    <form id="rsvpForm">
-
-      <input
-        type="text"
-        placeholder="Your Name"
-        required
-      >
-
-      <div class="radio-group">
-
-        <label>
-          <input
-            type="radio"
-            name="attending"
-            value="yes"
-            required
-          >
-          Yes, we'll be there!
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="attending"
-            value="no"
-          >
-          Sorry, can't make it
-        </label>
-
-      </div>
-
-      <div class="location">
-        📍 Shakey's Matalino
-      </div>
-
-      <a
-        class="map-btn"
-        href="https://maps.google.com/?q=Shakeys+Matalino"
-        target="_blank"
-      >
-        View Map
-      </a>
-
-      <button type="submit">
-        Submit RSVP
-      </button>
-
-    </form>
-
+  <!-- TITLE -->
+  <div id="title" class="title">
+    Ethan’s Wild One Safari Adventure
   </div>
+
+  <!-- RSVP -->
+  <div id="rsvp" class="rsvp-scene">
+    <div class="card">
+      <h2>RSVP</h2>
+
+      <form id="rsvpForm">
+        <input type="text" placeholder="Your Name" required />
+
+        <div class="radio-group">
+          <label><input type="radio" name="attend" value="yes" /> I will attend</label>
+          <label><input type="radio" name="attend" value="no" /> I cannot attend</label>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
