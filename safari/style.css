@@ -1,5 +1,5 @@
 /* =========================
-   RESET
+   GLOBAL
 ========================= */
 
 * {
@@ -10,12 +10,15 @@
 
 body {
   overflow: hidden;
-  font-family: Arial, sans-serif;
+
+  /* 🧭 Safari-friendly font stack */
+  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+
   background: black;
 }
 
 /* =========================
-   VIDEO (FULLSCREEN)
+   VIDEO
 ========================= */
 
 .bg-video {
@@ -28,7 +31,7 @@ body {
 }
 
 /* =========================
-   INTRO SCREEN (CENTERED)
+   INTRO
 ========================= */
 
 .start-screen {
@@ -37,6 +40,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   text-align: center;
 
   background: rgba(0,0,0,0.6);
@@ -47,7 +51,7 @@ body {
 }
 
 /* =========================
-   LEAVES (CURTAIN OPEN)
+   LEAVES
 ========================= */
 
 .leaf {
@@ -59,23 +63,15 @@ body {
   z-index: 40;
 }
 
-.leaf-left {
-  left: -5%;
-}
-
+.leaf-left { left: -5%; }
 .leaf-right {
   right: -5%;
   transform: translateY(-50%) scaleX(-1);
 }
 
-/* OPEN ANIMATION */
-.open .leaf-left {
-  animation: openLeft 2s ease forwards;
-}
-
-.open .leaf-right {
-  animation: openRight 2s ease forwards;
-}
+/* open animation */
+.open .leaf-left { animation: openLeft 2s ease forwards; }
+.open .leaf-right { animation: openRight 2s ease forwards; }
 
 @keyframes openLeft {
   to { left: -40%; }
@@ -92,7 +88,7 @@ body {
 .baby {
   position: fixed;
   left: 50%;
-  bottom: 0%;   /* 🔥 LOWERED MORE */
+  bottom: -2%; /* 🔥 LOWER THAN BEFORE */
 
   transform: translateX(-50%);
   width: min(340px, 38vw);
@@ -128,7 +124,7 @@ body {
 }
 
 /* =========================
-   RSVP FULL SCENE
+   RSVP SCENE (MOVED LOWER)
 ========================= */
 
 .rsvp-scene {
@@ -137,7 +133,9 @@ body {
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end; /* 🔥 pushes DOWN */
+
+  padding-bottom: 20px;
 
   z-index: 80;
 
@@ -149,21 +147,45 @@ body {
 
 .rsvp-scene .card {
   background: rgba(255,255,255,0.95);
-  padding: 25px;
-  border-radius: 16px;
+  padding: 18px;
+  border-radius: 14px;
   text-align: center;
 
-  width: min(320px, 80vw);
+  width: min(320px, 85vw);
 
   box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 
+/* FORM */
+.rsvp-scene input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
 .rsvp-scene button {
-  margin-top: 15px;
-  padding: 10px 16px;
+  margin-top: 12px;
+  padding: 10px 14px;
+
   border: none;
   border-radius: 10px;
+
   background: #2d6a4f;
   color: white;
+
   cursor: pointer;
+}
+
+/* MAP */
+.map iframe {
+  width: 100%;
+  height: 120px;
+
+  margin-top: 10px;
+
+  border-radius: 10px;
+  border: none;
 }
