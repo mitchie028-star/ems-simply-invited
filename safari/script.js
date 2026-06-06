@@ -1,62 +1,125 @@
 window.addEventListener("load", () => {
 
-  const startScreen = document.getElementById("startScreen");
-  const video = document.getElementById("bgVideo");
+const startScreen =
+document.getElementById("startScreen");
 
-  const jungle = document.getElementById("jungle");
-  const whoosh = document.getElementById("whoosh");
+const video =
+document.getElementById("bgVideo");
 
-  const ethan = document.getElementById("ethan");
-  const title = document.getElementById("title");
-  const rsvp = document.getElementById("rsvp");
+const jungle =
+document.getElementById("jungle");
 
-  function playAudio(audio, volume = 1) {
-    if (!audio) return;
-    audio.volume = volume;
-    audio.currentTime = 0;
-    audio.play().catch(err => {
-      console.log("Audio blocked:", err);
-    });
+const whoosh =
+document.getElementById("whoosh");
+
+const ethan =
+document.getElementById("ethan");
+
+const title =
+document.getElementById("title");
+
+const rsvp =
+document.getElementById("rsvp");
+
+const form =
+document.getElementById("rsvpForm");
+
+startScreen.addEventListener("click", async () => {
+
+```
+startScreen.style.display = "none";
+
+try{
+  await video.play();
+}catch(err){}
+
+document.body.classList.add("open");
+
+/* Jungle fade in */
+
+jungle.volume = 0;
+
+jungle.play().catch(()=>{});
+
+let volume = 0;
+
+const fade = setInterval(() => {
+
+  volume += 0.02;
+
+  if(volume >= 0.35){
+
+    volume = 0.35;
+
+    clearInterval(fade);
   }
 
-  startScreen.addEventListener("click", async () => {
+  jungle.volume = volume;
 
-    startScreen.style.display = "none";
+},120);
 
-    /* 🎥 VIDEO */
-    await video.play().catch(()=>{});
+/* Whoosh */
 
-    /* 🌿 OPEN LEAVES */
-    document.body.classList.add("open");
+setTimeout(() => {
 
-    /* 🎧 SOUND START */
+  whoosh.volume = 0.8;
+  whoosh.play().catch(()=>{});
 
-    // jungle ambience (continuous background)
-    setTimeout(() => {
-      jungle.volume = 0.4;
-      jungle.play().catch(()=>{});
-    }, 500);
+},700);
 
-    // whoosh (leaf opening)
-    setTimeout(() => {
-      playAudio(whoosh, 0.8);
-    }, 800);
+/* Ethan */
 
-    /* 👶 ETHAN */
-    setTimeout(() => {
-      ethan.style.opacity = "1";
-    }, 2000);
+setTimeout(() => {
+  ethan.classList.add("show");
+},2000);
 
-    /* 📝 TITLE */
-    setTimeout(() => {
-      title.style.opacity = "1";
-    }, 3200);
+/* Title */
 
-    /* ✉️ RSVP */
-    setTimeout(() => {
-      rsvp.style.opacity = "1";
-    }, 4500);
+setTimeout(() => {
+  title.classList.add("show");
+},3200);
 
-  });
+/* RSVP */
+
+setTimeout(() => {
+  rsvp.classList.add("show");
+},4500);
+```
+
+});
+
+form.addEventListener("submit", (e) => {
+
+```
+e.preventDefault();
+
+document.body.innerHTML = `
+  <div style="
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:#0f2418;
+    color:white;
+    font-family:Trebuchet MS, Arial;
+    text-align:center;
+    padding:20px;
+  ">
+    <h1>🌿 Thank You!</h1>
+    <br>
+    <p>
+      You're officially part of
+      Ethan's Wild One Safari Adventure
+    </p>
+    <br>
+    <p>
+      See you at Shakey's Matalino!
+    </p>
+  </div>
+`;
+```
+
+});
 
 });
