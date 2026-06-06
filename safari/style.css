@@ -10,8 +10,6 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-
-  /* jungle night base (no harsh black) */
   background: #0b0f0c;
 }
 
@@ -34,7 +32,7 @@ html, body {
 }
 
 /* =========================
-   START SCREEN (FILM OVERLAY)
+   START SCREEN
 ========================= */
 .start-screen {
   position: fixed;
@@ -54,58 +52,67 @@ html, body {
 
 .intro-content {
   background: rgba(0, 0, 0, 0.2);
-  padding: 28px 38px;
-  border-radius: 18px;
+  padding: 22px 28px;
+  border-radius: 16px;
   backdrop-filter: blur(2px);
 }
 
-/* TITLE (LION KING STYLE) */
+/* HERO TITLE (FIXED SIZE) */
 .intro-content h1 {
   font-family: "Cinzel", serif;
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: clamp(1.8rem, 4.2vw, 3.6rem);
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #F5F1E6;
-
-  text-shadow: 0 0 18px rgba(212, 163, 115, 0.25);
+  margin: 0;
+  line-height: 1.15;
+  text-align: center;
 }
 
 /* =========================
-   LEAVES (CLEAN CURTAIN)
+   LEAF SYSTEM (2-LAYER STACK)
 ========================= */
 .leaf {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 50%;
+  width: 55%;
   background-image: url("./assets/leaf-top-left.png");
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: 20;
   transition: transform 1.2s ease;
-
-  filter: saturate(1.05) contrast(1.05);
 }
 
-/* LEFT */
-.left-leaf {
+/* LEFT SIDE */
+.left {
   left: 0;
   background-position: left center;
 }
 
-/* RIGHT (mirrored seamless alignment) */
-.right-leaf {
+/* RIGHT SIDE */
+.right {
   right: 0;
-  transform: scaleX(-1);
   background-position: left center;
+  transform: scaleX(-1);
 }
 
-/* OPEN STATE */
-body.open .left-leaf {
-  transform: translateX(-100%);
+/* DEPTH LAYERS */
+.leaf-back {
+  z-index: 20;
+  opacity: 0.95;
 }
 
-body.open .right-leaf {
-  transform: translateX(100%) scaleX(-1);
+.leaf-front {
+  z-index: 25;
+  opacity: 1;
+}
+
+/* OPEN ANIMATION */
+body.open .left {
+  transform: translateX(-110%);
+}
+
+body.open .right {
+  transform: translateX(110%) scaleX(-1);
 }
