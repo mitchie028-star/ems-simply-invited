@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&display=swap');
 
+/* =========================
+   RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +17,7 @@ html, body {
 }
 
 /* =========================
-   VIDEO BACKGROUND
+   BACKGROUND VIDEO
 ========================= */
 .bg-video {
   position: fixed;
@@ -32,7 +35,7 @@ html, body {
 }
 
 /* =========================
-   START SCREEN
+   START SCREEN (SCENE 1 ENTRY)
 ========================= */
 .start-screen {
   position: fixed;
@@ -60,11 +63,10 @@ html, body {
   color: #F5F1E6;
   text-align: center;
   line-height: 1.15;
-  margin: 0;
 }
 
 /* =========================
-   FULL SCREEN LEAVES OVERLAY
+   SCENE 1 OVERLAY (LEAVES ZOOM)
 ========================= */
 .jungle-overlay {
   position: fixed;
@@ -77,17 +79,20 @@ html, body {
   transform: scale(1);
   opacity: 1;
 
-  /* SLOW CINEMATIC TRANSITION */
   transition:
     transform 3.2s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 3.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ENTER JUNGLE (ZOOM OUT + FADE) */
+/* ENTER JUNGLE ANIMATION */
 body.open .jungle-overlay {
   transform: scale(2.2);
   opacity: 0;
 }
+
+/* =========================
+   SCENE 2 LAYER
+========================= */
 .scene2 {
   position: fixed;
   inset: 0;
@@ -104,11 +109,22 @@ body.open .jungle-overlay {
   opacity: 0;
 
   width: min(320px, 70vw);
-  transition: all 1.2s ease;
+
+  transition:
+    transform 1.2s ease,
+    opacity 1.2s ease;
+
   filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
 }
 
-/* TITLE (SCENE 2) */
+/* SCENE 2 ACTIVE ETHAN */
+body.scene2-active .ethan {
+  bottom: 0;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* TITLE SCENE 2 */
 .title2 {
   position: absolute;
   top: 18px;
@@ -122,16 +138,12 @@ body.open .jungle-overlay {
   color: #F5F1E6;
   text-align: center;
 
-  transition: all 1s ease;
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
 }
 
-/* ACTIVE SCENE 2 */
-body.scene2-active .ethan {
-  bottom: 0px;
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
+/* SCENE 2 TITLE ACTIVE */
 body.scene2-active .title2 {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
