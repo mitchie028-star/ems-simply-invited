@@ -10,34 +10,40 @@
 
 <body>
 
-<!-- INTRO -->
+<!-- 🌿 INTRO SCREEN -->
 <div class="start-screen" id="startScreen">
-  <h1>Let’s Get Wild with Ethan 🌿</h1>
-  <p>Tap anywhere to begin the safari</p>
+  <div>
+    <h1>Let’s Get Wild with Ethan 🌿</h1>
+    <p>Tap anywhere to begin the safari</p>
+  </div>
 </div>
 
-<!-- VIDEO -->
+<!-- 🎥 BACKGROUND VIDEO -->
 <video class="bg-video" id="bgVideo" muted playsinline preload="auto">
   <source src="./assets/safari-bg.mp4" type="video/mp4">
 </video>
 
-<!-- OVERLAY -->
-<div class="overlay"></div>
+<!-- 🌿 LEAVES (OPENING CURTAIN) -->
+<img src="./assets/leaf-top-left.png" class="leaf leaf-left" id="leafLeft">
+<img src="./assets/leaf-top-left.png" class="leaf leaf-right" id="leafRight">
 
-<!-- ETHAN -->
+<!-- 👶 ETHAN -->
 <img src="./assets/boy.png" class="baby" id="ethan">
 
-<!-- TITLE -->
-<div class="title" id="title">
-  LET'S GET WILD!
-</div>
+<!-- 📝 TITLE -->
+<div class="title" id="title">LET'S GET WILD!</div>
 
-<!-- RSVP -->
-<div class="rsvp" id="rsvp">
-  RSVP • Location • Details
+<!-- ✉️ RSVP SCENE -->
+<div class="rsvp-scene" id="rsvp">
+  <div class="card">
+    <h2>Invitation Details</h2>
+    <p>📍 Location: Safari Jungle Party</p>
+    <p>🗓 Date: Coming Soon</p>
+    <p>🎉 RSVP: Confirm Your Attendance</p>
+    <button>RSVP NOW</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
