@@ -1,41 +1,43 @@
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
 
-  console.log("Safari JS loaded ✔");
+  const startScreen = document.getElementById("startScreen");
+  const video = document.getElementById("bgVideo");
+  const ethan = document.getElementById("ethan");
+  const title = document.getElementById("title");
+  const rsvp = document.getElementById("rsvp");
 
-  const startBtn = document.getElementById("startBtn");
+  // STEP 1: CLICK TO START
+  startScreen.addEventListener("click", async () => {
 
-  const whoosh1 = document.getElementById("whoosh1");
-  const whoosh2 = document.getElementById("whoosh2");
-  const roar = document.getElementById("roar");
+    // hide intro
+    startScreen.style.opacity = "0";
+    startScreen.style.pointerEvents = "none";
 
-  if (!startBtn) {
-    console.log("Start button missing ❌");
-    return;
-  }
+    setTimeout(() => {
+      startScreen.style.display = "none";
+    }, 800);
 
-  startBtn.addEventListener("click", () => {
-
-    console.log("Start clicked ✔");
-
-    startBtn.style.display = "none";
-
-    function play(audio, vol){
-      if (!audio) {
-        console.log("Missing audio element ❌");
-        return;
-      }
-
-      audio.currentTime = 0;
-      audio.volume = vol;
-
-      audio.play()
-        .then(() => console.log("Playing:", audio.id))
-        .catch(err => console.log("Audio blocked:", err));
+    // STEP 2: play video
+    try {
+      await video.play();
+    } catch (e) {
+      console.log("Video autoplay blocked");
     }
 
-    setTimeout(() => play(whoosh1, 0.6), 900);
-    setTimeout(() => play(whoosh2, 0.5), 4500);
-    setTimeout(() => play(roar, 0.7), 6000);
+    // STEP 3: Ethan appears (after 3s)
+    setTimeout(() => {
+      ethan.style.opacity = "1";
+    }, 3000);
+
+    // STEP 4: Title reveal (5s)
+    setTimeout(() => {
+      title.style.opacity = "1";
+    }, 5000);
+
+    // STEP 5: RSVP reveal (7s)
+    setTimeout(() => {
+      rsvp.style.opacity = "1";
+    }, 7000);
 
   });
 
