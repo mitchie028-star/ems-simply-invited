@@ -14,7 +14,7 @@ html, body {
 }
 
 /* =========================
-   VIDEO (CINEMATIC GRADE)
+   VIDEO BACKGROUND
 ========================= */
 .bg-video {
   position: fixed;
@@ -26,13 +26,13 @@ html, body {
 
   filter:
     contrast(1.15)
-    saturate(1.25)
+    saturate(1.2)
     brightness(0.85)
     hue-rotate(-6deg);
 }
 
 /* =========================
-   START SCREEN
+   START SCREEN (NO BOX)
 ========================= */
 .start-screen {
   position: fixed;
@@ -51,27 +51,25 @@ html, body {
 }
 
 .intro-content {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 22px 28px;
-  border-radius: 16px;
-  backdrop-filter: blur(2px);
+  background: transparent;
+  padding: 0;
 }
 
-/* HERO TITLE (FIXED SIZE) */
+/* TITLE */
 .intro-content h1 {
   font-family: "Cinzel", serif;
-  font-size: clamp(1.8rem, 4.2vw, 3.6rem);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #F5F1E6;
-  margin: 0;
-  line-height: 1.15;
   text-align: center;
+  line-height: 1.15;
+  margin: 0;
 }
 
 /* =========================
-   LEAF SYSTEM (2-LAYER STACK)
+   LEAVES (SIMPLE CURTAIN)
 ========================= */
 .leaf {
   position: fixed;
@@ -81,34 +79,24 @@ html, body {
   background-image: url("./assets/leaf-top-left.png");
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: 20;
   transition: transform 1.2s ease;
 }
 
-/* LEFT SIDE */
+/* LEFT */
 .left {
   left: 0;
   background-position: left center;
 }
 
-/* RIGHT SIDE */
+/* RIGHT */
 .right {
   right: 0;
-  background-position: left center;
+  background-position: right center;
   transform: scaleX(-1);
 }
 
-/* DEPTH LAYERS */
-.leaf-back {
-  z-index: 20;
-  opacity: 0.95;
-}
-
-.leaf-front {
-  z-index: 25;
-  opacity: 1;
-}
-
-/* OPEN ANIMATION */
+/* OPEN */
 body.open .left {
   transform: translateX(-110%);
 }
