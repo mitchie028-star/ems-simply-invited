@@ -2,145 +2,168 @@
    RESET
 ========================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    overflow:hidden;
-    font-family:Arial, sans-serif;
-    background:#000;
-}
-
-/* =========================
-   FULLSCREEN VIDEO (FIXED)
-========================= */
-
-.bg-video{
-    position:fixed;
-    top:0;
-    left:0;
-
-    width:100vw;
-    height:100vh;
-
-    object-fit:cover;
-
-    z-index:1;
-}
-
-/* DARK OVERLAY */
-.overlay{
-    position:fixed;
-    inset:0;
-
-    background:radial-gradient(circle at center,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.7)
-    );
-
-    z-index:2;
+body {
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: black;
 }
 
 /* =========================
-   INTRO SCREEN (FIXED CENTER)
+   VIDEO (FULLSCREEN)
 ========================= */
 
-.start-screen{
-    position:fixed;
-    inset:0;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-
-    background:rgba(0,0,0,0.6);
-    color:white;
-
-    z-index:1000;
-
-    cursor:pointer;
-}
-
-.start-screen h1{
-    font-size:clamp(2rem,5vw,3.5rem);
-    text-align:center;
-}
-
-.start-screen p{
-    margin-top:10px;
-    opacity:0.8;
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
 }
 
 /* =========================
-   ETHAN (FIXED LOWER POSITION)
+   INTRO SCREEN (CENTERED)
 ========================= */
 
-.baby{
-    position:fixed;
+.start-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
-    left:50%;
-    bottom:3%;   /* 🔥 LOWERED */
+  background: rgba(0,0,0,0.6);
+  color: white;
 
-    transform:translateX(-50%);
-
-    width:min(340px,38vw);
-
-    opacity:0;
-    z-index:50;
-
-    transition:1.2s ease;
-
-    filter:drop-shadow(0 12px 25px rgba(0,0,0,0.6));
+  z-index: 1000;
+  cursor: pointer;
 }
 
 /* =========================
-   TITLE (CENTER TOP)
+   LEAVES (CURTAIN OPEN)
 ========================= */
 
-.title{
-    position:fixed;
-    top:6%;
-    left:50%;
+.leaf {
+  position: fixed;
+  top: 50%;
+  width: 60vw;
+  max-width: 900px;
+  transform: translateY(-50%);
+  z-index: 40;
+}
 
-    transform:translateX(-50%);
+.leaf-left {
+  left: -5%;
+}
 
-    width:100%;
-    text-align:center;
+.leaf-right {
+  right: -5%;
+  transform: translateY(-50%) scaleX(-1);
+}
 
-    color:white;
-    font-size:clamp(2rem,5vw,4rem);
-    font-weight:bold;
+/* OPEN ANIMATION */
+.open .leaf-left {
+  animation: openLeft 2s ease forwards;
+}
 
-    z-index:60;
-    opacity:0;
+.open .leaf-right {
+  animation: openRight 2s ease forwards;
+}
 
-    transition:1s ease;
+@keyframes openLeft {
+  to { left: -40%; }
+}
+
+@keyframes openRight {
+  to { right: -40%; }
 }
 
 /* =========================
-   RSVP
+   ETHAN (LOWERED MORE)
 ========================= */
 
-.rsvp{
-    position:fixed;
-    bottom:8%;
-    right:5%;
+.baby {
+  position: fixed;
+  left: 50%;
+  bottom: 0%;   /* 🔥 LOWERED MORE */
 
-    color:white;
+  transform: translateX(-50%);
+  width: min(340px, 38vw);
 
-    z-index:60;
-    opacity:0;
+  opacity: 0;
+  z-index: 50;
 
-    padding:10px 14px;
-    border-radius:12px;
+  transition: 1.2s ease;
 
-    border:1px solid rgba(255,255,255,0.25);
-    backdrop-filter:blur(8px);
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+}
 
-    transition:1s ease;
+/* =========================
+   TITLE
+========================= */
+
+.title {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: white;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: bold;
+
+  z-index: 60;
+  opacity: 0;
+
+  transition: 1s ease;
+
+  text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   RSVP FULL SCENE
+========================= */
+
+.rsvp-scene {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 80;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 1s ease;
+}
+
+.rsvp-scene .card {
+  background: rgba(255,255,255,0.95);
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+
+  width: min(320px, 80vw);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.rsvp-scene button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #2d6a4f;
+  color: white;
+  cursor: pointer;
 }
