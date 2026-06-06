@@ -10,7 +10,7 @@
 
 <body>
 
-<!-- 🌿 INTRO SCREEN -->
+<!-- 🌿 INTRO -->
 <div class="start-screen" id="startScreen">
   <div>
     <h1>Let’s Get Wild with Ethan 🌿</h1>
@@ -18,29 +18,45 @@
   </div>
 </div>
 
-<!-- 🎥 BACKGROUND VIDEO -->
+<!-- 🎥 VIDEO -->
 <video class="bg-video" id="bgVideo" muted playsinline preload="auto">
   <source src="./assets/safari-bg.mp4" type="video/mp4">
 </video>
 
-<!-- 🌿 LEAVES (OPENING CURTAIN) -->
-<img src="./assets/leaf-top-left.png" class="leaf leaf-left" id="leafLeft">
-<img src="./assets/leaf-top-left.png" class="leaf leaf-right" id="leafRight">
+<!-- 🌿 LEAVES -->
+<img src="./assets/leaf-top-left.png" class="leaf leaf-left">
+<img src="./assets/leaf-top-left.png" class="leaf leaf-right">
 
 <!-- 👶 ETHAN -->
 <img src="./assets/boy.png" class="baby" id="ethan">
 
 <!-- 📝 TITLE -->
-<div class="title" id="title">ETHAN IS TURNING 4!</div>
+<div class="title" id="title">LET'S GET WILD!</div>
 
-<!-- ✉️ RSVP SCENE -->
+<!-- ✉️ RSVP + MAP (LOWERED) -->
 <div class="rsvp-scene" id="rsvp">
+
   <div class="card">
-    <h2>Invitation Details</h2>
-    <p>📍 Location: Safari Jungle Party</p>
-    <p>🗓 Date: Coming Soon</p>
-    <p>🎉 RSVP: Confirm Your Attendance</p>
-    <button>RSVP NOW</button>
+
+    <h2>You're Invited 🌿</h2>
+
+    <p><b>Ethan’s Wild One Safari Adventure</b></p>
+
+    <!-- RSVP FORM -->
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <button type="submit">Confirm RSVP</button>
+    </form>
+
+    <!-- MAP -->
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps?q=Quezon+City&output=embed"
+        loading="lazy">
+      </iframe>
+    </div>
+
   </div>
 </div>
 
