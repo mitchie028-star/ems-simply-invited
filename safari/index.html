@@ -10,7 +10,7 @@
 
 <body>
 
-<!-- SCENE 1 -->
+<!-- SCENE 1 START -->
 <div id="startScreen" class="start-screen">
   <h1 class="hero-title">Ethan Safari Adventure Awaits</h1>
 </div>
@@ -22,7 +22,7 @@
   <source src="./assets/safari-bg.mp4" type="video/mp4" />
 </video>
 
-<!-- SCENE 2 (ETHAN + TITLE) -->
+<!-- SCENE 2 -->
 <div class="scene2">
 
   <div class="title2">
@@ -34,15 +34,25 @@
 
 </div>
 
-<!-- SCENE 3 (RSVP) -->
+<!-- SCENE 3 -->
 <div class="scene3">
 
-  <div class="location">📍 Safari Park Adventure</div>
+  <a class="location"
+     href="https://www.google.com/maps/search/?api=1&query=Shakey's+Matalino+Quezon+City"
+     target="_blank">
+    📍 Shakey's Matalino
+  </a>
 
   <div class="rsvp-card">
     <h3>RSVP</h3>
-    <p>Will you join the adventure?</p>
-    <button>Yes, I’m coming</button>
+    <p class="rsvp-question">Will you join the adventure?</p>
+
+    <div class="rsvp-buttons">
+      <button class="yes">Yes, I'm coming</button>
+      <button class="no">Not this time</button>
+    </div>
+
+    <p class="rsvp-note">We’ll collect details soon ✨</p>
   </div>
 
 </div>
