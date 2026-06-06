@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Safari Scene 1</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -11,8 +12,9 @@
 
 <!-- START SCREEN -->
 <div id="startScreen" class="start-screen">
-  <div>
+  <div class="intro-content">
     <h1>Tap to Begin</h1>
+    <p>Safari Adventure Awaits</p>
   </div>
 </div>
 
@@ -20,11 +22,16 @@
 <div class="leaf left-leaf"></div>
 <div class="leaf right-leaf"></div>
 
-<!-- VIDEO -->
+<!-- VIDEO BACKGROUND -->
 <video id="bgVideo" class="bg-video" playsinline muted loop preload="auto">
   <source src="./assets/safari-bg.mp4" type="video/mp4" />
 </video>
 
+<!-- AUDIO -->
+<audio id="jungleAudio" src="./assets/jungle.mp3" loop preload="auto"></audio>
+<audio id="whooshAudio" src="./assets/whoosh.mp3" preload="auto"></audio>
+
 <script src="script.js"></script>
+
 </body>
 </html>
