@@ -1,11 +1,11 @@
 window.addEventListener("load", () => {
 
   const startScreen = document.getElementById("startScreen");
+  const overlay = document.getElementById("jungleOverlay");
   const video = document.getElementById("bgVideo");
   const jungleAudio = document.getElementById("jungleAudio");
   const whooshAudio = document.getElementById("whooshAudio");
 
-  // PRELOAD VIDEO FRAME
   video.muted = true;
   video.playsInline = true;
 
@@ -13,7 +13,6 @@ window.addEventListener("load", () => {
     video.currentTime = 0.1;
   });
 
-  // CLICK START
   startScreen.addEventListener("click", async () => {
 
     startScreen.style.display = "none";
@@ -25,23 +24,31 @@ window.addEventListener("load", () => {
       whooshAudio.play().catch(() => {});
     }
 
-    // OPEN LEAVES
+    // OPEN JUNGLE (ZOOM OUT OVERLAY)
     document.body.classList.add("open");
 
-    // JUNGLE AMBIENCE
+    // STOP WHOOSH AFTER TRANSITION
+    setTimeout(() => {
+      if (whooshAudio) {
+        whooshAudio.pause();
+        whooshAudio.currentTime = 0;
+      }
+    }, 1500);
+
+    // START AMBIENCE
     if (jungleAudio) {
       jungleAudio.volume = 0.5;
       jungleAudio.play().catch(() => {});
     }
 
-    // START VIDEO AFTER OPENING BEGINS
+    // START VIDEO SLIGHTLY AFTER TRANSITION STARTS
     setTimeout(async () => {
       try {
         await video.play();
       } catch (e) {
-        console.log("Video blocked:", e);
+        console.log(e);
       }
-    }, 400);
+    }, 500);
 
   });
 
