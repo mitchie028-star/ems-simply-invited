@@ -10,41 +10,44 @@
 
 <body>
 
-<!-- =========================
-     SCENE 1: START SCREEN
-========================= -->
+<!-- SCENE 1 -->
 <div id="startScreen" class="start-screen">
   <h1 class="hero-title">Ethan Safari Adventure Awaits</h1>
 </div>
 
-<!-- =========================
-     SCENE 1: LEAVES OVERLAY
-========================= -->
 <div id="jungleOverlay" class="jungle-overlay"></div>
 
-<!-- =========================
-     BACKGROUND VIDEO
-========================= -->
+<!-- BACKGROUND VIDEO -->
 <video id="bgVideo" class="bg-video" playsinline muted loop preload="auto">
   <source src="./assets/safari-bg.mp4" type="video/mp4" />
 </video>
 
-<!-- =========================
-     SCENE 2: MAIN CONTENT
-========================= -->
+<!-- SCENE 2 (ETHAN + TITLE) -->
 <div class="scene2">
+
+  <div class="title2">
+    Ethan is turning 4!
+    <span class="subtitle">Join the adventure</span>
+  </div>
 
   <img src="./assets/boy.png" class="ethan" alt="Ethan" />
 
-  <div class="title2">
-    Ethan’s Safari Adventure
+</div>
+
+<!-- SCENE 3 (RSVP) -->
+<div class="scene3">
+
+  <div class="location">📍 Safari Park Adventure</div>
+
+  <div class="rsvp-card">
+    <h3>RSVP</h3>
+    <p>Will you join the adventure?</p>
+    <button>Yes, I’m coming</button>
   </div>
 
 </div>
 
-<!-- =========================
-     AUDIO LAYERS
-========================= -->
+<!-- AUDIO -->
 <audio id="jungleAudio" src="./assets/jungle.mp3" loop preload="auto"></audio>
 <audio id="whooshAudio" src="./assets/whoosh.mp3" preload="auto"></audio>
 
