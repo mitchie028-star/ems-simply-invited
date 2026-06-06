@@ -189,19 +189,14 @@ body{
 
 .parrot{
     position:absolute;
-    width:120px;
+    width:120px; /* was 90px */
     left:-200px;
-    top:80px;
+    top:70px;
+
     z-index:36;
 
     animation:parrotFly 2s linear forwards;
     animation-delay:5s;
-}
-
-@keyframes parrotFly{
-    to{
-        left:80%;
-    }
 }
 
 /* =========================
