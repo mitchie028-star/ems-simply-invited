@@ -16,9 +16,8 @@ body {
 }
 
 /* ==================================
-VIDEO
+BACKGROUND SCENERY VIDEO
 ================================== */
-
 .bg-video {
   position: fixed;
   inset: 0;
@@ -29,9 +28,8 @@ VIDEO
 }
 
 /* ==================================
-INTRO SCREEN
+INTRO WELCOME SCREEN
 ================================== */
-
 .start-screen {
   position: fixed;
   inset: 0;
@@ -39,282 +37,251 @@ INTRO SCREEN
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  background: rgba(0,0,0,.55);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   color: #fff;
-
   z-index: 9999;
   cursor: pointer;
-  transition: .5s ease;
-}
-
-.intro-content {
-  padding: 20px;
+  transition: opacity 0.5s ease;
 }
 
 .intro-content h1 {
   font-family: 'Cinzel', serif;
-  font-size: clamp(2.2rem, 8vw, 5rem);
-  margin-bottom: 10px;
-  text-shadow: 0 4px 12px rgba(0,0,0,.5);
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  margin-bottom: 15px;
+  padding: 0 15px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 .intro-content p {
   font-size: 1.2rem;
-  margin-bottom: 12px;
-}
-
-.intro-content span {
-  opacity: .85;
-  font-size: .95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
 /* ==================================
-LEAVES
+THEATRICAL LEAF CURTAINS
 ================================== */
-
-.leaf {
+.leaf-curtain {
   position: fixed;
-  pointer-events: none;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 100; /* Behind intro screen, but above everything else */
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  background-size: cover;
+  background-position: center;
+  /* Dark emerald green placeholder look until you apply transparent image files */
+  background-color: #1b4332; 
+}
+
+.left-leaf {
+  left: 0;
+  border-right: 2px solid #2d6a4f;
+  border-radius: 0 50px 50px 0;
+}
+
+.right-leaf {
+  right: 0;
+  border-left: 2px solid #2d6a4f;
+  border-radius: 50px 0 0 50px;
+}
+
+/* Animation Action: Cleaves separating apart */
+body.open-leaves .left-leaf {
+  transform: translateX(-100%);
+}
+
+body.open-leaves .right-leaf {
+  transform: translateX(100%);
 }
 
 /* ==================================
-SCENE LAYER (IMPORTANT FIX)
+INTERACTIVE SCENE WRAPPER
 ================================== */
-
 .scene {
   position: fixed;
   inset: 0;
   z-index: 5;
+  pointer-events: none; /* Let clicks pass down to forms gracefully */
 }
 
 /* ==================================
-ETHAN
+ETHAN'S DISPLAY FRAME
 ================================== */
-
 .baby {
   position: fixed;
   left: 50%;
-  bottom: -35px;
-
-  width: min(360px, 72vw);
-
-  transform: translateX(-50%) scale(.9);
+  bottom: -50px;
+  width: min(360px, 75vw);
+  transform: translateX(-50%) scale(0.7);
   opacity: 0;
-
   z-index: 10;
-
-  transition: opacity 1.2s ease, transform 1.2s ease;
-
-  filter: drop-shadow(0 15px 30px rgba(0,0,0,.4));
+  transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
 }
 
-.baby.show {
+body.reveal-ethan .baby {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 
-/* ETHAN STEP BACK WHEN RSVP SHOWS */
+/* Step back Ethan subtly when the user interacts with form card details */
 body.show-rsvp .baby {
-  opacity: 0.45;
-  z-index: 5;
+  opacity: 0.35;
+  transform: translateX(-50%) scale(0.85);
+  z-index: 4;
 }
 
 /* ==================================
-TITLE
+HEADER INVITATION TEXT TITLE
 ================================== */
-
 .title {
   position: fixed;
-  top: calc(env(safe-area-inset-top) + 10px);
+  top: calc(env(safe-area-inset-top) + 20px);
   left: 50%;
-  transform: translateX(-50%);
-
+  transform: translateX(-50%) translateY(-20px);
   width: 90%;
   text-align: center;
-
   font-family: 'Cinzel', serif;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 4.5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: 2px;
-
   color: #fff;
   opacity: 0;
-
   z-index: 20;
-
-  transition: 1s ease;
-  text-shadow: 0 4px 12px rgba(0,0,0,.45);
+  transition: opacity 1s ease, transform 1s ease;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
 }
 
-.title.show {
+body.reveal-title .title {
   opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ==================================
-RSVP SCENE
+RSVP DISPLAY CONTAINER
 ================================== */
-
 .rsvp-scene {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 25px;
-
+  bottom: 30px;
   display: flex;
   justify-content: center;
-
   opacity: 0;
-  pointer-events: none;
-
-  transform: translateY(40px);
-
-  transition: 1s ease;
-
+  transform: translateY(50px);
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 1s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 30;
 }
 
-.rsvp-scene.show {
+body.show-rsvp .rsvp-scene {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
 
 /* ==================================
-CARD
+RSVP LAYOUT CARD
 ================================== */
-
 .card {
   width: min(380px, 92vw);
-  background: rgba(255,255,255,.96);
-  backdrop-filter: blur(10px);
-
-  border-radius: 20px;
-  padding: 18px;
-
-  max-height: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 24px;
+  max-height: 320px;
   overflow-y: auto;
-
-  box-shadow: 0 10px 35px rgba(0,0,0,.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
 }
 
 .card h2 {
   text-align: center;
-  margin-bottom: 8px;
+  font-family: 'Cinzel', serif;
+  margin-bottom: 15px;
+  color: #1b4332;
 }
 
-.event-name {
-  text-align: center;
-  margin-bottom: 14px;
-  color: #555;
-}
-
-/* INPUTS */
-
+/* ELEMENT FORM STYLES */
 .card input[type="text"] {
   width: 100%;
-  padding: 12px;
-
-  border: 1px solid #ddd;
-  border-radius: 10px;
-
-  margin-bottom: 12px;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  margin-bottom: 15px;
   font-size: 1rem;
+  outline: none;
+}
+
+.card input[type="text"]:focus {
+  border-color: #40916c;
 }
 
 .radio-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .radio-group label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
 }
 
-.location {
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: 12px;
+.radio-group input[type="radio"] {
+  accent-color: #40916c;
+  width: 18px;
+  height: 18px;
 }
 
-/* BUTTONS */
-
-.map-btn,
 button {
   display: block;
   width: 100%;
-
-  text-align: center;
-
   border: none;
-  border-radius: 10px;
-
-  padding: 12px;
-
+  border-radius: 12px;
+  padding: 14px;
   color: #fff;
-  cursor: pointer;
-
-  transition: .3s ease;
-}
-
-.map-btn {
-  background: #2d6a4f;
-  text-decoration: none;
-  margin-bottom: 12px;
-}
-
-button {
   background: #40916c;
   font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.map-btn:hover,
 button:hover {
+  background: #2d6a4f;
   transform: translateY(-2px);
 }
 
 /* ==================================
-MOBILE
+RESPONSIVE DEVICES OPTIMIZATION
 ================================== */
-
 @media (max-width: 768px) {
-
   .baby {
-    width: 290px;
-    bottom: -20px;
+    width: 280px;
+    bottom: -15px;
   }
-
-  .title {
-    font-size: 2rem;
-    width: 95%;
-  }
-
   .rsvp-scene {
-    bottom: 15px;
+    bottom: 20px;
   }
-
   .card {
-    width: 92vw;
-    max-height: 280px;
+    padding: 20px;
   }
 }
 
-/* ==================================
-SMALL PHONES
-================================== */
-
-@media (max-width: 390px) {
-
+@media (max-width: 380px) {
   .baby {
-    width: 260px;
+    width: 240px;
   }
-
   .card {
-    max-height: 260px;
+    max-height: 270px;
   }
 }
