@@ -4,72 +4,46 @@ window.addEventListener("load", () => {
   const video = document.getElementById("bgVideo");
   const whoosh = document.getElementById("whoosh");
 
-  const ethan = document.getElementById("ethan");
-  const title = document.getElementById("title");
-  const rsvp = document.getElementById("rsvp");
-
   const form = document.getElementById("rsvpForm");
 
-  if (!startScreen) {
-    console.error("Missing startScreen.");
+  if (!startScreen || !video) {
+    console.error("Missing core elements.");
     return;
   }
 
   startScreen.addEventListener("click", async () => {
 
+    /* hide intro */
     startScreen.style.opacity = "0";
+    setTimeout(() => startScreen.style.display = "none", 500);
 
-    setTimeout(() => {
-      startScreen.style.display = "none";
-    }, 500);
-
-    /* WHOOSH */
+    /* sound */
     if (whoosh) {
       whoosh.currentTime = 0;
-      whoosh.volume = 0.8;
-      try {
-        await whoosh.play();
-      } catch (err) {
-        console.log("Whoosh blocked:", err);
-      }
+      whoosh.play().catch(() => {});
     }
 
-    document.body.classList.add("open");
+    /* video (Safari safe) */
+    try {
+      video.muted = true;
+      await video.play();
+      setTimeout(() => video.muted = false, 500);
+    } catch (e) {
+      console.log("Video blocked:", e);
+    }
 
-    /* VIDEO */
-    setTimeout(async () => {
-
-      if (whoosh && !whoosh.paused) {
-        whoosh.pause();
-        whoosh.currentTime = 0;
-      }
-
-      if (video) {
-        try {
-          video.muted = true;
-          await video.play();
-          video.muted = false;
-        } catch (err) {
-          console.log("Video play error:", err);
-        }
-      }
-
-    }, 2800);
-
-    /* ETHAN */
+    /* SCENE FLOW (clean state system) */
     setTimeout(() => {
-      ethan?.classList.add("show");
-    }, 3300);
+      document.body.classList.add("reveal-ethan");
+    }, 1200);
 
-    /* TITLE */
     setTimeout(() => {
-      title?.classList.add("show");
-    }, 4200);
+      document.body.classList.add("reveal-title");
+    }, 2200);
 
-    /* RSVP */
     setTimeout(() => {
-      rsvp?.classList.add("show");
-    }, 5200);
+      document.body.classList.add("show-rsvp");
+    }, 3200);
 
   });
 
@@ -80,9 +54,18 @@ window.addEventListener("load", () => {
 
       const card = document.querySelector(".card");
 
-      if (card) {
-        card.classList.add("submitted");
-      }
+      card.innerHTML = `
+        <h2>🌿 Thank You!</h2>
+        <p style="text-align:center;margin-top:10px;">
+          You're officially part of Ethan's Wild One Safari Adventure!
+        </p>
+        <p style="text-align:center;margin-top:15px;">
+          We can't wait to celebrate with you.
+        </p>
+        <a class="map-btn" href="https://maps.google.com/?q=Shakeys+Matalino" target="_blank">
+          View Location
+        </a>
+      `;
     });
   }
 
