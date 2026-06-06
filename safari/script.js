@@ -12,10 +12,9 @@ window.addEventListener("load", () => {
 
     startScreen.style.display = "none";
 
-    // WHOOSH
+    // SCENE 1 SOUND
     whooshAudio?.play().catch(() => {});
 
-    // SCENE 1
     document.body.classList.add("open");
 
     // STOP WHOOSH
@@ -37,7 +36,7 @@ window.addEventListener("load", () => {
       document.body.classList.add("scene2-active");
     }, 3400);
 
-    // SCENE 3 (FREEZE AT 9s)
+    // SCENE 3 TRIGGER (FREEZE AT 9s)
     video.addEventListener("timeupdate", () => {
       if (video.currentTime >= 9) {
         video.pause();
