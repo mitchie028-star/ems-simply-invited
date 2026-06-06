@@ -1,58 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ethan's Wild One Safari Adventure</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ethan Safari Adventure</title>
 
 <link rel="stylesheet" href="style.css">
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
-
-<!-- Preload background (speed fix) -->
-<link rel="preload" as="image" href="./assets/safari-bg.png">
 </head>
 
 <body>
 
-<!-- START BUTTON (required for sound autoplay) -->
-<button id="startBtn" class="start-btn">Tap to Start Safari</button>
+<!-- 🎬 INTRO SCREEN -->
+<div class="start-screen" id="startScreen">
+  <h1>Let’s Get Wild with Ethan 🌿</h1>
+  <p>Tap anywhere to begin the safari</p>
+</div>
 
-<div class="scene">
+<!-- 🎥 BACKGROUND VIDEO -->
+<video class="bg-video" id="bgVideo" muted playsinline preload="auto">
+  <source src="./assets/safari-bg.mp4" type="video/mp4">
+</video>
 
-    <!-- CINEMATIC LAYERS -->
-    <div class="fog"></div>
-    <div class="vignette"></div>
+<!-- 🌿 DARK OVERLAY (for readability) -->
+<div class="overlay"></div>
 
-    <!-- BACKGROUND -->
-    <img src="./assets/safari-bg.png" class="bg" alt="Safari background">
+<!-- 👶 ETHAN (HERO) -->
+<img src="./assets/boy.png" class="baby" id="ethan" alt="Ethan">
 
-    <!-- JUNGLE WALLS -->
-    <img src="./assets/leaf-top-left.png" class="leaf leaf-left" alt="">
-    <img src="./assets/leaf-top-left.png" class="leaf leaf-right" alt="">
+<!-- 📝 TITLE -->
+<div class="title" id="title">
+  LET'S GET WILD!
+</div>
 
-    <!-- ETHAN -->
-    <img src="./assets/boy.png" class="baby" alt="Ethan">
-
-    <!-- ANIMALS -->
-    <img src="./assets/monkey.png" class="monkey" alt="">
-    <img src="./assets/parrot.png" class="parrot" alt="">
-    <img src="./assets/elephant.png" class="elephant" alt="">
-    <img src="./assets/giraffe.png" class="giraffe" alt="">
-    <img src="./assets/lion.png" class="lion" alt="">
-
-    <!-- TITLE -->
-    <div class="title">
-        <h1>LET'S GET WILD!</h1>
-        <p>Ethan's Wild One Safari Adventure</p>
-    </div>
-
-    <!-- AUDIO -->
-    <audio id="whoosh1" src="./assets/whoosh1.mp3" preload="auto"></audio>
-    <audio id="whoosh2" src="./assets/whoosh2.mp3" preload="auto"></audio>
-    <audio id="roar" src="./assets/roar.mp3" preload="auto"></audio>
-
+<!-- ✉️ RSVP -->
+<div class="rsvp" id="rsvp">
+  RSVP • Location • Details
 </div>
 
 <script src="script.js"></script>
