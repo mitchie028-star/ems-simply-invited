@@ -166,7 +166,7 @@ body{
 
 .monkey{
     position:absolute;
-    width:140px;
+    width:160px;
     top:-200px;
     left:5%;
     opacity:0;
@@ -178,7 +178,7 @@ body{
 
 @keyframes monkeyIn{
     to{
-        top:90px;
+        top:120px;
         opacity:1;
     }
 }
@@ -189,7 +189,7 @@ body{
 
 .parrot{
     position:absolute;
-    width:90px;
+    width:120px;
     left:-200px;
     top:80px;
     z-index:36;
@@ -210,7 +210,7 @@ body{
 
 .elephant{
     position:absolute;
-    width:210px;
+    width:250px;
     left:-250px;
     bottom:10px;
     opacity:0;
@@ -233,9 +233,9 @@ body{
 
 .giraffe{
     position:absolute;
-    width:210px;
+    width:250px;
     right:-250px;
-    bottom:40px;
+    bottom:60px;
     opacity:0;
     z-index:29;
 
