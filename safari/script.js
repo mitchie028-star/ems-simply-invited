@@ -7,7 +7,6 @@ window.addEventListener("load", () => {
 
   if (!startScreen || !video) return;
 
-  // Ensure video is ready for mobile autoplay behavior
   video.muted = true;
   video.playsInline = true;
 
@@ -22,24 +21,21 @@ window.addEventListener("load", () => {
     startScreen.style.display = "none";
 
     /* =========================
-       WHOOSH SOUND (SCENE 1 ENTRY)
+       WHOOSH
     ========================= */
     if (whooshAudio) {
       whooshAudio.pause();
       whooshAudio.currentTime = 0;
       whooshAudio.volume = 0.8;
-
       whooshAudio.play().catch(() => {});
     }
 
     /* =========================
-       OPEN JUNGLE OVERLAY
+       OPEN JUNGLE (SCENE 1)
     ========================= */
     document.body.classList.add("open");
 
-    /* =========================
-       STOP WHOOSH (MATCH CSS 3.2s)
-    ========================= */
+    /* stop whoosh AFTER zoom animation */
     setTimeout(() => {
       if (whooshAudio) {
         whooshAudio.pause();
@@ -48,26 +44,30 @@ window.addEventListener("load", () => {
     }, 3200);
 
     /* =========================
-       START JUNGLE AMBIENCE
+       AMBIENCE
     ========================= */
     if (jungleAudio) {
       jungleAudio.volume = 0.5;
-
-      jungleAudio.play().catch(() => {
-        // fallback for autoplay restrictions
-      });
+      jungleAudio.play().catch(() => {});
     }
 
     /* =========================
-       START VIDEO (SLIGHT DELAY)
+       VIDEO START
     ========================= */
     setTimeout(async () => {
       try {
         await video.play();
       } catch (e) {
-        console.log("Video play blocked:", e);
+        console.log("Video blocked:", e);
       }
     }, 600);
+
+    /* =========================
+       SCENE 2 TRIGGER (THIS WAS MISSING)
+    ========================= */
+    setTimeout(() => {
+      document.body.classList.add("scene2-active");
+    }, 3400);
 
   });
 
