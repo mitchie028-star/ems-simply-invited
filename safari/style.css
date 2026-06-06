@@ -88,3 +88,51 @@ body.open .jungle-overlay {
   transform: scale(2.2);
   opacity: 0;
 }
+.scene2 {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ETHAN CHARACTER */
+.ethan {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0;
+
+  width: min(320px, 70vw);
+  transition: all 1.2s ease;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+}
+
+/* TITLE (SCENE 2) */
+.title2 {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  opacity: 0;
+
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  letter-spacing: 2px;
+  color: #F5F1E6;
+  text-align: center;
+
+  transition: all 1s ease;
+}
+
+/* ACTIVE SCENE 2 */
+body.scene2-active .ethan {
+  bottom: 0px;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+body.scene2-active .title2 {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
