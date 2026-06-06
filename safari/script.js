@@ -5,16 +5,25 @@ window.addEventListener("load", () => {
   const jungleAudio = document.getElementById("jungleAudio");
   const whooshAudio = document.getElementById("whooshAudio");
 
+  if (!startScreen || !video) return;
+
   video.muted = true;
   video.playsInline = true;
+
+  const unlockAudio = (audio) => {
+    if (!audio) return;
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+  };
 
   startScreen.addEventListener("click", async () => {
 
     startScreen.style.display = "none";
 
-    // SCENE 1 SOUND
-    whooshAudio?.play().catch(() => {});
+    // SOUND
+    unlockAudio(whooshAudio);
 
+    // SCENE 1
     document.body.classList.add("open");
 
     // STOP WHOOSH
@@ -24,7 +33,7 @@ window.addEventListener("load", () => {
     }, 3200);
 
     // AMBIENCE
-    jungleAudio?.play().catch(() => {});
+    unlockAudio(jungleAudio);
 
     // VIDEO START
     setTimeout(() => {
@@ -36,13 +45,11 @@ window.addEventListener("load", () => {
       document.body.classList.add("scene2-active");
     }, 3400);
 
-    // SCENE 3 TRIGGER (FREEZE AT 9s)
-    video.addEventListener("timeupdate", () => {
-      if (video.currentTime >= 9) {
-        video.pause();
-        document.body.classList.add("scene3-active");
-      }
-    });
+    // SCENE 3 (MOBILE SAFE FIX - NO timeupdate)
+    setTimeout(() => {
+      video.pause();
+      document.body.classList.add("scene3-active");
+    }, 9000);
 
   });
 
