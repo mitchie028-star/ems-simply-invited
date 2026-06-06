@@ -3,51 +3,43 @@ window.addEventListener("load", () => {
   const startScreen = document.getElementById("startScreen");
   const video = document.getElementById("bgVideo");
   const whoosh = document.getElementById("whoosh");
-
   const form = document.getElementById("rsvpForm");
-
-  if (!startScreen || !video) {
-    console.error("Missing core elements.");
-    return;
-  }
 
   startScreen.addEventListener("click", async () => {
 
-    /* hide intro */
+    // hide intro
     startScreen.style.opacity = "0";
     setTimeout(() => startScreen.style.display = "none", 500);
 
-    /* sound */
+    // sound
     if (whoosh) {
       whoosh.currentTime = 0;
       whoosh.play().catch(() => {});
     }
 
-    /* video (Safari safe) */
+    // video (Safari safe)
     try {
       video.muted = true;
       await video.play();
-      setTimeout(() => video.muted = false, 500);
-    } catch (e) {
-      console.log("Video blocked:", e);
-    }
+      setTimeout(() => video.muted = false, 400);
+    } catch (e) {}
 
-    /* SCENE FLOW (clean state system) */
+    // SCENE FLOW (synchronized)
     setTimeout(() => {
       document.body.classList.add("reveal-ethan");
-    }, 1200);
+    }, 1000);
 
     setTimeout(() => {
       document.body.classList.add("reveal-title");
-    }, 2200);
+    }, 2000);
 
     setTimeout(() => {
       document.body.classList.add("show-rsvp");
-    }, 3200);
+    }, 3000);
 
   });
 
-  /* RSVP FORM */
+  // RSVP submit
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -62,9 +54,6 @@ window.addEventListener("load", () => {
         <p style="text-align:center;margin-top:15px;">
           We can't wait to celebrate with you.
         </p>
-        <a class="map-btn" href="https://maps.google.com/?q=Shakeys+Matalino" target="_blank">
-          View Location
-        </a>
       `;
     });
   }
