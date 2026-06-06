@@ -77,11 +77,14 @@ html, body {
   transform: scale(1);
   opacity: 1;
 
-  transition: transform 1.5s ease, opacity 1.5s ease;
+  /* SLOW CINEMATIC TRANSITION */
+  transition:
+    transform 3.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 3.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ENTER JUNGLE ANIMATION */
+/* ENTER JUNGLE (ZOOM OUT + FADE) */
 body.open .jungle-overlay {
-  transform: scale(1.8);
+  transform: scale(2.2);
   opacity: 0;
 }
