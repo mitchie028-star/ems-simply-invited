@@ -1,65 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ethan Safari Adventure</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethan's Wild One Safari Adventure</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- 🌿 INTRO -->
 <div class="start-screen" id="startScreen">
-  <div>
-    <h1>Let’s Get Wild with Ethan 🌿</h1>
-    <p>Tap anywhere to begin the safari</p>
+  <div class="intro-content">
+    <h1>LET'S GET WILD! 🌿</h1>
+    <p>Ethan is turning 4!</p>
+    <span>Tap to begin Ethan's adventure</span>
   </div>
 </div>
 
-<!-- 🎥 VIDEO -->
-<video class="bg-video" id="bgVideo" muted playsinline preload="auto">
+<audio id="jungle" preload="auto">
+  <source src="./assets/jungle.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="whoosh" preload="auto">
+  <source src="./assets/whoosh.mp3" type="audio/mpeg">
+</audio>
+
+<video id="bgVideo" class="bg-video" playsinline preload="auto">
   <source src="./assets/safari-bg.mp4" type="video/mp4">
 </video>
 
-<!-- 🌿 LEAVES -->
-<img src="./assets/leaf-top-left.png" class="leaf leaf-left">
-<img src="./assets/leaf-top-left.png" class="leaf leaf-right">
+<img src="./assets/leaf-top-left.png" class="leaf leaf-left" alt="">
+<img src="./assets/leaf-top-left.png" class="leaf leaf-right" alt="">
 
-<!-- 👶 ETHAN -->
-<img src="./assets/boy.png" class="baby" id="ethan">
+<img src="./assets/boy.png" id="ethan" class="baby" alt="Ethan">
 
-<!-- 📝 TITLE -->
-<div class="title" id="title">LET'S GET WILD!</div>
+<div class="title" id="title">
+  LET'S GET WILD!
+</div>
 
-<!-- ✉️ RSVP + MAP (LOWERED) -->
 <div class="rsvp-scene" id="rsvp">
-
   <div class="card">
 
     <h2>You're Invited 🌿</h2>
 
-    <p><b>Ethan’s Wild One Safari Adventure</b></p>
+    <p class="event-name">
+      Ethan's Wild One Safari Adventure
+    </p>
 
-    <!-- RSVP FORM -->
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <button type="submit">Confirm RSVP</button>
+    <form id="rsvpForm">
+
+      <input
+        type="text"
+        placeholder="Your Name"
+        required
+      >
+
+      <div class="radio-group">
+
+        <label>
+          <input
+            type="radio"
+            name="attending"
+            value="yes"
+            required
+          >
+          Yes, we'll be there!
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="attending"
+            value="no"
+          >
+          Sorry, can't make it
+        </label>
+
+      </div>
+
+      <div class="location">
+        📍 Shakey's Matalino
+      </div>
+
+      <a
+        class="map-btn"
+        href="https://maps.google.com/?q=Shakeys+Matalino"
+        target="_blank"
+      >
+        View Map
+      </a>
+
+      <button type="submit">
+        Submit RSVP
+      </button>
+
     </form>
-
-    <!-- MAP -->
-    <div class="map">
-      <iframe
-        src="https://www.google.com/maps?q=Quezon+City&output=embed"
-        loading="lazy">
-      </iframe>
-    </div>
 
   </div>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
