@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -11,290 +15,59 @@ body{
 }
 
 /* =========================
-   START BUTTON (FIXED)
+   BACKGROUND VIDEO
 ========================= */
 
-.start-btn{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    width:220px;
-    height:60px;
-    z-index:99999;
-
-    background:#1b5e20;
-    color:#fff;
-    border:none;
-    border-radius:12px;
-    font-size:18px;
-    cursor:pointer;
-}
-
-/* =========================
-   SCENE
-========================= */
-
-.scene{
-    position:relative;
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
-}
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.bg{
+.bg-video{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
     z-index:1;
-
-    opacity:0;
-    animation:fadeBg 1.2s ease forwards;
 }
 
-@keyframes fadeBg{
-    to{ opacity:1; }
-}
-
-/* =========================
-   FOG / ATMOSPHERE
-========================= */
-
-.fog{
+/* Dark overlay for readability */
+.overlay{
     position:absolute;
     inset:0;
-    background:radial-gradient(circle at center,
-        rgba(255,255,255,0.05),
-        rgba(0,0,0,0.6)
-    );
-    z-index:10;
-    pointer-events:none;
+    background:radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.65));
+    z-index:2;
 }
 
 /* =========================
-   VIGNETTE
+   INTRO SCREEN
 ========================= */
 
-.vignette{
+.start-screen{
     position:absolute;
     inset:0;
-    box-shadow: inset 0 0 140px rgba(0,0,0,0.75);
-    z-index:999;
-    pointer-events:none;
-}
-
-/* =========================
-   JUNGLE WALLS
-========================= */
-
-.leaf{
-    position:absolute;
-    top:50%;
-    width:60vw;
-    max-width:900px;
-    transform:translateY(-50%);
-    z-index:50;
-    pointer-events:none;
-}
-
-.leaf-left{
-    left:-5%;
-    animation:openLeft 2.5s ease forwards;
-    animation-delay:1s;
-}
-
-.leaf-right{
-    right:-5%;
-    transform:translateY(-50%) scaleX(-1);
-    animation:openRight 2.5s ease forwards;
-    animation-delay:1s;
-}
-
-@keyframes openLeft{
-    to{ left:-45%; }
-}
-
-@keyframes openRight{
-    to{ right:-45%; }
-}
-
-/* =========================
-   ETHAN (HERO)
-========================= */
-
-.baby{
-    position:absolute;
-    left:50%;
-    bottom:3%;
-    width:min(34vw,340px);
-
-    transform:translateX(-50%) scale(0.85);
-    opacity:0;
-
-    z-index:40;
-
-    animation:babyIn 1.2s ease forwards;
-    animation-delay:3s;
-}
-
-@keyframes babyIn{
-    to{
-        opacity:1;
-        transform:translateX(-50%) scale(1);
-    }
-}
-
-/* =========================
-   MONKEY
-========================= */
-
-.monkey{
-    position:absolute;
-    width:160px;
-    top:-200px;
-    left:5%;
-    opacity:0;
-    z-index:35;
-
-    animation:monkeyIn 1.2s ease forwards;
-    animation-delay:4s;
-}
-
-@keyframes monkeyIn{
-    to{
-        top:90px;
-        opacity:1;
-    }
-}
-
-/* =========================
-   PARROT (FIXED SIZE)
-========================= */
-
-.parrot{
-    position:absolute;
-    width:120px;
-    left:-200px;
-    top:70px;
-    opacity:0;
-    z-index:36;
-
-    animation:parrotIn 2s ease forwards;
-    animation-delay:5s;
-}
-
-@keyframes parrotIn{
-    to{
-        left:78%;
-        opacity:1;
-    }
-}
-
-/* =========================
-   ELEPHANT (CLOSER TO ETHAN)
-========================= */
-
-.elephant{
-    position:absolute;
-    width:270px;
-    left:-250px;
-    bottom:10px;
-    opacity:0;
-    z-index:32;
-
-    animation:elephantIn 1.4s ease forwards;
-    animation-delay:6s;
-}
-
-@keyframes elephantIn{
-    to{
-        left:7%;
-        opacity:1;
-    }
-}
-
-/* =========================
-   GIRAFFE (FORCED VISIBILITY)
-========================= */
-
-.giraffe{
-    position:absolute;
-    width:230px;
-    right:-250px;
-    bottom:40px;
-    opacity:0;
-    z-index:34;
-
-    animation:giraffeIn 1.2s ease forwards;
-    animation-delay:6.3s;
-}
-
-@keyframes giraffeIn{
-    to{
-        right:6%;
-        opacity:1;
-    }
-}
-
-/* =========================
-   LION (FORCED VISIBILITY)
-========================= */
-
-.lion{
-    position:absolute;
-    width:250px;
-    right:-250px;
-    bottom:0;
-    opacity:0;
-    z-index:35;
-
-    animation:lionIn 1.2s ease forwards;
-    animation-delay:6.8s;
-}
-
-@keyframes lionIn{
-    to{
-        right:14%;
-        opacity:1;
-    }
-}
-
-/* =========================
-   TITLE (MOVED HIGHER)
-========================= */
-
-.title{
-    position:absolute;
-    top:4%;
-    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    opacity:0;
-    z-index:60;
 
-    animation:titleIn 1.2s ease forwards;
-    animation-delay:8s;
+    background:rgba(0,0,0,0.55);
+    color:white;
+
+    z-index:1000;
+    cursor:pointer;
 }
 
-.title h1{
-    color:#fff;
-    font-size:clamp(2.5rem,6vw,5rem);
-    text-shadow:0 4px 12px rgba(0,0,0,0.6);
+.start-screen h1{
+    font-size:clamp(2rem,5vw,3.5rem);
+    text-shadow:0 6px 20px rgba(0,0,0,0.7);
+    animation:fadeUp 1s ease;
 }
 
-.title p{
-    margin-top:6px;
-    color:#fff;
-    font-size:clamp(1rem,2vw,1.3rem);
-    text-shadow:0 2px 6px rgba(0,0,0,0.5);
+.start-screen p{
+    margin-top:10px;
+    opacity:0.8;
+    font-size:1rem;
 }
 
-@keyframes titleIn{
+@keyframes fadeUp{
     from{
         opacity:0;
         transform:translateY(20px);
@@ -306,20 +79,89 @@ body{
 }
 
 /* =========================
-   MOBILE FIXES
+   ETHAN (HERO)
+========================= */
+
+.baby{
+    position:absolute;
+    left:50%;
+    bottom:6%;
+
+    width:min(340px,38vw);
+
+    transform:translateX(-50%);
+    opacity:0;
+
+    z-index:50;
+
+    transition:1.2s ease;
+    filter:drop-shadow(0 12px 25px rgba(0,0,0,0.5));
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    position:absolute;
+    top:5%;
+    width:100%;
+    text-align:center;
+
+    color:white;
+    font-size:clamp(2rem,5vw,4rem);
+    font-weight:bold;
+
+    text-shadow:0 6px 20px rgba(0,0,0,0.7);
+
+    z-index:60;
+    opacity:0;
+
+    transition:1s ease;
+}
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp{
+    position:absolute;
+    bottom:10%;
+    right:5%;
+
+    color:white;
+    font-size:1rem;
+
+    z-index:60;
+    opacity:0;
+
+    padding:10px 14px;
+    border:1px solid rgba(255,255,255,0.3);
+    border-radius:10px;
+    backdrop-filter:blur(6px);
+
+    transition:1s ease;
+}
+
+/* =========================
+   MOBILE
 ========================= */
 
 @media(max-width:768px){
 
-    .baby{ width:220px; }
+    .baby{
+        width:240px;
+        bottom:4%;
+    }
 
-    .monkey{ width:100px; }
+    .title{
+        top:4%;
+        font-size:2rem;
+    }
 
-    .parrot{ width:80px; }
-
-    .elephant{ width:160px; }
-
-    .giraffe{ width:150px; }
-
-    .lion{ width:160px; }
+    .rsvp{
+        bottom:6%;
+        right:4%;
+        font-size:0.9rem;
+    }
 }
