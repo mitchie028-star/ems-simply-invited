@@ -210,9 +210,10 @@ body{
 
 .elephant{
     position:absolute;
-    width:250px;
-    left:-250px;
+    width:260px; /* was 210px */
+    left:8%;     /* moved closer to center (Ethan is centered) */
     bottom:10px;
+
     opacity:0;
     z-index:30;
 
@@ -222,7 +223,7 @@ body{
 
 @keyframes elephantIn{
     to{
-        left:2%;
+        left:6%;
         opacity:1;
     }
 }
