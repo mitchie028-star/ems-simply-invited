@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&display=swap');
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,11 @@ html, body {
   height: 100%;
   overflow: hidden;
   background: #0b0f0c;
+}
+
+/* SAFE AREA FIX (iPhone notch/home bar) */
+body {
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* =========================
@@ -60,6 +66,7 @@ html, body {
 
   transform: scale(1);
   opacity: 1;
+
   transition: transform 3.2s ease, opacity 3.2s ease;
 }
 
@@ -69,7 +76,7 @@ body.open .jungle-overlay {
 }
 
 /* =========================
-   SCENE 2 LAYOUT
+   SCENE 2 (SAFE ZONES)
 ========================= */
 .scene2 {
   position: fixed;
@@ -87,8 +94,8 @@ body.open .jungle-overlay {
 
 .title2 {
   text-align: center;
-  color: #F5F1E6;
   font-family: "Cinzel", serif;
+  color: #F5F1E6;
 
   opacity: 0;
   transform: translateY(-10px);
@@ -123,11 +130,11 @@ body.scene2-active .ethan {
 }
 
 /* =========================
-   SCENE 3
+   SCENE 3 (RSVP)
 ========================= */
 .scene3 {
   position: fixed;
-  bottom: 40px;
+  bottom: calc(40px + env(safe-area-inset-bottom));
   left: 0;
   right: 0;
 
@@ -141,6 +148,7 @@ body.scene2-active .ethan {
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s ease;
+
   pointer-events: none;
 }
 
@@ -190,16 +198,10 @@ body.scene3-active .scene3 {
   transition: all 0.2s ease;
 }
 
-/* SAFARI STAMP YES */
+/* YES STAMP */
 .rsvp-buttons .yes {
   background: linear-gradient(135deg, #caa24a, #8d6b2f);
   color: white;
-  box-shadow: 0 10px 25px rgba(202,162,74,0.35);
-}
-
-.rsvp-buttons .yes:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 18px rgba(202,162,74,0.5);
 }
 
 /* NO */
