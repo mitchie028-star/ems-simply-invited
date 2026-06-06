@@ -5,9 +5,7 @@ window.addEventListener("load", () => {
   const jungleAudio = document.getElementById("jungleAudio");
   const whooshAudio = document.getElementById("whooshAudio");
 
-  // =========================
-  // PREP VIDEO (SHOW FIRST FRAME)
-  // =========================
+  // PREP VIDEO
   video.muted = true;
   video.playsInline = true;
 
@@ -15,14 +13,12 @@ window.addEventListener("load", () => {
     video.currentTime = 0.1;
   });
 
-  // =========================
-  // START INTERACTION
-  // =========================
+  // START
   startScreen.addEventListener("click", async () => {
 
     startScreen.style.display = "none";
 
-    // WHOOSH SOUND
+    // WHOOSH
     if (whooshAudio) {
       whooshAudio.currentTime = 0;
       whooshAudio.volume = 0.8;
@@ -50,9 +46,7 @@ window.addEventListener("load", () => {
     setTimeout(async () => {
       try {
         await video.play();
-      } catch (e) {
-        console.log("Video play blocked:", e);
-      }
+      } catch (e) {}
     }, 400);
 
   });
