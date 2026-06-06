@@ -15,7 +15,7 @@ html, body {
 }
 
 /* =========================
-VIDEO
+VIDEO (BACKGROUND ONLY)
 ========================= */
 
 .bg-video {
@@ -34,44 +34,40 @@ INTRO
 .start-screen {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: #fff;
-  z-index: 9999;
+  background: rgba(0,0,0,0.6);
+  color: white;
   cursor: pointer;
-  transition: 0.5s ease;
-}
-
-.intro-content h1 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(2rem, 6vw, 4rem);
 }
 
 /* =========================
-SCENE
+OVERLAY SCENE (CRITICAL FIX)
 ========================= */
 
 .scene {
   position: fixed;
   inset: 0;
-  z-index: 5;
+  z-index: 10;
 }
 
 /* =========================
-ETHAN
+ETHAN (HERO LAYER)
 ========================= */
 
 .baby {
   position: absolute;
   left: 50%;
   bottom: -40px;
+
   transform: translateX(-50%) scale(0.9);
   width: min(360px, 70vw);
+
   opacity: 0;
-  z-index: 10;
+  z-index: 20;
+
   transition: 1.2s ease;
   pointer-events: none;
 }
@@ -81,7 +77,6 @@ body.reveal-ethan .baby {
   transform: translateX(-50%) scale(1);
 }
 
-/* ETHAN STEP BACK */
 body.show-rsvp .baby {
   opacity: 0.4;
   transform: translateX(-50%) scale(0.85);
@@ -97,11 +92,14 @@ TITLE
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
+
+  color: white;
   font-family: 'Cinzel', serif;
   font-size: clamp(1.8rem, 5vw, 3rem);
-  color: white;
+
   opacity: 0;
-  z-index: 20;
+  z-index: 30;
+
   transition: 1s ease;
   text-align: center;
 }
@@ -111,16 +109,19 @@ body.reveal-title .title {
 }
 
 /* =========================
-RSVP
+RSVP (FINAL LAYER)
 ========================= */
 
 .rsvp-scene {
   position: absolute;
-  bottom: 20px;
   left: 50%;
+  bottom: 20px;
+
   transform: translateX(-50%) translateY(40px);
+
   opacity: 0;
-  z-index: 30;
+  z-index: 40;
+
   pointer-events: none;
   transition: 1s ease;
 }
