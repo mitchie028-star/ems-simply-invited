@@ -11,19 +11,20 @@ body{
 }
 
 /* =========================
-   START BUTTON
+   START BUTTON (FIXED)
 ========================= */
 
 .start-btn{
-    position:absolute;
-    inset:0;
-    margin:auto;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
     width:220px;
     height:60px;
-    z-index:9999;
+    z-index:99999;
 
     background:#1b5e20;
-    color:white;
+    color:#fff;
     border:none;
     border-radius:12px;
     font-size:18px;
@@ -42,35 +43,6 @@ body{
 }
 
 /* =========================
-   CINEMATIC FX
-========================= */
-
-.fog{
-    position:absolute;
-    inset:0;
-    background: radial-gradient(circle at center,
-        rgba(255,255,255,0.06),
-        rgba(0,0,0,0.55)
-    );
-    z-index:10;
-    pointer-events:none;
-    animation:fogMove 8s ease-in-out infinite alternate;
-}
-
-@keyframes fogMove{
-    from{ transform:scale(1) translateY(0); }
-    to{ transform:scale(1.08) translateY(-12px); }
-}
-
-.vignette{
-    position:absolute;
-    inset:0;
-    box-shadow: inset 0 0 140px rgba(0,0,0,0.75);
-    z-index:999;
-    pointer-events:none;
-}
-
-/* =========================
    BACKGROUND
 ========================= */
 
@@ -83,11 +55,38 @@ body{
     z-index:1;
 
     opacity:0;
-    animation:bgFade 1.5s ease forwards;
+    animation:fadeBg 1.2s ease forwards;
 }
 
-@keyframes bgFade{
+@keyframes fadeBg{
     to{ opacity:1; }
+}
+
+/* =========================
+   FOG / ATMOSPHERE
+========================= */
+
+.fog{
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at center,
+        rgba(255,255,255,0.05),
+        rgba(0,0,0,0.6)
+    );
+    z-index:10;
+    pointer-events:none;
+}
+
+/* =========================
+   VIGNETTE
+========================= */
+
+.vignette{
+    position:absolute;
+    inset:0;
+    box-shadow: inset 0 0 140px rgba(0,0,0,0.75);
+    z-index:999;
+    pointer-events:none;
 }
 
 /* =========================
@@ -106,29 +105,27 @@ body{
 
 .leaf-left{
     left:-5%;
-    animation:openLeft 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation:openLeft 2.5s ease forwards;
     animation-delay:1s;
 }
 
 .leaf-right{
     right:-5%;
     transform:translateY(-50%) scaleX(-1);
-    animation:openRight 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation:openRight 2.5s ease forwards;
     animation-delay:1s;
 }
 
 @keyframes openLeft{
-    0%{ left:-5%; }
-    100%{ left:-45%; }
+    to{ left:-45%; }
 }
 
 @keyframes openRight{
-    0%{ right:-5%; }
-    100%{ right:-45%; }
+    to{ right:-45%; }
 }
 
 /* =========================
-   ETHAN
+   ETHAN (HERO)
 ========================= */
 
 .baby{
@@ -137,18 +134,20 @@ body{
     bottom:3%;
     width:min(34vw,340px);
 
-    transform:translateX(-50%) scale(.8);
+    transform:translateX(-50%) scale(0.85);
     opacity:0;
 
     z-index:40;
 
-    animation:babyIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation:babyIn 1.2s ease forwards;
     animation-delay:3s;
 }
 
 @keyframes babyIn{
-    0%{ opacity:0; transform:translateX(-50%) scale(.7); }
-    100%{ opacity:1; transform:translateX(-50%) scale(1); }
+    to{
+        opacity:1;
+        transform:translateX(-50%) scale(1);
+    }
 }
 
 /* =========================
@@ -157,30 +156,25 @@ body{
 
 .monkey{
     position:absolute;
-    width:170px;
+    width:160px;
     top:-200px;
     left:5%;
     opacity:0;
     z-index:35;
 
-    animation:
-        monkeyIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        floatMonkey 3s ease-in-out infinite;
-
-    animation-delay:4s, 5.2s;
+    animation:monkeyIn 1.2s ease forwards;
+    animation-delay:4s;
 }
 
 @keyframes monkeyIn{
-    to{ top:90px; opacity:1; }
-}
-
-@keyframes floatMonkey{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-12px); }
+    to{
+        top:90px;
+        opacity:1;
+    }
 }
 
 /* =========================
-   PARROT
+   PARROT (FIXED SIZE)
 ========================= */
 
 .parrot{
@@ -188,22 +182,18 @@ body{
     width:120px;
     left:-200px;
     top:70px;
+    opacity:0;
     z-index:36;
 
-    animation:
-        parrotIn 2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        floatBird 2.5s ease-in-out infinite;
-
-    animation-delay:5s, 7s;
+    animation:parrotIn 2s ease forwards;
+    animation-delay:5s;
 }
 
 @keyframes parrotIn{
-    to{ left:80%; opacity:1; }
-}
-
-@keyframes floatBird{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-18px) rotate(2deg); }
+    to{
+        left:78%;
+        opacity:1;
+    }
 }
 
 /* =========================
@@ -212,75 +202,67 @@ body{
 
 .elephant{
     position:absolute;
-    width:260px;
+    width:270px;
     left:-250px;
     bottom:10px;
     opacity:0;
-    z-index:30;
+    z-index:32;
 
-    animation:
-        elephantIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        breathe 4s ease-in-out infinite;
-
-    animation-delay:6s, 7.5s;
+    animation:elephantIn 1.4s ease forwards;
+    animation-delay:6s;
 }
 
 @keyframes elephantIn{
     to{
-        left:6%;
+        left:7%;
         opacity:1;
     }
 }
 
 /* =========================
-   GIRAFFE + LION (FIXED VISIBILITY)
+   GIRAFFE (FORCED VISIBILITY)
 ========================= */
 
 .giraffe{
     position:absolute;
-    width:240px;
+    width:230px;
     right:-250px;
     bottom:40px;
     opacity:0;
-    z-index:32;
+    z-index:34;
 
-    animation:
-        giraffeIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        breathe 5s ease-in-out infinite;
-
-    animation-delay:6.3s, 7.5s;
-}
-
-.lion{
-    position:absolute;
-    width:260px;
-    right:-300px;
-    bottom:0;
-    opacity:0;
-    z-index:33;
-
-    animation:
-        lionIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        breathe 4.5s ease-in-out infinite;
-
-    animation-delay:6.8s, 8s;
+    animation:giraffeIn 1.2s ease forwards;
+    animation-delay:6.3s;
 }
 
 @keyframes giraffeIn{
-    to{ right:5%; opacity:1; }
-}
-
-@keyframes lionIn{
-    to{ right:18%; opacity:1; }
+    to{
+        right:6%;
+        opacity:1;
+    }
 }
 
 /* =========================
-   BREATHING ANIMATION
+   LION (FORCED VISIBILITY)
 ========================= */
 
-@keyframes breathe{
-    0%,100%{ transform:scale(1); }
-    50%{ transform:scale(1.03); }
+.lion{
+    position:absolute;
+    width:250px;
+    right:-250px;
+    bottom:0;
+    opacity:0;
+    z-index:35;
+
+    animation:lionIn 1.2s ease forwards;
+    animation-delay:6.8s;
+}
+
+@keyframes lionIn{
+    to{
+        right:14%;
+        opacity:1;
+    }
 }
 
 /* =========================
@@ -295,26 +277,49 @@ body{
     opacity:0;
     z-index:60;
 
-    animation:titleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation:titleIn 1.2s ease forwards;
     animation-delay:8s;
 }
 
 .title h1{
     color:#fff;
     font-size:clamp(2.5rem,6vw,5rem);
-    text-shadow:
-        0 0 12px rgba(255,255,255,0.25),
-        0 4px 0 #1b5e20,
-        0 15px 30px rgba(0,0,0,.6);
+    text-shadow:0 4px 12px rgba(0,0,0,0.6);
 }
 
 .title p{
     margin-top:6px;
     color:#fff;
     font-size:clamp(1rem,2vw,1.3rem);
+    text-shadow:0 2px 6px rgba(0,0,0,0.5);
 }
 
 @keyframes titleIn{
-    from{ opacity:0; transform:translateY(30px); }
-    to{ opacity:1; transform:translateY(0); }
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE FIXES
+========================= */
+
+@media(max-width:768px){
+
+    .baby{ width:220px; }
+
+    .monkey{ width:100px; }
+
+    .parrot{ width:80px; }
+
+    .elephant{ width:160px; }
+
+    .giraffe{ width:150px; }
+
+    .lion{ width:160px; }
 }
