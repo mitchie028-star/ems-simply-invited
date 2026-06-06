@@ -6,12 +6,12 @@
 
 body{
     overflow:hidden;
-    font-family:'Arial', sans-serif;
+    font-family:Arial, sans-serif;
     background:#000;
 }
 
 /* =========================
-   SCENE CONTAINER
+   SCENE
 ========================= */
 
 .scene{
@@ -113,7 +113,7 @@ body{
 }
 
 /* =========================
-   ETHAN (HERO REVEAL)
+   ETHAN (HERO)
 ========================= */
 
 .baby{
@@ -161,105 +161,173 @@ body{
 }
 
 /* =========================
-   MONKEY
+   MONKEY (ALIVE)
 ========================= */
 
 .monkey{
     position:absolute;
-    width:160px;
+    width:170px;
     top:-200px;
     left:5%;
     opacity:0;
     z-index:35;
 
-    animation:monkeyIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay:4s;
+    animation:
+        monkeyEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        floatMonkey 3s ease-in-out infinite;
+
+    animation-delay:4s, 5.2s;
 }
 
-@keyframes monkeyIn{
-    to{
-        top:120px;
+@keyframes monkeyEnter{
+    0%{
+        top:-200px;
+        opacity:0;
+        transform:scale(0.8);
+    }
+    70%{
+        top:95px;
+        transform:scale(1.05);
+    }
+    100%{
+        top:90px;
         opacity:1;
+        transform:scale(1);
     }
 }
 
+@keyframes floatMonkey{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-12px); }
+}
+
 /* =========================
-   PARROT
+   PARROT (ALIVE)
 ========================= */
 
 .parrot{
     position:absolute;
-    width:120px; /* was 90px */
+    width:120px;
     left:-200px;
     top:70px;
-
     z-index:36;
 
-    animation:parrotFly 2s linear forwards;
-    animation-delay:5s;
+    animation:
+        parrotFlyIn 2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        floatBird 2.5s ease-in-out infinite;
+
+    animation-delay:5s, 7s;
+}
+
+@keyframes parrotFlyIn{
+    0%{
+        left:-200px;
+        opacity:0;
+        transform:translateY(0) scale(0.8);
+    }
+    70%{
+        left:75%;
+        transform:translateY(-10px) scale(1.1);
+    }
+    100%{
+        left:80%;
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes floatBird{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-18px) rotate(2deg); }
 }
 
 /* =========================
-   ELEPHANT
+   ELEPHANT (ALIVE + CLOSE)
 ========================= */
 
 .elephant{
     position:absolute;
-    width:260px; /* was 210px */
-    left:8%;     /* moved closer to center (Ethan is centered) */
+    width:260px;
+    left:-250px;
     bottom:10px;
-
     opacity:0;
     z-index:30;
 
-    animation:elephantIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay:6s;
+    animation:
+        elephantEnter 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        breathe 4s ease-in-out infinite;
+
+    animation-delay:6s, 7.5s;
 }
 
-@keyframes elephantIn{
-    to{
+@keyframes elephantEnter{
+    0%{
+        left:-250px;
+        opacity:0;
+        transform:scale(0.95);
+    }
+    80%{
+        left:6%;
+        transform:scale(1.03);
+    }
+    100%{
         left:6%;
         opacity:1;
+        transform:scale(1);
     }
 }
 
 /* =========================
-   GIRAFFE
+   GIRAFFE + LION (BREATHING)
 ========================= */
 
+.giraffe,
+.lion{
+    animation: breathe 5s ease-in-out infinite;
+}
+
 .giraffe{
-    position:absolute;
-    width:250px;
+    width:240px;
     right:-250px;
-    bottom:60px;
+    bottom:40px;
     opacity:0;
     z-index:29;
 
-    animation:giraffeIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay:6.3s;
+    animation:
+        giraffeIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        breathe 5s ease-in-out infinite;
+
+    animation-delay:6.3s, 7.5s;
 }
+
+.lion{
+    width:260px;
+    right:-300px;
+    bottom:0;
+    opacity:0;
+    z-index:31;
+
+    animation:
+        lionIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        breathe 4.5s ease-in-out infinite;
+
+    animation-delay:6.8s, 8s;
+}
+
+@keyframes breathe{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.03); }
+}
+
+/* =========================
+   ENTRY ANIMATIONS
+========================= */
 
 @keyframes giraffeIn{
     to{
         right:5%;
         opacity:1;
     }
-}
-
-/* =========================
-   LION
-========================= */
-
-.lion{
-    position:absolute;
-    width:230px;
-    right:-300px;
-    bottom:0;
-    opacity:0;
-    z-index:31;
-
-    animation:lionIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay:6.8s;
 }
 
 @keyframes lionIn{
@@ -292,7 +360,8 @@ body{
         0 0 12px rgba(255,255,255,0.25),
         0 4px 0 #1b5e20,
         0 15px 30px rgba(0,0,0,.6);
-    animation:glowPulse 2.5s ease-in-out infinite alternate;
+
+    animation:glow 2.5s ease-in-out infinite alternate;
 }
 
 .title p{
@@ -302,11 +371,18 @@ body{
     text-shadow:0 2px 6px rgba(0,0,0,.5);
 }
 
-/* =========================
-   TITLE GLOW
-========================= */
+@keyframes titleIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-@keyframes glowPulse{
+@keyframes glow{
     from{ filter:brightness(1); }
     to{ filter:brightness(1.15); }
 }
@@ -318,11 +394,11 @@ body{
 @media(max-width:768px){
 
     .baby{ width:230px; }
-    .monkey{ width:100px; }
-    .parrot{ width:70px; }
-    .elephant{ width:150px; }
-    .giraffe{ width:150px; }
-    .lion{ width:160px; }
+    .monkey{ width:110px; }
+    .parrot{ width:80px; }
+    .elephant{ width:160px; }
+    .giraffe{ width:160px; }
+    .lion{ width:170px; }
 
     .leaf{
         width:75vw;
