@@ -5,66 +5,45 @@ window.addEventListener("load", () => {
   const jungleAudio = document.getElementById("jungleAudio");
   const whooshAudio = document.getElementById("whooshAudio");
 
-  // =========================
-  // PREP VIDEO (VISIBLE BUT PAUSED)
-  // =========================
+  /* =========================
+     PREP VIDEO (SHOW FIRST FRAME)
+  ========================= */
   video.muted = true;
   video.playsInline = true;
 
   video.addEventListener("loadeddata", () => {
-    video.currentTime = 0.1; // show first frame, no black screen
+    video.currentTime = 0.1;
   });
 
-  // =========================
-  // CLICK START
-  // =========================
+  /* =========================
+     CLICK START
+  ========================= */
   startScreen.addEventListener("click", async () => {
 
-    // hide intro
     startScreen.style.display = "none";
 
-    // =========================
-    // SOUND: WHOOSH (LEAVES OPEN)
-    // =========================
+    // 🌬️ WHOOSH
     if (whooshAudio) {
       whooshAudio.currentTime = 0;
       whooshAudio.volume = 0.8;
       whooshAudio.play().catch(() => {});
     }
 
-    // =========================
-    // OPEN LEAVES
-    // =========================
+    // 🍃 OPEN LEAVES FIRST
     document.body.classList.add("open");
 
-    // =========================
-    // SOUND: JUNGLE AMBIENCE (LOOP)
-    // =========================
+    // 🌿 JUNGLE AMBIENCE
     if (jungleAudio) {
       jungleAudio.volume = 0.5;
       jungleAudio.play().catch(() => {});
     }
 
-    // =========================
-    // STOP WHOOSH AFTER ANIMATION
-    // (matches 1.2s CSS transition)
-    // =========================
-    setTimeout(() => {
-      if (whooshAudio) {
-        whooshAudio.pause();
-        whooshAudio.currentTime = 0;
-      }
-    }, 1300);
-
-    // =========================
-    // START VIDEO AFTER LEAVES OPEN
-    // =========================
+    // 🎥 START VIDEO AFTER LEAVES BEGIN OPENING
     setTimeout(async () => {
       try {
         await video.play();
-        console.log("Video playing ✔");
-      } catch (err) {
-        console.log("Video failed:", err);
+      } catch (e) {
+        console.log("Video failed:", e);
       }
     }, 400);
   });
