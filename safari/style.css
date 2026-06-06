@@ -11,7 +11,9 @@ html, body {
   background: black;
 }
 
-/* VIDEO */
+/* =========================
+   VIDEO BACKGROUND
+========================= */
 .bg-video {
   position: fixed;
   inset: 0;
@@ -21,36 +23,48 @@ html, body {
   z-index: 0;
 }
 
-/* START SCREEN */
+/* =========================
+   START SCREEN
+========================= */
 .start-screen {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0,0,0,0.85);
+  color: white;
   z-index: 1000;
   cursor: pointer;
 }
 
-/* LEAVES */
+/* =========================
+   LEAVES
+========================= */
 .leaf {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 50%;
-  background: #1b4332;
-  z-index: 10;
+  width: 55%;
+  background-image: url("./assets/leaf-top-left.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 20;
   transition: transform 1.2s ease;
 }
 
+/* LEFT LEAF */
 .left-leaf {
   left: 0;
+  background-position: left center;
 }
 
+/* RIGHT LEAF (mirror + depth fix) */
 .right-leaf {
   right: 0;
+  transform: scaleX(-1);
+  background-position: right center;
+  filter: brightness(0.85) contrast(1.1);
 }
 
 /* OPEN STATE */
@@ -59,5 +73,18 @@ body.open .left-leaf {
 }
 
 body.open .right-leaf {
-  transform: translateX(100%);
+  transform: translateX(100%) scaleX(-1);
+}
+
+/* subtle depth overlay */
+.leaf::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(0,0,0,0.25)
+  );
+  opacity: 0.6;
 }
