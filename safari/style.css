@@ -32,7 +32,7 @@ html, body {
 }
 
 /* =========================
-   START SCREEN (NO BOX)
+   START SCREEN
 ========================= */
 .start-screen {
   position: fixed;
@@ -53,7 +53,7 @@ html, body {
 /* HERO TITLE */
 .hero-title {
   font-family: "Cinzel", serif;
-  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
+  font-size: clamp(1.8rem, 4.5vw, 3.4rem);
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -64,38 +64,24 @@ html, body {
 }
 
 /* =========================
-   LEAVES (CLEAN CURTAIN)
+   FULL SCREEN LEAVES OVERLAY
 ========================= */
-.leaf {
+.jungle-overlay {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  background-image: url("./assets/leaf-top-left.png");
+  inset: 0;
+  background-image: url("./assets/leaves.png");
   background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 20;
-  transition: transform 1.2s ease;
+  background-position: center;
+  z-index: 50;
+
+  transform: scale(1);
+  opacity: 1;
+
+  transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
-/* LEFT */
-.left {
-  left: 0;
-  background-position: left center;
-}
-
-/* RIGHT */
-.right {
-  right: 0;
-  background-position: left center;
-  transform: scaleX(-1);
-}
-
-/* OPEN ANIMATION */
-body.open .left {
-  transform: translateX(-100%);
-}
-
-body.open .right {
-  transform: translateX(100%) scaleX(-1);
+/* ENTER JUNGLE ANIMATION */
+body.open .jungle-overlay {
+  transform: scale(1.8);
+  opacity: 0;
 }
