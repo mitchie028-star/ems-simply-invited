@@ -4,35 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ethan's Wild One Safari Adventure</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Jungle / cinematic font support -->
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="scene">
 
-    <!-- Background -->
+    <!-- 🌫️ CINEMATIC LAYERS -->
+    <div class="fog"></div>
+    <div class="vignette"></div>
+
+    <!-- 🌄 Background -->
     <img src="./assets/safari-bg.png" class="bg" alt="Safari background">
 
-    <!-- Jungle walls -->
-    <img src="./assets/leaf-top-left.png" class="leaf leaf-left" alt="">
-    <img src="./assets/leaf-top-left.png" class="leaf leaf-right" alt="">
+    <!-- 🌿 Jungle walls -->
+    <img src="./assets/leaf-top-left.png" class="leaf leaf-left" alt="Jungle foliage left">
+    <img src="./assets/leaf-top-left.png" class="leaf leaf-right" alt="Jungle foliage right">
 
-    <!-- Ethan -->
-    <img src="./assets/boy.png" class="baby" alt="Ethan">
+    <!-- 🦁 Ethan (hero reveal) -->
+    <img src="./assets/boy.png" class="baby" alt="Baby Ethan">
 
-    <!-- Animals -->
-    <img src="./assets/monkey.png" class="monkey" alt="">
-    <img src="./assets/parrot.png" class="parrot" alt="">
-    <img src="./assets/elephant.png" class="elephant" alt="">
-    <img src="./assets/giraffe.png" class="giraffe" alt="">
-    <img src="./assets/lion.png" class="lion" alt="">
+    <!-- 🐒 Animals -->
+    <img src="./assets/monkey.png" class="monkey" alt="Monkey swinging in jungle">
+    <img src="./assets/parrot.png" class="parrot" alt="Parrot flying across sky">
+    <img src="./assets/elephant.png" class="elephant" alt="Elephant entering jungle">
+    <img src="./assets/giraffe.png" class="giraffe" alt="Giraffe appearing from forest">
+    <img src="./assets/lion.png" class="lion" alt="Lion entering scene">
 
-    <!-- Title -->
+    <!-- 🎬 Title -->
     <div class="title">
         <h1>LET'S GET WILD!</h1>
         <p>Ethan's Wild One Safari Adventure</p>
     </div>
+
+    <!-- 🔊 AUDIO TRACKS (IMPORTANT for JS) -->
+    <audio id="whoosh1" src="./assets/whoosh1.mp3" preload="auto"></audio>
+    <audio id="whoosh2" src="./assets/whoosh2.mp3" preload="auto"></audio>
+    <audio id="roar" src="./assets/roar.mp3" preload="auto"></audio>
 
 </div>
 
