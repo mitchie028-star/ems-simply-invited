@@ -5,69 +5,45 @@ window.addEventListener("load", () => {
   const jungleAudio = document.getElementById("jungleAudio");
   const whooshAudio = document.getElementById("whooshAudio");
 
-  if (!startScreen || !video) return;
-
   video.muted = true;
   video.playsInline = true;
-
-  video.addEventListener("loadeddata", () => {
-    try {
-      video.currentTime = 0.1;
-    } catch (e) {}
-  });
 
   startScreen.addEventListener("click", async () => {
 
     startScreen.style.display = "none";
 
-    /* =========================
-       WHOOSH
-    ========================= */
-    if (whooshAudio) {
-      whooshAudio.pause();
-      whooshAudio.currentTime = 0;
-      whooshAudio.volume = 0.8;
-      whooshAudio.play().catch(() => {});
-    }
+    // WHOOSH
+    whooshAudio?.play().catch(() => {});
 
-    /* =========================
-       OPEN JUNGLE (SCENE 1)
-    ========================= */
+    // SCENE 1
     document.body.classList.add("open");
 
-    /* stop whoosh AFTER zoom animation */
+    // STOP WHOOSH
     setTimeout(() => {
-      if (whooshAudio) {
-        whooshAudio.pause();
-        whooshAudio.currentTime = 0;
-      }
+      whooshAudio?.pause();
+      whooshAudio.currentTime = 0;
     }, 3200);
 
-    /* =========================
-       AMBIENCE
-    ========================= */
-    if (jungleAudio) {
-      jungleAudio.volume = 0.5;
-      jungleAudio.play().catch(() => {});
-    }
+    // AMBIENCE
+    jungleAudio?.play().catch(() => {});
 
-    /* =========================
-       VIDEO START
-    ========================= */
-    setTimeout(async () => {
-      try {
-        await video.play();
-      } catch (e) {
-        console.log("Video blocked:", e);
-      }
+    // VIDEO START
+    setTimeout(() => {
+      video.play().catch(() => {});
     }, 600);
 
-    /* =========================
-       SCENE 2 TRIGGER (THIS WAS MISSING)
-    ========================= */
+    // SCENE 2
     setTimeout(() => {
       document.body.classList.add("scene2-active");
     }, 3400);
+
+    // SCENE 3 (FREEZE AT 9s)
+    video.addEventListener("timeupdate", () => {
+      if (video.currentTime >= 9) {
+        video.pause();
+        document.body.classList.add("scene3-active");
+      }
+    });
 
   });
 
