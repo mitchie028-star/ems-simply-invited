@@ -1,4 +1,8 @@
-window.addEventListener("load", () => {
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", () => {
+
+  startBtn.style.display = "none";
 
   const sounds = {
     whoosh1: document.getElementById("whoosh1"),
@@ -9,32 +13,16 @@ window.addEventListener("load", () => {
   function playSound(audio, volume = 1) {
     if (!audio) return;
 
-    try {
-      audio.currentTime = 0;
-      audio.volume = volume;
+    audio.currentTime = 0;
+    audio.volume = volume;
 
-      const promise = audio.play();
-
-      if (promise !== undefined) {
-        promise.catch(() => {
-          console.log("Audio blocked (needs user interaction)");
-        });
-      }
-    } catch (err) {
-      console.log("Audio error:", err);
-    }
+    audio.play().catch(() => {
+      console.log("Audio blocked");
+    });
   }
 
-  const timeline = [
-    { delay: 900, sound: "whoosh1", volume: 0.6 },
-    { delay: 4500, sound: "whoosh2", volume: 0.5 },
-    { delay: 6000, sound: "roar", volume: 0.7 }
-  ];
-
-  timeline.forEach(event => {
-    setTimeout(() => {
-      playSound(sounds[event.sound], event.volume);
-    }, event.delay);
-  });
+  setTimeout(() => playSound(sounds.whoosh1, 0.6), 900);
+  setTimeout(() => playSound(sounds.whoosh2, 0.5), 4500);
+  setTimeout(() => playSound(sounds.roar, 0.7), 6000);
 
 });
