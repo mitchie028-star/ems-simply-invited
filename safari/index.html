@@ -2,53 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Ethan's Safari Adventure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safari Scene 1</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
+<!-- START SCREEN -->
 <div id="startScreen" class="start-screen">
-  <div class="intro-content">
-    <h1>Ethan’s Safari Adventure</h1>
-    <p>Tap to begin the journey</p>
+  <div>
+    <h1>Tap to Begin</h1>
   </div>
 </div>
 
-<div id="leftLeaf" class="leaf-curtain left-leaf"></div>
-<div id="rightLeaf" class="leaf-curtain right-leaf"></div>
+<!-- LEAVES -->
+<div class="leaf left-leaf"></div>
+<div class="leaf right-leaf"></div>
 
-<video id="bgVideo" class="bg-video" playsinline muted loop>
+<!-- VIDEO -->
+<video id="bgVideo" class="bg-video" playsinline muted loop preload="auto">
   <source src="./assets/safari-bg.mp4" type="video/mp4" />
 </video>
-
-<audio id="whoosh" src="./assets/whoosh.mp3" preload="auto"></audio>
-
-<div class="scene">
-
-  <img id="ethan" class="baby" src="./assets/ethan.png" alt="Ethan" />
-
-  <div id="title" class="title">
-    Ethan’s Wild One Safari Adventure
-  </div>
-
-  <div id="rsvp" class="rsvp-scene">
-    <div class="card">
-      <h2>RSVP</h2>
-      <form id="rsvpForm">
-        <input type="text" placeholder="Your Name" required />
-
-        <div class="radio-group">
-          <label><input type="radio" name="attend" value="yes" required /> I will attend</label>
-          <label><input type="radio" name="attend" value="no" /> I cannot attend</label>
-        </div>
-
-        <button type="submit">Submit RSVP</button>
-      </form>
-    </div>
-  </div>
-
-</div>
 
 <script src="script.js"></script>
 </body>
