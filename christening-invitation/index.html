@@ -2,295 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Sophia Marie's Christening</title>
-
-  <meta name="description" content="Join us as we celebrate the Christening of Sophia Marie." />
+  <title>Sophia Marie - Christening</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
-  <!-- LOADER -->
+<!-- ================= INTRO CLOUD CURTAIN ================= -->
+<div id="intro" class="intro">
 
-  <div id="loader">
-    <div class="loader-cross">✦</div>
+  <img src="./assets/cloud-left.png" class="cloud cloud-left" />
+  <img src="./assets/cloud-right.png" class="cloud cloud-right" />
+
+  <div class="intro-light"></div>
+
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero hidden">
+
+  <div class="hero-content">
+
+    <p class="eyebrow">A Blessing From Above</p>
+
+    <div class="photo-frame">
+      <img src="./assets/baby.png" class="baby-photo" alt="Baby"/>
+    </div>
+
+    <h1>Sophia Marie</h1>
+
+    <p class="subtitle">Christening Celebration</p>
+
+    <a href="#details" class="btn">View Details</a>
+
   </div>
 
-  <!-- FLOATING BACKGROUND -->
+</section>
 
-  <div class="bg-glow"></div>
+<!-- ================= DETAILS ================= -->
+<section id="details" class="section">
 
-  <img src="./assets/cloud1.png" class="cloud cloud1" alt="">
-  <img src="./assets/cloud2.png" class="cloud cloud2" alt="">
-  <img src="./assets/cloud3.png" class="cloud cloud3" alt="">
+  <div class="card">
 
-  <!-- HERO -->
+    <h2>Christening Ceremony</h2>
 
-  <section class="scene hero">
+    <div class="grid">
 
-    <div class="hero-content">
-
-      <p class="eyebrow">
-        A Blessing From Above
-      </p>
-
-      <div class="photo-frame">
-
-        <img
-          src="./assets/baby.png"
-          alt="Sophia Marie"
-          class="baby-photo"
-        >
-
+      <div class="box">
+        <h3>Date</h3>
+        <p>July 12, 2026</p>
       </div>
 
-      <h1>
-        Sophia Marie
-      </h1>
+      <div class="box">
+        <h3>Time</h3>
+        <p>10:00 AM</p>
+      </div>
 
-      <p class="hero-subtitle">
-        Join us as we celebrate her Christening
-      </p>
+      <div class="box">
+        <h3>Venue</h3>
+        <p>St. Peter Parish Church</p>
+      </div>
 
-      <a href="#details" class="scroll-btn">
-        Scroll to Discover
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- VERSE -->
-
-  <section class="scene reveal">
-
-    <div class="content">
-
-      <span class="section-label">
-        Bible Verse
-      </span>
-
-      <h2>
-        For this child we prayed,
-        and the Lord has granted us
-        what we asked of Him.
-      </h2>
-
-      <p>
-        1 Samuel 1:27
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- DETAILS -->
-
-  <section id="details" class="scene reveal">
-
-    <div class="glass-card">
-
-      <span class="section-label">
-        Event Details
-      </span>
-
-      <h2>
-        Christening Ceremony
-      </h2>
-
-      <div class="details-grid">
-
-        <div class="detail">
-          <h3>Date</h3>
-          <p>July 12, 2026</p>
-        </div>
-
-        <div class="detail">
-          <h3>Time</h3>
-          <p>10:00 AM</p>
-        </div>
-
-        <div class="detail">
-          <h3>Church</h3>
-          <p>St. Peter Parish Church</p>
-        </div>
-
-        <div class="detail">
-          <h3>Reception</h3>
-          <p>Immediately Following</p>
-        </div>
-
+      <div class="box">
+        <h3>Reception</h3>
+        <p>Following Ceremony</p>
       </div>
 
     </div>
 
-  </section>
+  </div>
 
-  <!-- TIMELINE -->
+</section>
 
-  <section class="scene reveal">
+<!-- ================= VERSE ================= -->
+<section class="section">
 
-    <div class="content">
-
-      <span class="section-label">
-        Celebration Flow
-      </span>
-
-      <h2>
-        A Day Filled With Blessings
-      </h2>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          Church Ceremony
-        </div>
-
-        <div class="timeline-item">
-          Family Photos
-        </div>
-
-        <div class="timeline-item">
-          Lunch Reception
-        </div>
-
-        <div class="timeline-item">
-          Cake Celebration
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- GODPARENTS -->
-
-  <section class="scene reveal">
-
-    <div class="content">
-
-      <span class="section-label">
-        Godparents
-      </span>
-
-      <h2>
-        Guiding Lights in Faith
-      </h2>
-
-      <div class="sponsors">
-
-        <div class="sponsor-card">
-          <h3>Ninong</h3>
-          <p>John Santos</p>
-        </div>
-
-        <div class="sponsor-card">
-          <h3>Ninang</h3>
-          <p>Maria Cruz</p>
-        </div>
-
-        <div class="sponsor-card">
-          <h3>Ninong</h3>
-          <p>Michael Reyes</p>
-        </div>
-
-        <div class="sponsor-card">
-          <h3>Ninang</h3>
-          <p>Angela Garcia</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- GALLERY -->
-
-  <section class="scene reveal">
-
-    <div class="content">
-
-      <span class="section-label">
-        Precious Moments
-      </span>
-
-      <h2>
-        Our Little Angel
-      </h2>
-
-      <div class="gallery">
-
-        <img src="./assets/photo1.jpg" alt="">
-        <img src="./assets/photo2.jpg" alt="">
-        <img src="./assets/photo3.jpg" alt="">
-        <img src="./assets/photo4.jpg" alt="">
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- RSVP -->
-
-  <section class="scene reveal rsvp">
-
-    <div class="glass-card">
-
-      <span class="section-label">
-        RSVP
-      </span>
-
-      <h2>
-        We Would Be Honored By Your Presence
-      </h2>
-
-      <p class="rsvp-text">
-        Kindly confirm your attendance before
-        June 30, 2026.
-      </p>
-
-      <a
-        href="https://forms.gle/"
-        target="_blank"
-        class="rsvp-btn"
-      >
-        Confirm Attendance
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
+  <div class="verse">
 
     <p>
-      Made with love for Sophia Marie's
-      Christening Day ✨
+      “For this child we prayed, and the Lord has granted us what we asked of Him.”
     </p>
 
-  </footer>
+    <span>1 Samuel 1:27</span>
 
-  <!-- SPARKLES -->
+  </div>
 
-  <div class="sparkle s1"></div>
-  <div class="sparkle s2"></div>
-  <div class="sparkle s3"></div>
-  <div class="sparkle s4"></div>
-  <div class="sparkle s5"></div>
+</section>
 
-  <script src="./script.js"></script>
+<!-- ================= GODPARENTS ================= -->
+<section class="section">
+
+  <div class="card">
+
+    <h2>Godparents</h2>
+
+    <div class="grid">
+
+      <div class="box">
+        <h3>Ninong</h3>
+        <p>John Santos</p>
+      </div>
+
+      <div class="box">
+        <h3>Ninang</h3>
+        <p>Maria Cruz</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= RSVP ================= -->
+<section class="section">
+
+  <div class="card center">
+
+    <h2>We would love your presence</h2>
+
+    <p>Please confirm your attendance</p>
+
+    <a class="btn" href="#">RSVP</a>
+
+  </div>
+
+</section>
+
+<script src="./script.js"></script>
 
 </body>
 </html>
