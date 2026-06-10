@@ -1,1 +1,221 @@
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#fbfaf6;
+  color:#2c2c2c;
+  overflow-x:hidden;
+}
+
+/* ================= TYPOGRAPHY ================= */
+h1,h2,h3{
+  font-family:'Cormorant Garamond',serif;
+}
+
+h1{
+  font-size:clamp(2.8rem,6vw,5rem);
+  color:#b28a2e;
+}
+
+h2{
+  font-size:2.2rem;
+}
+
+.eyebrow{
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-size:.8rem;
+  color:#b28a2e;
+}
+
+.subtitle{
+  margin-top:10px;
+  opacity:.7;
+}
+
+/* ================= INTRO ================= */
+.intro{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:9999;
+  overflow:hidden;
+}
+
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  height:100%;
+  top:0;
+  transition:transform 2.5s ease-in-out;
+}
+
+.cloud-left{
+  left:0;
+  transform:translateX(0);
+}
+
+.cloud-right{
+  right:0;
+  transform:translateX(0);
+}
+
+/* LIGHT */
+.intro-light{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    circle at center,
+    rgba(255,255,255,.9),
+    rgba(212,175,55,.2),
+    transparent
+  );
+  opacity:0;
+  transition:opacity 2s ease;
+}
+
+/* OPEN STATE */
+.intro.open .cloud-left{
+  transform:translateX(-120%);
+}
+
+.intro.open .cloud-right{
+  transform:translateX(120%);
+}
+
+.intro.open .intro-light{
+  opacity:1;
+}
+
+/* HIDE */
+.intro.hide{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s ease;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero.hidden{
+  display:none;
+}
+
+.photo-frame{
+  width:260px;
+  height:260px;
+  margin:30px auto;
+  border-radius:50%;
+  overflow:hidden;
+  padding:10px;
+  background:#fff;
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
+}
+
+.baby-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 28px;
+  background:#d4af37;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* ================= SECTIONS ================= */
+.section{
+  padding:80px 20px;
+  display:flex;
+  justify-content:center;
+  text-align:center;
+}
+
+/* ================= CARD ================= */
+.card{
+  width:100%;
+  max-width:900px;
+  background:#fff;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.center{
+  text-align:center;
+}
+
+/* ================= GRID ================= */
+.grid{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+.box{
+  background:#fafafa;
+  padding:20px;
+  border-radius:15px;
+}
+
+.box h3{
+  color:#b28a2e;
+  margin-bottom:6px;
+}
+
+/* ================= VERSE ================= */
+.verse{
+  max-width:700px;
+  font-size:1.4rem;
+  font-family:'Cormorant Garamond',serif;
+  line-height:1.6;
+}
+
+.verse span{
+  display:block;
+  margin-top:10px;
+  font-size:.9rem;
+  color:#b28a2e;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+
+  .card{
+    padding:25px;
+  }
+
+  .photo-frame{
+    width:200px;
+    height:200px;
+  }
+
+  h2{
+    font-size:1.8rem;
+  }
+}
