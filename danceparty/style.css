@@ -1,75 +1,33 @@
-/* RESET & FONTS */
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-  font-family: 'Righteous', cursive; 
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Righteous', cursive; text-transform: uppercase; letter-spacing: 2px; }
 
-/* BACKGROUND VIDEO */
-.bg-video { 
-  position: fixed; 
-  inset: 0; 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-  z-index: 0; 
-}
+.bg-video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1; }
 
-.overlay { 
-  position: fixed; 
-  inset: 0; 
-  background: rgba(0,0,0,0.5); 
-  z-index: 1; 
-}
-
-/* CONTENT LAYOUT */
 .content { 
-  position: relative; 
-  z-index: 2; 
-  text-align: center; 
-  color: #fff; 
-  padding: 40px 20px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative; z-index: 2; color: #fff; padding: 40px 20px; 
+  display: flex; flex-direction: column; align-items: center; min-height: 100vh;
 }
 
-/* HERO PORTRAIT */
+/* Header Text (Moved to top) */
+.header-text { margin-bottom: 20px; text-align: center; }
+.header-text h1 { color: #00ffff; font-size: 24px; }
+.header-text h2 { font-size: 14px; margin-top: 5px; }
+
+/* Portrait (Removed border/ring) */
 .hero-image-container {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid #ff00ff;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px #ff00ff;
+  width: 200px; height: 200px; border-radius: 50%; overflow: hidden;
+  margin-bottom: 20px; border: 4px solid #fff;
 }
+.profile-img { width: 100%; height: 100%; object-fit: cover; }
 
-.profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* Lower Text */
+.lower-text { text-align: center; margin-bottom: 30px; }
+.name { font-size: 48px !important; color: #ffeb3b; }
+.subtitle { font-size: 18px; margin-top: 5px; }
 
-/* TYPOGRAPHY */
-.text { margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-.text h1 { font-size: 24px; color: #00ffff; margin: 5px 0; }
-.text h2 { font-size: 16px; font-weight: 400; margin-bottom: 10px; }
-.name { font-size: 50px !important; color: #ffeb3b; margin: 10px 0; }
-.subtitle { color: #fff; }
-
-.scroll { margin-top: 15px; font-size: 14px; color: #ff00ff; }
-
-/* DETAILS BOX */
+/* Details (Pushed to bottom) */
 .details { 
-  background: rgba(0,0,0,0.7); 
-  padding: 20px; 
-  border-radius: 20px; 
-  max-width: 400px; 
-  width: 100%;
-  border: 2px solid #00ffff;
-  margin-top: 20px;
+  background: rgba(0,0,0,0.7); padding: 20px; border-radius: 20px; 
+  max-width: 400px; width: 100%; border: 2px solid #00ffff;
+  margin-top: auto; /* Pushes to bottom of container */
 }
