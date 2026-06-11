@@ -1,23 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
 
+  // Prepare audio
   music.load();
   music.volume = 1;
 
-  // Try autoplay (may or may not work)
-  const playPromise = music.play();
+  // Attempt autoplay
+  music.play().catch(() => {
 
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      // fallback: first interaction
-      const start = () => {
-        music.play().catch(() => {});
-        document.removeEventListener("click", start);
-        document.removeEventListener("touchstart", start);
-      };
+    // If autoplay is blocked, wait for first interaction
+    const startMusic = () => {
+      music.play().catch(() => {});
 
-      document.addEventListener("click", start, { once: true });
-      document.addEventListener("touchstart", start, { once: true });
-    });
-  }
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("touchstart", startMusic);
+    };
+
+    document.addEventListener("click", startMusic, { once: true });
+    document.addEventListener("touchstart", startMusic, { once: true });
+
+  });
 });
