@@ -1,15 +1,13 @@
-// Ensures autoplay works across browsers
+// Safe autoplay fix for all browsers
 window.addEventListener("load", () => {
-  const videos = document.querySelectorAll("video");
-
-  videos.forEach(video => {
+  document.querySelectorAll("video").forEach(video => {
     video.muted = true;
     video.playsInline = true;
 
     const playPromise = video.play();
-    if (playPromise !== undefined) {
+    if (playPromise) {
       playPromise.catch(() => {
-        console.log("Autoplay blocked but muted fallback is active.");
+        console.log("Autoplay blocked but handled safely.");
       });
     }
   });
