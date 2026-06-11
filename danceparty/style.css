@@ -4,13 +4,12 @@
 
 .content { 
   position: relative; z-index: 2; color: #fff; padding: 40px 20px; 
-  display: flex; flex-direction: column; align-items: center; 
-  justify-content: space-between; /* Pins Title to top, Details to bottom */
-  min-height: 100vh; 
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 100vh; 
   text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
 }
 
-.header-text { text-align: center; margin-top: 30px; }
+/* Reduced margin-top to pull it higher */
+.header-text { text-align: center; margin-top: 5px; } 
 
 .disco-title { 
   font-family: 'Righteous', cursive; color: #00ffff; font-size: 50px; 
@@ -25,14 +24,12 @@
   background: rgba(0,0,0,0.4); padding: 20px; border-radius: 20px; 
   max-width: 400px; width: 100%; border: 2px solid #00ffff;
   text-align: center; font-family: 'Righteous', cursive; letter-spacing: 2px;
-  margin-bottom: 20px; /* Pins it to the bottom with spacing */
+  margin-bottom: 20px;
 }
 
-.click-instruction { font-size: 10px; margin-top: 10px; opacity: 0.7; }
-
-/* Desktop Adjustments (Higher Title, Neon Green) */
+/* Desktop Adjustments: Adjusted to be higher */
 @media (min-width: 769px) {
   .disco-title { font-size: 80px; }
   .script-subtitle { color: #39FF14; font-size: 60px; } 
-  .header-text { margin-top: 40px; }
+  .header-text { margin-top: 10px; } /* Adjusted to pull higher on desktop */
 }
