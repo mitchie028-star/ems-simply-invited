@@ -1,17 +1,44 @@
+document.getElementById("tagline").textContent =
+invitation.tagline;
+
 document.getElementById("subtitle").textContent =
-    invitation.subtitle;
+invitation.subtitle;
 
-document.getElementById("name").textContent =
-    invitation.name;
+document.getElementById("celebrant").textContent =
+invitation.celebrant;
 
-document.getElementById("title").textContent =
-    invitation.title;
+document.getElementById("occasion").textContent =
+invitation.occasion;
 
 document.getElementById("date").textContent =
-    invitation.date;
+invitation.date;
 
 document.getElementById("time").textContent =
-    invitation.time;
+invitation.time;
 
 document.getElementById("venue").textContent =
-    invitation.venue;
+invitation.venue;
+
+
+const video =
+document.querySelector(".background-video");
+
+
+video.addEventListener("timeupdate", () => {
+
+    if (
+        video.currentTime >= invitation.revealTime
+    ) {
+
+        document
+            .querySelector(".hero-top")
+            .classList.add("show");
+
+
+        document
+            .querySelector(".hero-bottom")
+            .classList.add("show");
+
+    }
+
+});
