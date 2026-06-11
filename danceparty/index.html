@@ -28,17 +28,19 @@
       <img src="assets/profile.jpg" alt="Mary" class="profile-img">
     </div>
 
-    <section class="footer-nav">
-      <a href="YOUR_MAP_LINK_HERE" target="_blank" class="nav-item">GOOGLE MAP</a>
-      <div class="nav-item">SATURDAY, JUNE 20 (7PM)</div>
-      <a href="#" class="nav-item" onclick="toggleRSVP()">RSVP</a>
+    <section class="rsvp-footer">
+       <div class="footer-nav">
+        <a href="YOUR_MAP_LINK_HERE" target="_blank" class="nav-item">GOOGLE MAP</a>
+        <div class="nav-item">SATURDAY, JUNE 20</div>
+        <a href="#" class="nav-item" onclick="toggleRSVP()">RSVP</a>
+      </div>
     </section>
   </main>
 
   <section id="rsvp-section" class="hidden">
     <div class="rsvp-modal">
       <button class="close-btn" onclick="toggleRSVP()">CLOSE</button>
-      <iframe src="YOUR_GOOGLE_FORM_EMBED_URL_HERE" width="100%" height="500px" frameborder="0">Loading...</iframe>
+      <iframe src="YOUR_GOOGLE_FORM_EMBED_URL_HERE" width="100%" height="500px" frameborder="0"></iframe>
     </div>
   </section>
 
