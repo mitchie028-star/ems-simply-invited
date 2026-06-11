@@ -1,44 +1,16 @@
-document.getElementById("tagline").textContent =
-invitation.tagline;
+// Ensures autoplay works across browsers
+window.addEventListener("load", () => {
+  const videos = document.querySelectorAll("video");
 
-document.getElementById("subtitle").textContent =
-invitation.subtitle;
+  videos.forEach(video => {
+    video.muted = true;
+    video.playsInline = true;
 
-document.getElementById("celebrant").textContent =
-invitation.celebrant;
-
-document.getElementById("occasion").textContent =
-invitation.occasion;
-
-document.getElementById("date").textContent =
-invitation.date;
-
-document.getElementById("time").textContent =
-invitation.time;
-
-document.getElementById("venue").textContent =
-invitation.venue;
-
-
-const video =
-document.querySelector(".background-video");
-
-
-video.addEventListener("timeupdate", () => {
-
-    if (
-        video.currentTime >= invitation.revealTime
-    ) {
-
-        document
-            .querySelector(".hero-top")
-            .classList.add("show");
-
-
-        document
-            .querySelector(".hero-bottom")
-            .classList.add("show");
-
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        console.log("Autoplay blocked but muted fallback is active.");
+      });
     }
-
+  });
 });
