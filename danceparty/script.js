@@ -2,26 +2,19 @@ window.addEventListener("load", () => {
   const music = document.getElementById("bg-music");
   const video = document.querySelector(".bg-video");
 
-  // 1. Play video muted (this is always allowed)
+  // Video must be muted to autoplay
   if (video) {
     video.muted = true;
-    video.play().catch(e => console.log("Video autoplay blocked", e));
+    video.play().catch(e => console.log("Video autoplay blocked:", e));
   }
 
-  // 2. Attempt to play music immediately
-  music.play().then(() => {
-    console.log("Music started automatically");
-  }).catch(error => {
-    console.log("Autoplay blocked, waiting for first click");
-    
-    // 3. If blocked, play on first touch/click anywhere
-    const playOnInteraction = () => {
-      music.play();
-      document.removeEventListener('click', playOnInteraction);
-      document.removeEventListener('touchstart', playOnInteraction);
-    };
-    
-    document.addEventListener('click', playOnInteraction);
-    document.addEventListener('touchstart', playOnInteraction);
-  });
+  // Audio plays on the first user interaction (required by browser policy)
+  const startAudio = () => {
+    music.play().catch(e => console.log("Audio play failed:", e));
+    document.removeEventListener('click', startAudio);
+    document.removeEventListener('touchstart', startAudio);
+  };
+
+  document.addEventListener('click', startAudio);
+  document.addEventListener('touchstart', startAudio);
 });
