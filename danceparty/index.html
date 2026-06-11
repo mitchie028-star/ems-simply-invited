@@ -1,113 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Dance Party Invitation</title>
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@300;400;500;600&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dance Party Invitation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<section class="hero">
+  <!-- VIDEO BACKGROUND -->
+  <div class="video-container">
 
-    <video
-        class="background-video"
-        autoplay
-        muted
-        loop
-        playsinline>
-
-        <source
-            src="assets/ringvideo.mp4"
-            type="video/mp4">
-
+    <!-- Desktop Video -->
+    <video class="bg-video desktop-video" autoplay muted loop playsinline>
+      <source src="assets/desktop.mp4" type="video/mp4">
     </video>
 
+    <!-- Mobile Video -->
+    <video class="bg-video mobile-video" autoplay muted loop playsinline>
+      <source src="assets/mobile.mp4" type="video/mp4">
+    </video>
 
-    <div class="hero-top hidden">
+    <!-- DARK OVERLAY -->
+    <div class="overlay"></div>
 
-        <div id="tagline"></div>
+  </div>
 
-        <div id="subtitle"></div>
+  <!-- MAIN CONTENT -->
+  <div class="content">
 
+    <!-- RING IMAGE -->
+    <div class="ring-wrapper">
+      <img src="assets/ring.png" alt="Ring Frame" class="ring-frame">
+
+      <!-- Replaceable masked image inside ring -->
+      <div class="ring-inner">
+        <img src="assets/profile.jpg" alt="Center Image">
+      </div>
     </div>
 
+    <!-- TEXT -->
+    <div class="text">
+      <h1>All Hail</h1>
+      <h2>The Queen of the Dance Floor</h2>
+      <h1>Mary</h1>
+      <p class="age">65th Birthday Party</p>
 
-    <div class="hero-bottom hidden">
-
-        <h1 id="celebrant"></h1>
-
-        <div id="occasion"></div>
-
-        <div class="scroll">
-
-            ↓ Scroll Down ↓
-
-        </div>
-
+      <div class="scroll">
+        ↓ Scroll Down ↓
+      </div>
     </div>
 
-</section>
+    <!-- EVENT DETAILS -->
+    <section class="details">
+      <h3>Event Details</h3>
 
+      <p><strong>Date:</strong> Saturday, June 20</p>
+      <p><strong>Time:</strong> 6:00 PM</p>
+      <p><strong>Venue:</strong> To be announced</p>
+    </section>
 
+  </div>
 
-<section class="details">
-
-    <h2>Event Details</h2>
-
-
-    <div class="card">
-
-        <h3>Date</h3>
-
-        <p id="date"></p>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>Time</h3>
-
-        <p id="time"></p>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>Venue</h3>
-
-        <p id="venue"></p>
-
-    </div>
-
-</section>
-
-
-<script src="data.js"></script>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
