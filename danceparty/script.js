@@ -2,22 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
   const video = document.querySelector(".bg-video");
 
-  // Play background video
+  // Start video
   if (video) {
     video.muted = true;
     video.play().catch(() => {});
   }
 
-  // Start music on first interaction
-  function startAudio() {
-    music.play()
-      .then(() => console.log("Music playing"))
-      .catch(err => console.log("Audio error:", err));
+  // Play music on first user interaction
+  const startAudio = () => {
+    music.play().catch(err => console.log("Audio error:", err));
 
-    document.removeEventListener("click", startAudio);
-    document.removeEventListener("touchstart", startAudio);
-  }
+    window.removeEventListener("click", startAudio);
+    window.removeEventListener("touchstart", startAudio);
+  };
 
-  document.addEventListener("click", startAudio);
-  document.addEventListener("touchstart", startAudio);
+  window.addEventListener("click", startAudio, { once: true });
+  window.addEventListener("touchstart", startAudio, { once: true });
 });
