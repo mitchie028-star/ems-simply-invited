@@ -1,34 +1,40 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 .bg-video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 
 .content { 
-  position: relative; z-index: 2; color: #fff; padding: 40px 20px; 
-  display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; 
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  position: relative; z-index: 2; color: #fff; padding: 20px; 
+  display: flex; flex-direction: column; align-items: center; 
+  justify-content: flex-end; /* Pins Details box to bottom */
+  min-height: 100vh;
 }
 
-.disco-title { 
-  font-family: 'Righteous', cursive; color: #00ffff; font-size: 50px; 
-  text-transform: uppercase; letter-spacing: 4px; text-align: center;
+.header-text { 
+  position: absolute; top: 20px; /* Pins Title to top */
+  text-align: center; 
 }
 
-.script-subtitle { 
-  font-family: 'Dancing Script', cursive; font-size: 45px; color: #ffffff; text-align: center; 
-}
+.disco-title { font-family: 'Righteous', cursive; color: #00ffff; font-size: 50px; text-transform: uppercase; }
+.script-subtitle { font-family: 'Dancing Script', cursive; font-size: 45px; color: #ffffff; }
 
 .details { 
   background: rgba(0,0,0,0.4); padding: 20px; border-radius: 20px; 
   max-width: 400px; width: 100%; border: 2px solid #00ffff;
-  text-align: center; font-family: 'Righteous', cursive; letter-spacing: 2px;
-  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  text-align: center; font-family: 'Righteous', cursive;
+  margin-bottom: 20px;
 }
+.footer-nav { margin-top: 10px; display: flex; justify-content: center; gap: 20px; }
+.nav-item { color: white; text-decoration: none; cursor: pointer; }
 
-/* ONLY DESKTOP ADJUSTMENTS */
+/* Desktop */
 @media (min-width: 769px) {
-  .header-text { margin-bottom: 20px; transform: translateY(-50px); } /* Pulled higher */
-  .disco-title { font-size: 80px; }
-  .script-subtitle { color: #39FF14; font-size: 60px; } /* Neon Green & Bigger */
+  .header-text { top: 40px; }
+  .disco-title { font-size: 90px; }
+  .script-subtitle { color: #39FF14; font-size: 65px; }
 }
 
-.click-instruction { font-size: 10px; margin-top: 10px; opacity: 0.7; }
+#start-overlay { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+#rsvp-section { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.hidden { display: none !important; }
+.rsvp-modal { width: 90%; max-width: 600px; background: #fff; padding: 20px; border-radius: 15px; position: relative; }
+.close-btn { position: absolute; top: 10px; right: 10px; cursor: pointer; background: #ff00ff; color: white; border: none; padding: 5px 10px; }
