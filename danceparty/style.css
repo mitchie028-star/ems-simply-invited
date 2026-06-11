@@ -1,20 +1,33 @@
-window.addEventListener("load", () => {
-  const music = document.getElementById("bg-music");
-  const video = document.querySelector(".bg-video");
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  // Keep video muted for autoplay to work
-  if (video) {
-    video.muted = true;
-    video.play().catch(e => console.log(e));
-  }
+.bg-video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 
-  // The music will start as soon as the user interacts with the page
-  const startAudio = () => {
-    music.play().catch(e => console.log("Waiting for user interaction"));
-    document.removeEventListener('click', startAudio);
-    document.removeEventListener('touchstart', startAudio);
-  };
+.content { 
+  position: relative; z-index: 2; color: #fff; padding: 40px 20px; 
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; 
+  min-height: 100vh; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
 
-  document.addEventListener('click', startAudio);
-  document.addEventListener('touchstart', startAudio);
-});
+.header-text { text-align: center; margin-top: 5px; }
+
+.disco-title { 
+  font-family: 'Righteous', cursive; color: #00ffff; font-size: 50px; 
+  text-transform: uppercase; letter-spacing: 4px; text-align: center;
+}
+
+.script-subtitle { 
+  font-family: 'Dancing Script', cursive; font-size: 45px; color: #ffffff; text-align: center; 
+}
+
+.details { 
+  background: rgba(0,0,0,0.4); padding: 20px; border-radius: 20px; 
+  max-width: 400px; width: 100%; border: 2px solid #00ffff;
+  text-align: center; font-family: 'Righteous', cursive; letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+  .header-text { margin-top: 10px; }
+  .disco-title { font-size: 80px; }
+  .script-subtitle { color: #39FF14; font-size: 60px; } 
+}
