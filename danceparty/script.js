@@ -1,18 +1,20 @@
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
   const video = document.querySelector(".bg-video");
 
-  // Video plays muted automatically
+  // 1. Play video muted immediately
   if (video) {
     video.muted = true;
-    video.play().catch(e => console.log(e));
+    video.play().catch(e => console.log("Video autoplay blocked", e));
   }
 
-  // Attempt to play music automatically
-  music.play().catch(error => {
-    console.log("Autoplay blocked. Music will start on first touch.");
+  // 2. Immediate attempt to play music
+  music.play().then(() => {
+    console.log("Music started automatically");
+  }).catch(error => {
+    console.log("Autoplay blocked, waiting for first interaction");
     
-    // Fallback: Start music on the first touch/click anywhere on the page
+    // 3. Fallback: Start music on the very first touch/click
     const startAudio = () => {
       music.play();
       document.removeEventListener('click', startAudio);
