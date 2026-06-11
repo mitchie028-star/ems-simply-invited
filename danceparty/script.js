@@ -2,23 +2,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
   const video = document.querySelector(".bg-video");
 
-  // Play video immediately
+  // Ensure audio is ready
+  music.load();
+  music.volume = 1;
+
+  // Play video
   if (video) {
     video.muted = true;
     video.play().catch(() => {});
   }
 
-  // Try autoplay music
-  music.play().catch(() => {
-    // If blocked, wait for first interaction
-    const startAudio = () => {
-      music.play().catch(err => console.log("Audio error:", err));
+  function startAudio() {
+    music.play()
+      .then(() => {
+        console.log("🎵 Music started");
+      })
+      .catch(err => {
+        console.log("❌ Audio blocked:", err);
+      });
 
-      document.removeEventListener("click", startAudio);
-      document.removeEventListener("touchstart", startAudio);
-    };
+    document.removeEventListener("click", startAudio);
+    document.removeEventListener("touchstart", startAudio);
+  }
 
-    document.addEventListener("click", startAudio);
-    document.addEventListener("touchstart", startAudio);
-  });
+  // IMPORTANT: user gesture only
+  document.addEventListener("click", startAudio, { once: true });
+  document.addEventListener("touchstart", startAudio, { once: true });
 });
