@@ -3,95 +3,110 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <title>Dance Party Invitation</title>
+<title>Dance Party Invitation</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
 <body>
 
-    <section class="hero">
+<section class="hero">
 
-        <video
-            class="ring-video"
-            autoplay
-            muted
-            loop
-            playsinline>
+    <video
+        class="background-video"
+        autoplay
+        muted
+        loop
+        playsinline>
 
-            <source
-                src="assets/ring-video.mp4"
-                type="video/mp4">
+        <source
+            src="assets/ring-video.mp4"
+            type="video/mp4">
 
-        </video>
-
-
-        <div class="hero-content">
-
-            <h2 id="subtitle"></h2>
-
-            <h1 id="name"></h1>
-
-            <p id="title"></p>
-
-            <div class="scroll-indicator">
-                ↓ Scroll Down ↓
-            </div>
-
-        </div>
-
-    </section>
+    </video>
 
 
-    <section class="details">
+    <div class="hero-top hidden">
 
-        <div class="card">
+        <div id="tagline"></div>
 
-            <h2>Event Details</h2>
+        <div id="subtitle"></div>
 
-            <div class="info">
-
-                <h3>Date</h3>
-
-                <p id="date"></p>
-
-            </div>
+    </div>
 
 
-            <div class="info">
+    <div class="hero-bottom hidden">
 
-                <h3>Time</h3>
+        <h1 id="celebrant"></h1>
 
-                <p id="time"></p>
+        <div id="occasion"></div>
 
-            </div>
+        <div class="scroll">
 
-
-            <div class="info">
-
-                <h3>Venue</h3>
-
-                <p id="venue"></p>
-
-            </div>
+            ↓ Scroll Down ↓
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <script src="data.js"></script>
 
-    <script src="script.js"></script>
+<section class="details">
+
+    <h2>Event Details</h2>
+
+
+    <div class="card">
+
+        <h3>Date</h3>
+
+        <p id="date"></p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>Time</h3>
+
+        <p id="time"></p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>Venue</h3>
+
+        <p id="venue"></p>
+
+    </div>
+
+</section>
+
+
+<script src="data.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 
