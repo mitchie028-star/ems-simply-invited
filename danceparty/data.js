@@ -1,11 +1,19 @@
 const invitation = {
-    subtitle: "You're Invited",
-    name: "Sarah",
-    title: "18th Birthday Party",
+
+    tagline: "All Hail",
+
+    subtitle: "The Queen of Dance Floor",
+
+    celebrant: "Mary",
+
+    occasion: "65th Birthday Party",
+
+    revealTime: 4,
 
     date: "Saturday, June 20, 2026",
-    time: "7:00 PM",
-    venue: "ABC Events Place",
 
-    rsvp: "0917-123-4567"
+    time: "7:00 PM",
+
+    venue: "ABC Events Place"
+
 };
