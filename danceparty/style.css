@@ -1,38 +1,38 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 .bg-video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
 .content { 
   position: relative; z-index: 2; color: #fff; padding: 40px 20px; 
-  display: flex; flex-direction: column; align-items: center; justify-content: center; 
-  min-height: 100vh; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  display: flex; flex-direction: column; align-items: center; 
+  min-height: 100vh;
+  justify-content: space-between; /* Pins header to top, box to bottom */
 }
 
-.disco-title { font-family: 'Righteous', cursive; color: #00ffff; font-size: 50px; text-transform: uppercase; text-align: center; margin-bottom: 10px; }
-.script-subtitle { font-family: 'Dancing Script', cursive; font-size: 45px; color: #ffffff; text-align: center; margin-bottom: 30px; }
+/* Header: Pulled higher */
+.header-text { text-align: center; margin-top: 10px; }
+.disco-title { font-family: 'Righteous', cursive; color: #00ffff; font-size: 50px; text-transform: uppercase; }
+.script-subtitle { font-family: 'Dancing Script', cursive; font-size: 45px; color: #39FF14; }
 
-/* The "Old" RSVP Box Style */
+/* Details Box: Pulled lower */
 .details { 
-  background: rgba(0,0,0,0.4); 
-  padding: 30px; 
-  border-radius: 20px; 
-  max-width: 400px; 
-  width: 100%; 
-  border: 2px solid #00ffff; 
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); 
-  text-align: center; 
-  font-family: 'Righteous', cursive; 
-  letter-spacing: 2px;
+  background: rgba(0,0,0,0.6); padding: 20px; border-radius: 20px; 
+  max-width: 400px; width: 100%; border: 2px solid #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  text-align: center; font-family: 'Righteous', cursive;
+  margin-bottom: 20px;
 }
-.footer-nav { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
-.nav-item { color: white; text-decoration: none; cursor: pointer; text-shadow: 0 0 5px #00ffff; }
+.footer-nav { margin-top: 10px; display: flex; justify-content: center; gap: 20px; }
+.nav-item { color: white; text-decoration: none; cursor: pointer; }
 
-/* Desktop Adjustments */
+/* Desktop */
 @media (min-width: 769px) {
-  .header-text { margin-top: -50px; }
-  .disco-title { font-size: 90px; }
-  .script-subtitle { color: #39FF14; font-size: 65px; text-shadow: 0 0 10px #39FF14; }
+  .header-text { margin-top: 30px; }
+  .disco-title { font-size: 100px; }
+  .script-subtitle { font-size: 70px; }
 }
 
-/* Modal */
+/* Modal and Overlay */
+#start-overlay { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; cursor: pointer; }
 #rsvp-section { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 100; }
 .hidden { display: none !important; }
 .rsvp-modal { width: 90%; max-width: 600px; background: #fff; padding: 20px; border-radius: 15px; position: relative; }
